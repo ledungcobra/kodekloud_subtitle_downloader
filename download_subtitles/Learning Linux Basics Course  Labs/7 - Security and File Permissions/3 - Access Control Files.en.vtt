@@ -1,0 +1,419 @@
+WEBVTT
+
+1
+00:00:02.480 --> 00:00:05.600
+Let us now look
+at access control files.
+
+2
+00:00:05.600 --> 00:00:08.909
+Most of the access
+control files in Linux
+
+3
+00:00:08.993 --> 00:00:11.980
+are stored under the /etc directory.
+
+4
+00:00:11.980 --> 00:00:14.817
+This directory can be read
+by any user by default,
+
+5
+00:00:14.901 --> 00:00:18.490
+but only the root user
+has access to write to it.
+
+6
+00:00:19.920 --> 00:00:22.264
+The access control
+files are also designed
+
+7
+00:00:22.348 --> 00:00:24.830
+in a way that they
+should never be modified
+
+8
+00:00:24.830 --> 00:00:26.890
+using a text editor.
+
+9
+00:00:26.890 --> 00:00:33.200
+Instead, use the built-in commands
+to add or modify access as needed.
+
+10
+00:00:33.200 --> 00:00:36.220
+We will see how to do that
+in the next lecture.
+
+11
+00:00:36.220 --> 00:00:41.120
+For now, let us look at the basic
+access control files in Linux.
+
+12
+00:00:41.120 --> 00:00:44.857
+The first one of interest
+is the /etc/passwd file,
+
+13
+00:00:44.941 --> 00:00:48.099
+which is also commonly known as just
+
+14
+00:00:48.199 --> 00:00:50.320
+the password file.
+
+15
+00:00:50.320 --> 00:00:52.932
+We have already seen
+that this file contains
+
+16
+00:00:53.016 --> 00:00:55.890
+basic information about
+the users in the system
+
+17
+00:00:55.890 --> 00:00:59.488
+including the username,
+UID, GID,
+
+18
+00:00:59.572 --> 00:01:02.969
+home directory,
+their default shell.
+
+19
+00:01:02.969 --> 00:01:08.300
+It is important to note that this
+file does not save any passwords.
+
+20
+00:01:08.300 --> 00:01:11.610
+The passwords are stored
+in another file located
+
+21
+00:01:11.633 --> 00:01:13.833
+at /etc/shadow.
+
+22
+00:01:13.910 --> 00:01:17.550
+The contents of this file are hashed.
+
+23
+00:01:17.550 --> 00:01:21.699
+The /etc/group file
+stores information
+
+24
+00:01:21.883 --> 00:01:24.970
+about all user groups on the system,
+such as
+
+25
+00:01:25.070 --> 00:01:29.850
+the group name and GID and members.
+
+26
+00:01:31.150 --> 00:01:35.880
+Let us now look at these access
+control files in a bit more detail.
+
+27
+00:01:35.880 --> 00:01:38.681
+In these files, each line represents
+
+28
+00:01:38.765 --> 00:01:42.690
+information about
+a particular user or a group.
+
+29
+00:01:42.690 --> 00:01:46.720
+These lines have multiple fields
+that are delimited by a colon.
+
+30
+00:01:46.720 --> 00:01:50.120
+For the password file,
+the fields separated
+
+31
+00:01:50.204 --> 00:01:54.890
+are username, password,
+UID, GID, gecos,
+
+32
+00:01:55.990 --> 00:02:00.180
+the home directory of the user,
+the shell.
+
+33
+00:02:00.180 --> 00:02:04.380
+Username is self-explanatory
+in a mandatory field.
+
+34
+00:02:04.380 --> 00:02:06.930
+This is also the login name.
+
+35
+00:02:06.930 --> 00:02:13.860
+The password field is X because it
+is located in the /etc/shadow file.
+
+36
+00:02:14.560 --> 00:02:18.659
+Next are the UID and GIDs
+for the user.
+
+37
+00:02:18.659 --> 00:02:21.660
+These two fields are
+mandatory as well.
+
+38
+00:02:21.660 --> 00:02:25.496
+Gecos is a CSV format
+or a comma-separated
+
+39
+00:02:25.580 --> 00:02:29.590
+list of user information
+such as full name,
+
+40
+00:02:29.590 --> 00:02:32.799
+location, phone number, et cetera.
+
+41
+00:02:32.799 --> 00:02:35.959
+This is optional and can be blank.
+
+42
+00:02:35.959 --> 00:02:39.840
+The home directory is the
+path to the user's home directory.
+
+43
+00:02:39.840 --> 00:02:43.036
+Finally, the last field
+is the default shell
+
+44
+00:02:43.120 --> 00:02:46.180
+for the user, which
+in the case of Bob is
+
+45
+00:02:46.180 --> 00:02:48.040
+the bash shell.
+
+46
+00:02:50.040 --> 00:02:54.920
+Now, let us look at
+the /etc/shadow file.
+
+47
+00:02:55.120 --> 00:02:58.610
+The fields of the file
+are separated by a colon.
+
+48
+00:02:58.610 --> 00:03:01.677
+Reading from left to right,
+the fields are username,
+
+49
+00:03:01.761 --> 00:03:03.669
+which is the same as the one used
+
+50
+00:03:03.769 --> 00:03:06.700
+in the password file,
+password, which is
+
+51
+00:03:06.784 --> 00:03:10.090
+the field containing
+the encrypted password.
+
+52
+00:03:10.090 --> 00:03:12.853
+An asterisk or empty field implies
+
+53
+00:03:12.937 --> 00:03:15.709
+the password was
+never set for this user.
+
+54
+00:03:15.709 --> 00:03:19.657
+The next field is thelast changed,
+which is the date
+
+55
+00:03:19.741 --> 00:03:22.649
+since the password was last changed.
+
+56
+00:03:22.849 --> 00:03:25.799
+This value is in epoch,
+which is a Unix timestamp
+
+57
+00:03:25.883 --> 00:03:27.930
+described as the number of days
+
+58
+00:03:27.930 --> 00:03:33.709
+that have elapsed since midnight
+January 1st, 1970.
+
+59
+00:03:33.709 --> 00:03:37.760
+The next two fields are
+the minimum and maximum age.
+
+60
+00:03:37.760 --> 00:03:40.079
+These describe
+the minimum number of days
+
+61
+00:03:40.163 --> 00:03:42.559
+the user will have to wait
+before being allowed
+
+62
+00:03:42.559 --> 00:03:45.345
+to change the password
+again and the maximum
+
+63
+00:03:45.429 --> 00:03:48.200
+number of days before
+which the user will
+
+64
+00:03:48.200 --> 00:03:50.889
+have to change the password.
+
+65
+00:03:50.889 --> 00:03:53.551
+The next field is the
+number of days before
+
+66
+00:03:53.635 --> 00:03:56.379
+a password is going
+to expire that the user
+
+67
+00:03:56.379 --> 00:04:00.719
+should be warned so that
+they can change the password.
+
+68
+00:04:00.719 --> 00:04:03.559
+The field inactive is
+the number of days after
+
+69
+00:04:03.643 --> 00:04:06.379
+a password has
+expired that it should still
+
+70
+00:04:06.379 --> 00:04:09.480
+be accepted before being disabled.
+
+71
+00:04:09.480 --> 00:04:14.099
+This is empty in this example,
+which means it is not enforced.
+
+72
+00:04:14.099 --> 00:04:18.169
+The last field is the expiry
+date of the password.
+
+73
+00:04:18.169 --> 00:04:20.420
+This is, again, in epoch and is
+the date
+
+74
+00:04:20.504 --> 00:04:23.170
+when the account will be expired.
+
+75
+00:04:23.170 --> 00:04:30.130
+This field is empty, which implies
+the account will never expire.
+
+76
+00:04:30.130 --> 00:04:33.062
+The last access control file
+we will take a look at
+
+77
+00:04:33.146 --> 00:04:37.140
+is the /etc/group file.
+
+78
+00:04:37.340 --> 00:04:40.181
+Just like the other
+access control files,
+
+79
+00:04:40.265 --> 00:04:42.840
+the fields are delimited by a colon.
+
+80
+00:04:42.840 --> 00:04:47.380
+This file stores basic information
+about the groups on the system.
+
+81
+00:04:47.380 --> 00:04:50.470
+It is sometimes called
+the group file.
+
+82
+00:04:50.470 --> 00:04:52.648
+The first field is the
+name of the group,
+
+83
+00:04:52.732 --> 00:04:55.900
+followed by the password,
+which is normally set to X,
+
+84
+00:04:55.900 --> 00:04:58.062
+indicating that this is saved
+
+85
+00:04:58.146 --> 00:05:02.120
+in the shadow file,
+the same as the password file.
+
+86
+00:05:02.120 --> 00:05:04.760
+Next, is the GID of the group.
+
+87
+00:05:04.760 --> 00:05:06.944
+The last field contains
+the members of
+
+88
+00:05:07.028 --> 00:05:09.410
+the group, which can
+be comma-separated.
+

@@ -1,0 +1,322 @@
+WEBVTT
+
+1
+00:00:00.960 --> 00:00:03.240
+Bob had noticed something unusual
+
+2
+00:00:03.320 --> 00:00:04.340
+with Dave's laptop.
+
+3
+00:00:05.440 --> 00:00:08.740
+"Dave, why is it that after the boot process
+
+4
+00:00:09.080 --> 00:00:10.700
+your system goes directly
+
+5
+00:00:10.740 --> 00:00:13.900
+to the command line interface?" he asks.
+
+6
+00:00:14.540 --> 00:00:15.840
+"Mine always loads up
+
+7
+00:00:15.920 --> 00:00:17.380
+the graphical interface."
+
+8
+00:00:18.480 --> 00:00:19.640
+Dave replies,
+
+9
+00:00:19.960 --> 00:00:22.880
+"Ah, that's because I have specifically
+
+10
+00:00:22.920 --> 00:00:24.140
+set up my system
+
+11
+00:00:24.180 --> 00:00:26.300
+to boot into a nongraphical view."
+
+12
+00:00:26.860 --> 00:00:28.340
+Dave explains that
+
+13
+00:00:28.660 --> 00:00:30.880
+Linux can run in multiple modes.
+
+14
+00:00:31.140 --> 00:00:32.500
+You already know one of them,
+
+15
+00:00:32.940 --> 00:00:33.960
+the graphical mode.
+
+16
+00:00:34.560 --> 00:00:36.040
+Besides the graphical mode
+
+17
+00:00:36.160 --> 00:00:38.620
+there are several other modes of operation.
+
+18
+00:00:39.140 --> 00:00:40.120
+These modes are set
+
+19
+00:00:40.180 --> 00:00:41.840
+by something called the run level.
+
+20
+00:00:42.720 --> 00:00:45.140
+To see the operation mode set in the system
+
+21
+00:00:45.580 --> 00:00:47.660
+run the command called runlevel
+
+22
+00:00:47.720 --> 00:00:48.460
+from the shell
+
+23
+00:00:48.840 --> 00:00:50.660
+and you should get a number like this.
+
+24
+00:00:52.360 --> 00:00:53.360
+Dave's system
+
+25
+00:00:53.640 --> 00:00:55.760
+the command returns a value of 3
+
+26
+00:00:56.160 --> 00:00:58.360
+which means he is running runlevel 3.
+
+27
+00:00:59.080 --> 00:01:01.680
+On Bob's laptop it is set to 5.
+
+28
+00:01:04.680 --> 00:01:05.860
+The operation mode
+
+29
+00:01:05.940 --> 00:01:07.840
+which provides a graphical interface
+
+30
+00:01:07.900 --> 00:01:09.660
+is called the run level 5.
+
+31
+00:01:10.100 --> 00:01:13.060
+The runlevel 3 implies a nongraphical mode.
+
+32
+00:01:14.280 --> 00:01:15.040
+During boot
+
+33
+00:01:15.300 --> 00:01:17.380
+the init process checks the run level.
+
+34
+00:01:17.880 --> 00:01:19.560
+It makes sure that all programs
+
+35
+00:01:19.600 --> 00:01:21.300
+needed to get the system operational
+
+36
+00:01:21.420 --> 00:01:22.660
+in that mode are started.
+
+37
+00:01:23.340 --> 00:01:25.580
+For example, the graphical user mode
+
+38
+00:01:25.660 --> 00:01:27.880
+requires a display manager service
+
+39
+00:01:27.920 --> 00:01:29.760
+to run for the GUI to work.
+
+40
+00:01:30.200 --> 00:01:32.460
+However, this service is not required
+
+41
+00:01:32.540 --> 00:01:33.860
+for the nongraphical mode.
+
+42
+00:01:36.980 --> 00:01:38.740
+In the boot process section
+
+43
+00:01:39.060 --> 00:01:40.700
+we saw that system D
+
+44
+00:01:40.800 --> 00:01:42.600
+is used as the init process
+
+45
+00:01:42.640 --> 00:01:45.020
+in most new Linux distributions
+
+46
+00:01:45.300 --> 00:01:47.720
+such as Ubuntu 18.04.
+
+47
+00:01:48.560 --> 00:01:51.820
+In system D runlevels are called targets.
+
+48
+00:01:52.740 --> 00:01:53.940
+The runlevel 5
+
+49
+00:01:53.980 --> 00:01:55.740
+is called the graphical target
+
+50
+00:01:56.020 --> 00:01:57.220
+and runlevel 3
+
+51
+00:01:57.500 --> 00:01:59.660
+is called the multi-user target.
+
+52
+00:02:00.280 --> 00:02:02.980
+There are other run levels and targets in use
+
+53
+00:02:03.320 --> 00:02:04.440
+but these are the two
+
+54
+00:02:04.480 --> 00:02:06.220
+that are most commonly used.
+
+55
+00:02:06.820 --> 00:02:08.320
+Check out the reference section
+
+56
+00:02:08.360 --> 00:02:09.560
+for the complete list.
+
+57
+00:02:12.340 --> 00:02:14.320
+Now that we are familiar with runlevels
+
+58
+00:02:14.440 --> 00:02:16.300
+and system D target units,
+
+59
+00:02:16.700 --> 00:02:17.500
+let's take a look
+
+60
+00:02:17.540 --> 00:02:19.300
+at how we can change these values
+
+61
+00:02:19.340 --> 00:02:20.240
+from the shell.
+
+62
+00:02:20.820 --> 00:02:22.420
+To see the default target,
+
+63
+00:02:22.660 --> 00:02:26.740
+run the command systemctl get-default.
+
+64
+00:02:27.620 --> 00:02:30.120
+This command looks up the file located at
+
+65
+00:02:30.160 --> 00:02:36.840
+/etc/systemd/system/default.target.
+
+66
+00:02:37.820 --> 00:02:38.660
+In this case
+
+67
+00:02:38.900 --> 00:02:41.620
+you can see that the default.target file
+
+68
+00:02:41.720 --> 00:02:44.160
+is a symbolic link or a shortcut
+
+69
+00:02:44.220 --> 00:02:46.660
+to the graphical.target unit file.
+
+70
+00:02:47.540 --> 00:02:49.160
+This file is located under
+
+71
+00:02:49.200 --> 00:02:53.500
+/lib/systemd/systemdirectory.
+
+72
+00:02:54.600 --> 00:02:56.240
+To change the default target
+
+73
+00:02:56.540 --> 00:02:59.040
+we can make use of the systemctl
+
+74
+00:02:59.080 --> 00:03:00.960
+set-default command
+
+75
+00:03:01.340 --> 00:03:02.780
+with the desired target
+
+76
+00:03:02.820 --> 00:03:04.140
+as the command argument.
+
+77
+00:03:05.020 --> 00:03:07.540
+Here we are changing the default target
+
+78
+00:03:07.600 --> 00:03:09.860
+from graphical to multi-user.
+
+79
+00:03:10.520 --> 00:03:11.540
+This is equivalent
+
+80
+00:03:11.600 --> 00:03:14.240
+to switching the runlevel from 5 to 3.
+

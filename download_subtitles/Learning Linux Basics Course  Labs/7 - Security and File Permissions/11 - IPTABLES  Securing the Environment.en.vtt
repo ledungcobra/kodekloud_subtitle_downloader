@@ -1,0 +1,628 @@
+WEBVTT
+
+1
+00:00:00.990 --> 00:00:05.580
+Now, let's add an incoming
+or an input rule on the dev server
+
+2
+00:00:05.580 --> 00:00:09.530
+that will allow SSH connection
+from the client laptop.
+
+3
+00:00:10.280 --> 00:00:14.140
+To do this, run "iptables -A
+
+4
+00:00:14.380 --> 00:00:18.510
+INPUT -p tcp -s
+
+5
+00:00:18.510 --> 00:00:24.040
+172.16.238.187
+
+6
+00:00:24.270 --> 00:00:29.610
+--dport 22 -j ACCEPT."
+
+7
+00:00:30.650 --> 00:00:34.750
+Here, A stands for add or append rule.
+
+8
+00:00:35.180 --> 00:00:38.750
+-P is the protocol, which is tcp.
+
+9
+00:00:39.230 --> 00:00:41.900
+-S is the source IP
+
+10
+00:00:41.900 --> 00:00:45.370
+or range from which you want
+the connection to be permitted.
+
+11
+00:00:45.630 --> 00:00:48.350
+This is the IP address of the client.
+
+12
+00:00:48.910 --> 00:00:54.750
+The dport is the destination port,
+which is port 22 for SSH.
+
+13
+00:00:55.130 --> 00:00:58.440
+Finally, -j is the action to take,
+
+14
+00:00:58.440 --> 00:01:01.280
+which in our case is to accept
+the connection.
+
+15
+00:01:02.330 --> 00:01:06.240
+We have successfully added the rule
+on the dev app server.
+
+16
+00:01:06.490 --> 00:01:09.850
+When we run the "iptables -L" command,
+
+17
+00:01:09.850 --> 00:01:12.040
+we see the new rule listed,
+
+18
+00:01:12.840 --> 00:01:18.240
+but wait, what would happen if another client
+tried to connect to the dev server?
+
+19
+00:01:18.940 --> 00:01:20.350
+Would it work?
+
+20
+00:01:20.520 --> 00:01:24.170
+Well, we do not have a rule created for it yet.
+
+21
+00:01:24.410 --> 00:01:29.180
+As a result, this connection attempt
+will go through the default policy,
+
+22
+00:01:29.180 --> 00:01:32.120
+which accepts all input connections.
+
+23
+00:01:33.800 --> 00:01:37.020
+Our requirement is to allow only the client
+
+24
+00:01:37.020 --> 00:01:40.320
+to be able to SSH with these dev servers.
+
+25
+00:01:40.650 --> 00:01:44.120
+To do this, let's add another input rule,
+
+26
+00:01:44.250 --> 00:01:47.690
+but this time with an action
+to drop the traffic.
+
+27
+00:01:48.460 --> 00:01:51.390
+We will use the same command as before,
+
+28
+00:01:51.560 --> 00:01:54.590
+but this time without the -s option
+
+29
+00:01:54.590 --> 00:01:58.250
+and the -j option with the value of reject.
+
+30
+00:01:59.100 --> 00:02:02.090
+Let us now list the iptable rules again
+
+31
+00:02:02.090 --> 00:02:04.430
+by using the -L option.
+
+32
+00:02:04.780 --> 00:02:07.440
+You will see that we have two input rules.
+
+33
+00:02:07.740 --> 00:02:11.850
+The first one is an accept rule
+specifically for the source client
+
+34
+00:02:12.200 --> 00:02:14.460
+for SSH port 22.
+
+35
+00:02:15.360 --> 00:02:18.600
+The second one is the rule we just created,
+
+36
+00:02:18.600 --> 00:02:22.300
+which drops SSH connection
+from the source anywhere.
+
+37
+00:02:22.860 --> 00:02:26.440
+This rule will effectively drop
+SSH connection attempts
+
+38
+00:02:26.440 --> 00:02:28.440
+from all other servers.
+
+39
+00:02:29.100 --> 00:02:31.240
+If we add another rule now,
+
+40
+00:02:31.240 --> 00:02:33.800
+it will be added to the bottom of the chain.
+
+41
+00:02:35.630 --> 00:02:40.810
+Now, remember, the sequence in which
+we added the two rules is very important.
+
+42
+00:02:41.240 --> 00:02:45.130
+Iptable rules are implemented
+from top to bottom.
+
+43
+00:02:45.630 --> 00:02:48.680
+This means that
+in the case of multiple rules
+
+44
+00:02:48.680 --> 00:02:52.060
+matching a source or a destination
+and the ports,
+
+45
+00:02:52.220 --> 00:02:56.270
+the rule that appears first in the list
+is applied and effective.
+
+46
+00:02:56.730 --> 00:02:58.940
+Other rules below it are ignored.
+
+47
+00:02:59.470 --> 00:03:03.720
+In our example, the input rule for SSH accept
+
+48
+00:03:03.720 --> 00:03:07.850
+from the client machine is at the top,
+which means it is effective.
+
+49
+00:03:08.280 --> 00:03:12.560
+The second rule will drop SSH traffic
+from all other servers,
+
+50
+00:03:12.560 --> 00:03:14.430
+except the client machine
+
+51
+00:03:14.430 --> 00:03:17.440
+as it already has the accept rule in effect
+
+52
+00:03:17.440 --> 00:03:19.260
+because of rule number one.
+
+53
+00:03:20.860 --> 00:03:24.570
+Now, let's add the rest of the rules
+on DEVAPP01.
+
+54
+00:03:25.070 --> 00:03:28.990
+To do this, let's first break down
+the connections to accept
+
+55
+00:03:28.990 --> 00:03:31.800
+or drop based on our requirements.
+
+56
+00:03:32.540 --> 00:03:35.840
+We have three outgoing connections
+on the app server.
+
+57
+00:03:36.160 --> 00:03:39.450
+The DB server on port 5432
+
+58
+00:03:39.450 --> 00:03:43.930
+and the software repository server
+on port 80 should be allowed.
+
+59
+00:03:44.330 --> 00:03:50.030
+HTTP and HTTPS connections
+to the internet should be dropped.
+
+60
+00:03:50.830 --> 00:03:56.430
+We also need to allow HTTP port 80 access
+from the client laptop.
+
+61
+00:03:57.390 --> 00:03:59.880
+Using the same syntax as before,
+
+62
+00:03:59.880 --> 00:04:03.400
+we can add all these rules like this.
+
+63
+00:04:05.050 --> 00:04:07.930
+Now, if we list the iptable rules,
+
+64
+00:04:07.930 --> 00:04:10.540
+we should see an output like this.
+
+65
+00:04:11.020 --> 00:04:15.770
+We have added three input rules
+and four output rules.
+
+66
+00:04:16.240 --> 00:04:19.640
+This setup should filter
+incoming and outgoing data
+
+67
+00:04:19.640 --> 00:04:21.470
+according to our requirement.
+
+68
+00:04:23.040 --> 00:04:25.320
+What if we need to access the site
+
+69
+00:04:25.320 --> 00:04:28.620
+caleston-hq.com
+
+70
+00:04:28.620 --> 00:04:32.840
+using HTTPS from the DEVAPP01 server?
+
+71
+00:04:33.100 --> 00:04:34.600
+Will it work?
+
+72
+00:04:34.840 --> 00:04:37.310
+Since we have an outbound drop rule
+
+73
+00:04:37.310 --> 00:04:40.030
+for anywhere on port 443
+
+74
+00:04:40.030 --> 00:04:43.680
+and no preceding allow rule
+to this destination,
+
+75
+00:04:43.680 --> 00:04:46.090
+this connection will not work.
+
+76
+00:04:46.700 --> 00:04:50.940
+To fix this, we need to add
+another accept output rule
+
+77
+00:04:50.940 --> 00:04:53.480
+above the drop rule at number four
+
+78
+00:04:53.480 --> 00:04:56.970
+that blocks all HTTPS connections.
+
+79
+00:04:57.950 --> 00:05:00.400
+To do this, add another rule,
+
+80
+00:05:00.570 --> 00:05:05.500
+but this time with the -I option instead of -A.
+
+81
+00:05:06.060 --> 00:05:11.230
+-I inserts the rule to the top of the chain
+instead of the bottom.
+
+82
+00:05:11.760 --> 00:05:16.010
+Use the IP address of the target
+with the -D option,
+
+83
+00:05:16.010 --> 00:05:18.920
+the destination port of 443,
+
+84
+00:05:19.230 --> 00:05:22.060
+and accept with the -j option.
+
+85
+00:05:23.850 --> 00:05:27.840
+This will add the accept rule
+to the first position in the chain,
+
+86
+00:05:28.060 --> 00:05:32.440
+taking precedence over the drop rule,
+which is now at position 5.
+
+87
+00:05:32.830 --> 00:05:36.080
+The HTTPS connection should work now.
+
+88
+00:05:37.840 --> 00:05:40.120
+Finally, to delete a rule,
+
+89
+00:05:40.120 --> 00:05:43.470
+use the iptables -D option.
+
+90
+00:05:44.040 --> 00:05:48.220
+For example, to delete the output rule
+at position 5,
+
+91
+00:05:48.220 --> 00:05:52.270
+run "iptables -D OUTPUT" command
+
+92
+00:05:52.570 --> 00:05:56.270
+followed by the position number
+of the rule you want to delete,
+
+93
+00:05:56.270 --> 00:05:58.270
+which is five in this case.
+
+94
+00:05:59.020 --> 00:06:03.230
+We are now done with the
+configuration on the DEVAPP01.
+
+95
+00:06:03.470 --> 00:06:06.720
+We have one last thing yet to be set up.
+
+96
+00:06:07.000 --> 00:06:10.940
+We have to ensure that
+the traffic on port 5432
+
+97
+00:06:10.940 --> 00:06:16.730
+on the DB server is only accepted
+when the source is DEVAPP01 server.
+
+98
+00:06:17.370 --> 00:06:21.070
+To do this, let's add a chain on the DB server.
+
+99
+00:06:21.520 --> 00:06:26.860
+The first one would be an accept rule for
+incoming connections from the app server.
+
+100
+00:06:27.070 --> 00:06:31.240
+The next rule would be to drop
+all traffic on the DB port
+
+101
+00:06:31.240 --> 00:06:34.160
+for connections from all other servers.
+
+102
+00:06:35.770 --> 00:06:37.370
+Before we conclude,
+
+103
+00:06:37.370 --> 00:06:41.530
+let's quickly summarize how we are
+securing the DB server.
+
+104
+00:06:41.920 --> 00:06:44.110
+We have three rules configured.
+
+105
+00:06:44.460 --> 00:06:49.050
+On the app server, we have an output rule
+which will allow the app server
+
+106
+00:06:49.050 --> 00:06:54.060
+to connect to the DB port 5432
+on the DB server.
+
+107
+00:06:54.730 --> 00:06:57.840
+On the DB server, we have an input rule
+
+108
+00:06:57.840 --> 00:07:02.640
+that allows connections
+from app server to port 5432.
+
+109
+00:07:03.240 --> 00:07:06.280
+Finally, we have added another input rule
+
+110
+00:07:06.280 --> 00:07:09.520
+that will drop connections
+from everywhere else
+
+111
+00:07:09.520 --> 00:07:11.840
+to port 5432.
+
+112
+00:07:12.590 --> 00:07:18.080
+This means that only the dev app server
+will be allowed to connect to the database.
+
+113
+00:07:19.960 --> 00:07:22.490
+What happens when a session is established
+
+114
+00:07:22.490 --> 00:07:25.450
+between the app and the Postgres DB?
+
+115
+00:07:25.720 --> 00:07:30.410
+Do we need an input rule on the app server
+to accept the returning traffic?
+
+116
+00:07:31.020 --> 00:07:33.760
+Well, in this case, the answer is no.
+
+117
+00:07:34.380 --> 00:07:37.310
+This can be understood
+by breaking down the connection
+
+118
+00:07:37.310 --> 00:07:39.880
+between the application and the database
+
+119
+00:07:39.880 --> 00:07:42.190
+into two high-level steps.
+
+120
+00:07:42.860 --> 00:07:45.630
+The application server is able to connect
+
+121
+00:07:45.630 --> 00:07:48.860
+to DB on port 5432.
+
+122
+00:07:49.200 --> 00:07:51.880
+We have already added the iptable rule
+
+123
+00:07:51.880 --> 00:07:54.570
+to facilitate this outbound traffic.
+
+124
+00:07:55.100 --> 00:07:57.260
+Once the connection is established,
+
+125
+00:07:57.260 --> 00:08:02.250
+data is returned back from DB
+to the IP address of the app server
+
+126
+00:08:02.430 --> 00:08:04.840
+and a random TCP port.
+
+127
+00:08:05.290 --> 00:08:08.860
+To validate this, run a netstat command
+
+128
+00:08:08.860 --> 00:08:12.040
+on either the source or destination server
+
+129
+00:08:12.040 --> 00:08:16.330
+and search for the port 5432 like this.
+
+130
+00:08:17.000 --> 00:08:22.010
+You will notice that the destination port
+is 5432 as expected,
+
+131
+00:08:22.190 --> 00:08:28.090
+but the source port on the app server
+in this case is 44060.
+
+132
+00:08:28.730 --> 00:08:32.750
+Now, if we inspect the inbound rules
+on the app server,
+
+133
+00:08:32.750 --> 00:08:36.380
+you will see that we are accepting
+all traffic on the server,
+
+134
+00:08:36.380 --> 00:08:38.570
+except for the SSH port.
+
+135
+00:08:40.240 --> 00:08:43.920
+This means that the returning traffic
+from the database server
+
+136
+00:08:43.920 --> 00:08:47.200
+will not need any additional rules to work.
+
+137
+00:08:47.420 --> 00:08:53.080
+Now, remember, the port 44060 is ephemeral,
+
+138
+00:08:53.080 --> 00:08:58.440
+which means the connections will not always
+use that same port on the app server.
+
+139
+00:08:58.810 --> 00:09:00.440
+In most Linux kernels,
+
+140
+00:09:00.440 --> 00:09:04.110
+any port between 32768
+
+141
+00:09:04.110 --> 00:09:08.540
+to 60999 can be used for this connection.
+
+142
+00:09:10.360 --> 00:09:12.830
+Now, head over to the "Hands-On Labs"
+
+143
+00:09:12.830 --> 00:09:15.690
+and create your own iptable rules.

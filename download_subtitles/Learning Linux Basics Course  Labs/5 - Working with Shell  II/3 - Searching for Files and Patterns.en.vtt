@@ -1,0 +1,393 @@
+WEBVTT
+
+1
+00:00:00.820 --> 00:00:03.620
+Whether you are the administrator
+of the Linux system
+
+2
+00:00:03.870 --> 00:00:06.270
+or a regular user working with the shell,
+
+3
+00:00:06.820 --> 00:00:12.170
+there would be situations where you have to
+locate a file or a directory in the file system.
+
+4
+00:00:12.900 --> 00:00:16.420
+This can be done in the command line
+in a variety of ways.
+
+5
+00:00:16.870 --> 00:00:22.200
+Let's go back to our directory structure
+of continents, countries, and cities.
+
+6
+00:00:23.070 --> 00:00:27.300
+Say you want to find the files
+with the name "City.txt".
+
+7
+00:00:28.120 --> 00:00:31.720
+The easiest way to do this is
+to make use of the locate command.
+
+8
+00:00:32.770 --> 00:00:37.170
+Run the locate command with the file name
+you are searching as the argument.
+
+9
+00:00:37.850 --> 00:00:41.070
+This should return all paths
+matching the pattern.
+
+10
+00:00:42.000 --> 00:00:45.970
+This command is useful to find files
+quickly in the Linux file system.
+
+11
+00:00:46.670 --> 00:00:49.570
+It will print out all paths
+with the keyword in it.
+
+12
+00:00:50.500 --> 00:00:54.550
+The downside to this command is
+that it depends on a database called
+
+13
+00:00:54.550 --> 00:00:58.420
+"mlocate.db" for querying the file name.
+
+14
+00:00:59.500 --> 00:01:01.570
+If you have just installed Linux
+
+15
+00:01:01.570 --> 00:01:05.220
+or if the file you are trying to
+locate was created recently,
+
+16
+00:01:05.720 --> 00:01:08.800
+this command may not yield useful results.
+
+17
+00:01:09.320 --> 00:01:13.450
+This is because it is possible that
+the DB has not been updated yet.
+
+18
+00:01:14.370 --> 00:01:19.170
+To manually update the DB,
+run the command updatedb,
+
+19
+00:01:19.600 --> 00:01:21.800
+and then run the locate command again.
+
+20
+00:01:22.870 --> 00:01:27.870
+Please note that the updatedb command
+needs to be run as a root user to work.
+
+21
+00:01:28.820 --> 00:01:32.200
+Another way to do this is to make
+use of the find command.
+
+22
+00:01:32.950 --> 00:01:37.150
+Use the find command followed by the directory
+under which you want to search.
+
+23
+00:01:38.150 --> 00:01:44.320
+To search for a file by name, use the -name option,
+followed by the name of the file.
+
+24
+00:01:45.000 --> 00:01:47.770
+This is just one way to use the find command.
+
+25
+00:01:48.200 --> 00:01:51.600
+There are plenty of other options
+available with the find command,
+
+26
+00:01:51.920 --> 00:01:57.100
+making it a powerful tool for searching
+for files or directories or patterns.
+
+27
+00:02:00.420 --> 00:02:05.350
+To search within files, the most popular
+command in Linux is grep.
+
+28
+00:02:06.350 --> 00:02:10.550
+Grep is commonly used to print lines
+of a file matching a pattern,
+
+29
+00:02:11.170 --> 00:02:14.100
+but it offers a variety of
+other options as well.
+
+30
+00:02:15.020 --> 00:02:19.370
+For example, consider a file called "sample.txt".
+
+31
+00:02:20.100 --> 00:02:23.670
+As you can see, this file
+has a few lines of data in it.
+
+32
+00:02:24.320 --> 00:02:28.900
+For the first example, let's search
+for the word "second" in the file.
+
+33
+00:02:29.700 --> 00:02:34.300
+To do this, we will use the grep command
+followed by the word "second",
+
+34
+00:02:34.600 --> 00:02:36.120
+and finally, the file name.
+
+35
+00:02:37.020 --> 00:02:41.600
+This should print out only the line
+matching the search pattern, "second".
+
+36
+00:02:42.470 --> 00:02:44.900
+The grep command is case sensitive
+
+37
+00:02:44.900 --> 00:02:48.220
+and will only print the lines
+matching the case of the pattern.
+
+38
+00:02:48.920 --> 00:02:53.250
+To search case insensitive use the -i flag.
+
+39
+00:02:54.370 --> 00:02:59.320
+Grep -r can be used to search for
+a pattern recursively within a directory.
+
+40
+00:02:59.900 --> 00:03:03.150
+This is especially useful when
+you don't know which file
+
+41
+00:03:03.150 --> 00:03:05.970
+contains the specific pattern
+that you are looking for.
+
+42
+00:03:06.770 --> 00:03:12.500
+In this example, we are trying to print all files
+that contain the string "third line"
+
+43
+00:03:12.500 --> 00:03:15.520
+within the /home/michael/directory.
+
+44
+00:03:17.050 --> 00:03:20.550
+The result shows the file called "sample.txt",
+
+45
+00:03:20.920 --> 00:03:22.670
+followed by the complete line,
+
+46
+00:03:22.670 --> 00:03:24.670
+which includes the search pattern.
+
+47
+00:03:26.200 --> 00:03:30.850
+So far, we have been trying to list
+lines containing a string within a file.
+
+48
+00:03:31.570 --> 00:03:33.250
+What if we want to do the opposite,
+
+49
+00:03:33.720 --> 00:03:37.250
+print the lines of a file that
+don't match a pattern?
+
+50
+00:03:37.870 --> 00:03:40.620
+For that, we use the -v option.
+
+51
+00:03:41.300 --> 00:03:45.450
+This option lists all lines that
+do not contain a particular string.
+
+52
+00:03:46.150 --> 00:03:51.850
+In this case, the fifth line has the word "printed"
+and so it's not displayed.
+
+53
+00:03:54.820 --> 00:03:58.620
+What if you want to match a pattern
+that form whole words?
+
+54
+00:03:59.320 --> 00:04:04.820
+For example, consider an "example.txt" file
+that contains two lines.
+
+55
+00:04:05.350 --> 00:04:08.700
+The first line of the file is "grep examples"
+
+56
+00:04:09.000 --> 00:04:13.800
+and the second line contains the
+sentence "linux exam on 19th".
+
+57
+00:04:15.000 --> 00:04:19.000
+What would happen if you want to
+print the line matching the keyword "exam"
+
+58
+00:04:19.350 --> 00:04:23.270
+using the command grep exam example.txt?
+
+59
+00:04:24.300 --> 00:04:27.900
+You will find that this command prints
+both lines of the file
+
+60
+00:04:27.900 --> 00:04:29.770
+and not just the second line.
+
+61
+00:04:30.350 --> 00:04:34.220
+This is because, in the first line,
+the word "examples"
+
+62
+00:04:34.420 --> 00:04:38.970
+contains a part of the pattern we are
+looking for, which is the word "exam".
+
+63
+00:04:40.320 --> 00:04:42.770
+To search for the whole word called "exam",
+
+64
+00:04:43.500 --> 00:04:48.500
+use grep -w exam example.txt.
+
+65
+00:04:49.450 --> 00:04:52.370
+You can also combine
+multiple options together.
+
+66
+00:04:53.270 --> 00:04:55.620
+For example, to reverse the search
+
+67
+00:04:55.620 --> 00:05:00.570
+and print all lines of the same file
+that does not match the whole word "exam",
+
+68
+00:05:01.150 --> 00:05:05.620
+use the grep -vw exam and the file name.
+
+69
+00:05:06.650 --> 00:05:11.100
+This will only print the first line of
+the file containing the word "examples".
+
+70
+00:05:11.920 --> 00:05:17.550
+Finally, the -A and -B command flags
+
+71
+00:05:17.750 --> 00:05:22.300
+can be used to print a number of lines
+after and before matching a pattern.
+
+72
+00:05:23.350 --> 00:05:28.820
+For example, consider a text file
+called "premier-league-table.txt".
+
+73
+00:05:29.820 --> 00:05:34.800
+To see the club that finished one ranking
+lower than Arsenal at the first spot,
+
+74
+00:05:35.300 --> 00:05:41.370
+use grep -A1 Arsenal followed by the file name.
+
+75
+00:05:42.520 --> 00:05:47.550
+This will print the lines matching the pattern
+and one line immediately below.
+
+76
+00:05:48.310 --> 00:05:53.320
+The pattern, in this case, is Arsenal
+
+77
+00:05:54.520 --> 00:05:59.720
+Similarly, use the -B option to print the lines
+before a matching pattern.
+
+78
+00:06:00.320 --> 00:06:05.120
+In this example, we are using -B1 with pattern 4.
+
+79
+00:06:05.720 --> 00:06:11.350
+As a result, the line containing the number 4
+and the one before is printed.
+
+80
+00:06:12.400 --> 00:06:14.670
+Instead of A1 or B1,
+
+81
+00:06:14.920 --> 00:06:20.300
+you can use any positive integer number
+with the -A or -B flag.
+
+82
+00:06:21.050 --> 00:06:24.920
+It will print that number of lines after
+or before the match.
+
+83
+00:06:26.120 --> 00:06:32.870
+Finally, the -A and -B can be
+combined into one single search
+
+84
+00:06:32.970 --> 00:06:37.270
+to print a number of lines
+before and after a match like this.

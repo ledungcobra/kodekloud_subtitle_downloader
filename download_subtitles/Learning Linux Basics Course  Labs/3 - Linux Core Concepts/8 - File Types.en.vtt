@@ -1,0 +1,255 @@
+WEBVTT
+
+1
+00:00:00.650 --> 00:00:03.300
+Dave carries on with the next topic.
+
+2
+00:00:04.370 --> 00:00:07.720
+Let's now look at the different types
+of files in Linux.
+
+3
+00:00:08.370 --> 00:00:12.570
+There is a common phrase associated
+with Linux that goes like this,
+
+4
+00:00:13.120 --> 00:00:15.200
+“Everything is a file in Linux.”
+
+5
+00:00:16.050 --> 00:00:19.070
+This is a generic statement
+that is true in principle.
+
+6
+00:00:20.000 --> 00:00:22.420
+What this phrase tries to convey is
+
+7
+00:00:22.570 --> 00:00:26.400
+every object in Linux can be
+considered to be a type of file.
+
+8
+00:00:26.920 --> 00:00:30.720
+Even a directory, for example,
+is a special type of file.
+
+9
+00:00:31.750 --> 00:00:37.400
+There are three types of files, regular,
+directory and special files.
+
+10
+00:00:38.770 --> 00:00:42.570
+Regular files, these are
+the most common type of files
+
+11
+00:00:42.570 --> 00:00:46.150
+that contains some text, data or images.
+
+12
+00:00:46.550 --> 00:00:53.200
+Examples are configuration files,
+shell scripts or code, JPG files, et cetera.
+
+13
+00:00:54.500 --> 00:01:00.170
+Directory is a type of file as well that
+stores other files and directories within.
+
+14
+00:01:00.750 --> 00:01:03.770
+The simplest example of this
+is your home directory.
+
+15
+00:01:06.820 --> 00:01:11.400
+Special files can be subcategorized
+into five other file types.
+
+16
+00:01:12.150 --> 00:01:13.700
+Character files.
+
+17
+00:01:14.120 --> 00:01:18.400
+These files represent devices
+under the /dev file system
+
+18
+00:01:18.700 --> 00:01:22.750
+that allows the OS to communicate
+to IO devices serially.
+
+19
+00:01:23.570 --> 00:01:27.070
+Examples include devices such as
+the mouse and the keyboard.
+
+20
+00:01:28.350 --> 00:01:29.550
+Block files.
+
+21
+00:01:29.820 --> 00:01:35.250
+These are files representing block devices
+also located under /dev.
+
+22
+00:01:35.850 --> 00:01:39.520
+We saw these when we learned
+about the lsblk command.
+
+23
+00:01:40.350 --> 00:01:43.520
+In simple terms, a block device reads from
+
+24
+00:01:43.520 --> 00:01:47.550
+and writes to the device in blocks
+or a chunk of data.
+
+25
+00:01:48.150 --> 00:01:51.450
+Examples of a block device
+are hard disks and RAM.
+
+26
+00:01:52.750 --> 00:01:58.420
+Links in Linux is a way to associate two or
+more file names to the same set of file data.
+
+27
+00:01:59.150 --> 00:02:00.920
+There are two types of links.
+
+28
+00:02:01.720 --> 00:02:04.950
+The hard link associates two
+or more file names
+
+29
+00:02:04.950 --> 00:02:08.170
+that share the same block of data
+on the physical disk.
+
+30
+00:02:08.750 --> 00:02:11.370
+Although they behave as independent files,
+
+31
+00:02:11.900 --> 00:02:14.350
+deleting one link will delete the data.
+
+32
+00:02:15.350 --> 00:02:20.900
+The symbolic link or symlink can be loosely
+compared to a shortcut in Windows.
+
+33
+00:02:21.570 --> 00:02:24.020
+They act as pointers to another file.
+
+34
+00:02:24.720 --> 00:02:28.620
+Deleting a symlink does not affect
+the data in the actual file.
+
+35
+00:02:30.050 --> 00:02:35.150
+A socket is a special file that enables
+the communication between two processes.
+
+36
+00:02:35.750 --> 00:02:38.100
+Finally, named pipes.
+
+37
+00:02:38.670 --> 00:02:44.070
+This is a special type of file that allows
+connecting one process as an input to another.
+
+38
+00:02:44.820 --> 00:02:49.770
+the data flow in a pipe is unidirectional
+from the first process to the second.
+
+39
+00:02:50.370 --> 00:02:53.150
+We will look at named pipes
+in more detail later.
+
+40
+00:02:56.900 --> 00:03:00.920
+Let us now see how to identify
+the different file types in Linux.
+
+41
+00:03:01.820 --> 00:03:06.720
+One way to do this is by making use
+of the file command like this.
+
+42
+00:03:07.770 --> 00:03:10.820
+In these examples, running the command file
+
+43
+00:03:10.820 --> 00:03:14.170
+with the file or directory name
+displays the file type.
+
+44
+00:03:16.920 --> 00:03:22.100
+Another way to do this is by running an LS
+or list storage command
+
+45
+00:03:22.400 --> 00:03:26.920
+with the -l flag with the file
+or directory as the argument.
+
+46
+00:03:28.270 --> 00:03:31.550
+From the command output,
+look at the first character.
+
+47
+00:03:32.100 --> 00:03:34.900
+The letter D denotes that this is a directory.
+
+48
+00:03:35.550 --> 00:03:39.120
+Similarly, we can identify
+the rest of the file types
+
+49
+00:03:39.120 --> 00:03:43.250
+by checking the first letter in the ls-l output.
+
+50
+00:03:44.450 --> 00:03:47.300
+Regular files can be identified by a dash,
+
+51
+00:03:47.870 --> 00:03:50.050
+character devices by the letter c,
+
+52
+00:03:50.950 --> 00:03:53.150
+link, by the lowercase letter l,
+
+53
+00:03:53.920 --> 00:03:56.070
+socket file by the letter s,
+
+54
+00:03:56.870 --> 00:03:59.070
+named pipes by the letter p
+
+55
+00:03:59.770 --> 00:04:02.500
+and finally, block device by the letter b.

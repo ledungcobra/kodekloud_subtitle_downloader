@@ -1,0 +1,1194 @@
+WEBVTT
+
+1
+00:00:03.210 --> 00:00:06.060
+-In this section,
+we will learn about DNS.
+
+2
+00:00:06.390 --> 00:00:08.850
+This is followed by a hands-on lab.
+
+3
+00:00:09.270 --> 00:00:12.523
+Then we will look at basic
+networking concepts such as
+
+4
+00:00:12.690 --> 00:00:16.770
+switching, routing, and gateways,
+followed by another lab.
+
+5
+00:00:17.520 --> 00:00:19.783
+Finally,
+we will see a standard network
+
+6
+00:00:19.950 --> 00:00:24.373
+troubleshooting technique in action
+while we try to figure out why the URL
+
+7
+00:00:24.540 --> 00:00:27.090
+for the software repo
+is not accessible.
+
+8
+00:00:30.450 --> 00:00:31.710
+Let's take an example.
+
+9
+00:00:32.070 --> 00:00:37.213
+We have two computers, A and B,
+both are part of the same network
+
+10
+00:00:37.380 --> 00:00:38.533
+and they have been assigned with IP
+
+11
+00:00:38.700 --> 00:00:45.330
+addresses, 192.168.1.10 and 1.11.
+
+12
+00:00:46.230 --> 00:00:50.113
+To check the connectivity between
+the two servers, you can run a ping
+
+13
+00:00:50.280 --> 00:00:52.530
+command on one computer to the other
+
+14
+00:00:52.740 --> 00:00:55.140
+using the other
+computer's IP address.
+
+15
+00:00:55.680 --> 00:01:00.073
+You know that System B has database
+services on them, so instead of having
+
+16
+00:01:00.240 --> 00:01:05.550
+to remember the IP address of System
+B, you decide to give it a name, db.
+
+17
+00:01:06.510 --> 00:01:09.133
+Going forward,
+you would like to ping system
+
+18
+00:01:09.300 --> 00:01:13.320
+B using the name db
+instead of its IP address.
+
+19
+00:01:13.800 --> 00:01:16.693
+If you tried to ping db now,
+you would see
+
+20
+00:01:16.860 --> 00:01:20.430
+that host A is unaware
+of a host named db.
+
+21
+00:01:21.060 --> 00:01:22.440
+How do you fix that?
+
+22
+00:01:25.500 --> 00:01:29.233
+Basically, you want to tell
+System A that the system
+
+23
+00:01:29.400 --> 00:01:35.216
+B had IP address 192.168.1.11
+
+24
+00:01:35.533 --> 00:01:36.930
+has a name db.
+
+25
+00:01:37.650 --> 00:01:40.033
+You want to tell System A that when
+
+26
+00:01:40.200 --> 00:01:46.920
+I say db,
+I mean the IP 192.168.1.11.
+
+27
+00:01:47.160 --> 00:01:53.640
+You can do that by adding an entry
+into the /etc/hosts file on system A.
+
+28
+00:01:54.330 --> 00:01:56.466
+Mention the IP address and the name
+
+29
+00:01:56.633 --> 00:01:59.280
+you want your host
+to see System B as.
+
+30
+00:02:00.030 --> 00:02:01.260
+Ping to db.
+
+31
+00:02:01.440 --> 00:02:04.980
+Now get sent to the correct
+IP and are successful.
+
+32
+00:02:05.670 --> 00:02:08.190
+Now there is an important
+point to note there.
+
+33
+00:02:08.610 --> 00:02:11.433
+We told System A that the IP
+
+34
+00:02:11.600 --> 00:02:17.580
+at 192.168.1.11 is a host named db.
+
+35
+00:02:18.360 --> 00:02:20.460
+Host A takes that for granted.
+
+36
+00:02:21.120 --> 00:02:26.263
+Whatever we put in the /etc/hosts
+file is the source
+
+37
+00:02:26.430 --> 00:02:30.540
+of truth for host A but that
+need not be the truth.
+
+38
+00:02:31.050 --> 00:02:35.940
+Host A does not check to make sure
+of System B's actual name is db.
+
+39
+00:02:37.050 --> 00:02:40.903
+For instance, running
+a hostname command on System B
+
+40
+00:02:41.070 --> 00:02:45.750
+reveals that it is named
+host-2 but host A doesn't care.
+
+41
+00:02:46.110 --> 00:02:48.420
+It goes by what's
+in the host's file.
+
+42
+00:02:50.520 --> 00:02:54.870
+You can even fool system A into
+believing that System B is google.
+
+43
+00:02:55.200 --> 00:02:58.933
+Just add an entry into the hosts
+file with an IP mapping to
+
+44
+00:02:59.100 --> 00:03:01.980
+www.google.com.
+
+45
+00:03:02.520 --> 00:03:06.330
+Then ping google and you will
+get a response from System B.
+
+46
+00:03:08.040 --> 00:03:11.040
+We have two names pointing
+to the same system.
+
+47
+00:03:11.340 --> 00:03:14.953
+One is db and another
+is google and we can
+
+48
+00:03:15.120 --> 00:03:17.400
+use either name to reach System B.
+
+49
+00:03:18.090 --> 00:03:20.713
+You can have as many
+names as you want for as
+
+50
+00:03:20.880 --> 00:03:24.600
+many servers as you want
+in the etc hosts file.
+
+51
+00:03:26.640 --> 00:03:30.163
+Every time we reference another
+host by its name from Host
+
+52
+00:03:30.330 --> 00:03:35.053
+A through a ping command
+or the SSH command or through any
+
+53
+00:03:35.220 --> 00:03:39.223
+of the applications or tools
+within the system, it looks into
+
+54
+00:03:39.390 --> 00:03:44.220
+its /etc/hosts file to find out
+the IP address of that host.
+
+55
+00:03:44.610 --> 00:03:49.770
+Translating hostname to IP address
+this way is known as Name Resolution.
+
+56
+00:03:50.610 --> 00:03:54.163
+Ping may not always be
+a good command to test DNS
+
+57
+00:03:54.330 --> 00:03:58.440
+resolution, especially if ping
+is disabled on the other host.
+
+58
+00:03:58.890 --> 00:04:02.730
+In that case,
+nslookup and dig can come in handy.
+
+59
+00:04:03.270 --> 00:04:06.180
+We will just stick with ping
+for the rest of this video.
+
+60
+00:04:08.340 --> 00:04:11.923
+Within a small network of few
+systems, you can easily
+
+61
+00:04:12.090 --> 00:04:15.330
+get away with the entries
+in the /etc/hosts file.
+
+62
+00:04:15.840 --> 00:04:19.273
+On each system,
+I specify which are the other systems
+
+63
+00:04:19.440 --> 00:04:22.680
+in the environment, and that's
+how it was done in the past.
+
+64
+00:04:24.870 --> 00:04:28.033
+Until the environment grew
+and these files got filled
+
+65
+00:04:28.200 --> 00:04:31.950
+with too many entries and managing
+these became too hard.
+
+66
+00:04:32.370 --> 00:04:35.100
+If one of the servers' IP changed,
+you would
+
+67
+00:04:35.267 --> 00:04:38.400
+need to modify the entries
+in all of these hosts.
+
+68
+00:04:38.910 --> 00:04:41.503
+That's where we decided
+to move all these entries
+
+69
+00:04:41.670 --> 00:04:44.670
+into a single server that
+will manage it centrally.
+
+70
+00:04:45.300 --> 00:04:47.400
+We call that our DNS server.
+
+71
+00:04:47.820 --> 00:04:51.973
+Then, we point all hosts to look
+up that server if they need to
+
+72
+00:04:52.140 --> 00:04:57.390
+resolve a hostname to an IP address
+instead of its own /etc/hosts file.
+
+73
+00:04:59.730 --> 00:05:00.870
+How do we do that?
+
+74
+00:05:01.170 --> 00:05:04.380
+How do we point our host
+to a DNS server?
+
+75
+00:05:04.950 --> 00:05:11.550
+Our DNS server
+has the IP 192.168.1.100.
+
+76
+00:05:12.270 --> 00:05:18.060
+Every host has a DNS resolution
+configuration file at /etc/resolv.conf.
+
+77
+00:05:21.690 --> 00:05:26.250
+You add an entry into it specifying
+the address of the DNS server.
+
+78
+00:05:26.910 --> 00:05:29.166
+We say nameserver and point it to
+
+79
+00:05:29.333 --> 00:05:34.740
+192.168.1.100 and that should be it.
+
+80
+00:05:35.340 --> 00:05:37.213
+Once this is configured
+on all of your
+
+81
+00:05:37.380 --> 00:05:40.093
+hosts,
+every time a host comes across
+
+82
+00:05:40.260 --> 00:05:42.510
+a hostname that
+it does not know about,
+
+83
+00:05:42.780 --> 00:05:45.000
+it looks it up from the DNS server.
+
+84
+00:05:45.600 --> 00:05:50.443
+If the IP of any of the hosts
+was to change, simply update the DNS
+
+85
+00:05:50.610 --> 00:05:55.410
+server and all hosts should resolve
+the new IP address going forward.
+
+86
+00:05:55.770 --> 00:05:57.600
+You no longer need any entries
+
+87
+00:05:57.767 --> 00:06:00.570
+in the hosts file
+in any of the hosts,
+
+88
+00:06:00.930 --> 00:06:04.410
+but that does not mean you can't
+have entries in hosts file.
+
+89
+00:06:04.920 --> 00:06:05.920
+You still can.
+
+90
+00:06:06.570 --> 00:06:09.066
+For example,
+say you were to provision
+
+91
+00:06:09.233 --> 00:06:11.340
+a test server for your own needs.
+
+92
+00:06:11.790 --> 00:06:14.563
+You don't think others would
+need to resolve this server
+
+93
+00:06:14.730 --> 00:06:18.750
+by its name, so it need not
+be added to the DNS server.
+
+94
+00:06:19.380 --> 00:06:21.703
+In that case,
+you can add an entry into
+
+95
+00:06:21.870 --> 00:06:24.300
+your hosts file to
+resolve this server.
+
+96
+00:06:24.720 --> 00:06:26.760
+You can now resolve this server.
+
+97
+00:06:27.360 --> 00:06:30.600
+However, no other system
+will be able to do that.
+
+98
+00:06:31.680 --> 00:06:35.683
+A system is able to use
+hostname to IP mapping from
+
+99
+00:06:35.850 --> 00:06:40.230
+the hosts file locally as well
+as from a remote DNS server.
+
+100
+00:06:41.010 --> 00:06:43.260
+What if you have an entry
+in both places?
+
+101
+00:06:44.100 --> 00:06:47.070
+One in your hosts file
+and another in DNS?
+
+102
+00:06:47.880 --> 00:06:50.433
+I have an entry in my
+local files set to
+
+103
+00:06:50.600 --> 00:06:56.083
+192.168.1.115 and someone
+
+104
+00:06:56.250 --> 00:06:58.533
+added an entry for the same host to
+
+105
+00:06:58.700 --> 00:07:05.070
+192.168.1.116 on the DNS server.
+
+106
+00:07:05.670 --> 00:07:08.893
+In that case,
+the host first looks in the local
+
+107
+00:07:09.060 --> 00:07:13.560
+/etc/hosts file and then
+looks at the nameserver.
+
+108
+00:07:14.340 --> 00:07:18.690
+If it finds the entry in the local
+hosts file, it uses that.
+
+109
+00:07:19.110 --> 00:07:22.710
+If not, it looks for that
+host in the DNS server.
+
+110
+00:07:23.310 --> 00:07:25.080
+That order can be changed.
+
+111
+00:07:25.590 --> 00:07:30.390
+The order is defined by an entry
+in the file /etc/nsswitch.conf
+
+112
+00:07:34.380 --> 00:07:36.000
+align with the hosts entry.
+
+113
+00:07:36.630 --> 00:07:42.000
+As you can see, the order is first
+files and then followed by DNS.
+
+114
+00:07:42.330 --> 00:07:48.900
+Files refers to /etc/hosts file
+and DNS refers to the DNS server.
+
+115
+00:07:49.740 --> 00:07:54.480
+For every hostname, the host first
+looks into the local hosts file
+
+116
+00:07:54.810 --> 00:07:58.740
+and if it cannot find it there,
+it then looks at the DNS server.
+
+117
+00:07:59.280 --> 00:08:03.000
+This order can be modified by
+editing this entry in the file.
+
+118
+00:08:03.810 --> 00:08:06.013
+As per this order, our host would
+
+119
+00:08:06.180 --> 00:08:12.660
+resolve the test server
+to 192.168.1.115.
+
+120
+00:08:15.750 --> 00:08:20.280
+Finally, what if you try to ping
+a server that is not on either list?
+
+121
+00:08:20.820 --> 00:08:26.040
+For example,
+I try and ping www.facebook.com.
+
+122
+00:08:26.790 --> 00:08:30.900
+I don't have facebook.com
+in my /etc/hosts file
+
+123
+00:08:31.230 --> 00:08:33.810
+and I don't have it in my
+DNS server either.
+
+124
+00:08:34.290 --> 00:08:35.940
+So in that case, it will fail.
+
+125
+00:08:36.480 --> 00:08:40.903
+You can add another entry
+into your hosts resolv.conf
+
+126
+00:08:41.070 --> 00:08:44.653
+file to point to a nameserver
+that knows Facebook.
+
+127
+00:08:44.820 --> 00:08:50.533
+8.8.8.8 is a public nameserver
+available on the internet
+
+128
+00:08:50.700 --> 00:08:54.960
+hosted by Google that knows about
+all websites on the internet.
+
+129
+00:08:55.710 --> 00:08:59.580
+You can have multiple nameservers
+like this configured on your hosts,
+
+130
+00:08:59.910 --> 00:09:04.020
+but then you will have to configure
+that on all hosts in your network.
+
+131
+00:09:05.010 --> 00:09:10.000
+You already have a nameserver within
+your network configured on all hosts.
+
+132
+00:09:10.290 --> 00:09:14.773
+In that case, you can configure
+the DNS server itself to forward
+
+133
+00:09:14.940 --> 00:09:19.050
+any unknown host names to the public
+nameserver on the internet.
+
+134
+00:09:19.590 --> 00:09:23.580
+You should now be able to ping
+external sites such as facebook.com.
+
+135
+00:09:25.380 --> 00:09:28.093
+Until now,
+we have just been trying to reach
+
+136
+00:09:28.260 --> 00:09:33.900
+systems with their names like web,
+db, NFS, etc.
+
+137
+00:09:34.890 --> 00:09:39.120
+We just pinged Facebook
+as www.facebook.com.
+
+138
+00:09:40.320 --> 00:09:41.430
+How does that work?
+
+139
+00:09:41.970 --> 00:09:47.400
+What is this name with
+a www and .com at the end?
+
+140
+00:09:47.910 --> 00:09:49.560
+It's called a domain name.
+
+141
+00:09:49.890 --> 00:09:52.693
+It is how IPs
+translate to names that
+
+142
+00:09:52.860 --> 00:09:54.990
+we can remember
+on the public internet.
+
+143
+00:09:55.230 --> 00:09:57.480
+Just like how we did for our hosts.
+
+144
+00:09:57.720 --> 00:10:00.313
+Now the reason they are in this
+format separated
+
+145
+00:10:00.480 --> 00:10:03.750
+by dots is to group
+similar things together.
+
+146
+00:10:04.620 --> 00:10:06.533
+The last portion of the domain name,
+
+147
+00:10:06.819 --> 00:10:11.850
+the .com, .net, .edu, .org, etc.
+
+148
+00:10:12.240 --> 00:10:13.980
+are the top-level domains.
+
+149
+00:10:14.400 --> 00:10:17.863
+They represent the intent
+of the website, .com
+
+150
+00:10:18.030 --> 00:10:21.763
+for commercial or general purpose,
+.net for network
+
+151
+00:10:21.930 --> 00:10:25.183
+or general purpose,
+.edu for education
+
+152
+00:10:25.350 --> 00:10:30.060
+organizations, .org
+for nonprofit organizations, etc.
+
+153
+00:10:33.150 --> 00:10:35.033
+Let's look at one in particular,
+
+154
+00:10:35.367 --> 00:10:38.160
+in Google's case,
+the dot is the root.
+
+155
+00:10:38.580 --> 00:10:40.290
+That's where everything starts.
+
+156
+00:10:40.650 --> 00:10:43.050
+.com is the top-level domain.
+
+157
+00:10:43.560 --> 00:10:49.590
+Google is the domain name assigned
+to Google and www is a sub domain.
+
+158
+00:10:50.160 --> 00:10:51.866
+The sub domains help in further
+
+159
+00:10:52.033 --> 00:10:54.240
+grouping things
+together under Google.
+
+160
+00:10:54.870 --> 00:10:58.183
+For example,
+Google's map service is available
+
+161
+00:10:58.350 --> 00:11:02.910
+@maps.google.com,
+so maps is a subdomain.
+
+162
+00:11:03.510 --> 00:11:07.260
+Google's storage service
+is available @drive.google.com.
+
+163
+00:11:08.640 --> 00:11:11.670
+Mobile apps are available
+@apps.google.com.
+
+164
+00:11:13.080 --> 00:11:17.940
+Google's email services
+are available @mail.google.com, etc.
+
+165
+00:11:18.480 --> 00:11:20.803
+You can further divide
+each of these into
+
+166
+00:11:20.970 --> 00:11:23.580
+as many sub domains
+based on your needs.
+
+167
+00:11:24.120 --> 00:11:26.730
+You begin to see a tree
+structure forming.
+
+168
+00:11:29.670 --> 00:11:31.933
+When you try to reach
+any of these domain
+
+169
+00:11:32.100 --> 00:11:35.293
+names,
+say apps.google.com from within
+
+170
+00:11:35.460 --> 00:11:38.173
+your organization,
+your request first hits
+
+171
+00:11:38.340 --> 00:11:41.130
+your organization's
+internal DNS server.
+
+172
+00:11:41.670 --> 00:11:44.430
+It doesn't know who
+apps or Google is,
+
+173
+00:11:44.670 --> 00:11:47.220
+so it forwards your
+request to the internet.
+
+174
+00:11:47.790 --> 00:11:53.070
+On the internet, the IP address
+of the server serving apps.google.com
+
+175
+00:11:53.310 --> 00:11:56.790
+may be resolved with the help
+of multiple DNS servers.
+
+176
+00:11:57.300 --> 00:11:59.940
+A root DNS server
+looks at your request
+
+177
+00:12:00.180 --> 00:12:03.390
+and point you to a DNS
+server serving .com.
+
+178
+00:12:04.110 --> 00:12:08.850
+A .com DNS server looks at your
+request and forwards you to Google
+
+179
+00:12:09.270 --> 00:12:12.403
+and Google's DNS server
+provides you the IP
+
+180
+00:12:12.570 --> 00:12:14.640
+of the server serving applications.
+
+181
+00:12:15.360 --> 00:12:18.000
+In order to speed up
+all future results,
+
+182
+00:12:18.210 --> 00:12:21.013
+your organization's
+DNS server may choose
+
+183
+00:12:21.180 --> 00:12:23.850
+to cache this IP
+for a period of time,
+
+184
+00:12:24.270 --> 00:12:26.970
+typically a few seconds
+up to a few minutes.
+
+185
+00:12:27.330 --> 00:12:30.780
+That way, it doesn't have to go
+through the whole process again.
+
+186
+00:12:33.930 --> 00:12:37.770
+That was out in public--
+What about your organization?
+
+187
+00:12:38.340 --> 00:12:41.310
+Your organization can
+have a similar structure too.
+
+188
+00:12:41.820 --> 00:12:44.563
+For example,
+your organization could be called
+
+189
+00:12:44.730 --> 00:12:49.500
+mycompany.com and have multiple
+subdomains for each purpose.
+
+190
+00:12:49.830 --> 00:12:53.550
+The www for an external-facing
+website,
+
+191
+00:12:53.880 --> 00:12:58.440
+mail.mycompany.com for accessing
+your organization's mail.
+
+192
+00:12:59.310 --> 00:13:04.633
+Drive for accessing storage,
+pay.mycompany.com for accessing
+
+193
+00:13:04.800 --> 00:13:10.050
+the payroll application,
+HR for accessing HR application, etc.
+
+194
+00:13:10.590 --> 00:13:15.240
+All of these are configured in your
+organization's internal DNS server.
+
+195
+00:13:17.670 --> 00:13:20.863
+The reason we discussed all
+of these is to understand
+
+196
+00:13:21.030 --> 00:13:26.460
+another entry
+in the /etc/resolv.conf file.
+
+197
+00:13:26.970 --> 00:13:29.743
+Remember,
+this is the file where we configured
+
+198
+00:13:29.910 --> 00:13:32.610
+the DNS server to be
+used for our host.
+
+199
+00:13:33.030 --> 00:13:37.033
+With that, we were able to resolve
+servers in our organization
+
+200
+00:13:37.200 --> 00:13:39.660
+with just their names,
+like the web server.
+
+201
+00:13:40.410 --> 00:13:42.973
+We have now introduced
+more standard domains
+
+202
+00:13:43.140 --> 00:13:48.750
+like web.my.company.com
+or db.mycompany.com.
+
+203
+00:13:50.100 --> 00:13:54.060
+Now when you ping web,
+you can no longer get a response.
+
+204
+00:13:54.660 --> 00:13:57.900
+Of course, this is because
+we are trying to ping web
+
+205
+00:13:58.170 --> 00:14:01.800
+but there is no record by
+the name web on my DNS server.
+
+206
+00:14:02.340 --> 00:14:08.880
+Instead, it is web.mycompany.com
+so you have to use web.mycompany.com.
+
+207
+00:14:10.590 --> 00:14:13.783
+Now I can understand if someone
+outside our company wants to
+
+208
+00:14:13.950 --> 00:14:18.300
+access our web server, he would
+have to use web.mycompany.com.
+
+209
+00:14:19.650 --> 00:14:24.043
+But within your company, your own
+company, you want to simply address
+
+210
+00:14:24.210 --> 00:14:29.023
+the web server by its first name,
+web, just like how you address other
+
+211
+00:14:29.190 --> 00:14:33.613
+members in your family simply by their
+first names, which is not the case
+
+212
+00:14:33.780 --> 00:14:37.620
+when someone outside your family
+addresses them using their full names.
+
+213
+00:14:38.790 --> 00:14:43.500
+What do you do to configure web
+to resolve web.mycompany.com.
+
+214
+00:14:44.040 --> 00:14:49.440
+You want to say when I say web,
+I mean web.mycompany.com.
+
+215
+00:14:49.980 --> 00:14:56.863
+For that, you make an entry into
+your hosts /etc/resolv.conf file
+
+216
+00:14:57.030 --> 00:15:01.200
+called search and specify
+the domain name you want to append.
+
+217
+00:15:01.650 --> 00:15:03.913
+Next time you try to ping web,
+you will
+
+218
+00:15:04.080 --> 00:15:06.960
+see it actually tries,
+web.mycompany.com.
+
+219
+00:15:08.340 --> 00:15:11.473
+Now your host is intelligent
+enough to exclude the search
+
+220
+00:15:11.640 --> 00:15:15.270
+domain if you specify the domain
+in your query like this.
+
+221
+00:15:15.960 --> 00:15:19.410
+You may also provide additional
+search domains like this
+
+222
+00:15:19.710 --> 00:15:24.120
+so it would mean when I saw web,
+I mean web.mycompany.com
+
+223
+00:15:25.290 --> 00:15:31.663
+or web.prod.mycompany.com
+or web.apps.mycompany.com
+
+224
+00:15:31.830 --> 00:15:37.140
+etcetera.Your host would try
+searching all of these domain names.
+
+225
+00:15:40.350 --> 00:15:42.960
+Finally, a word about record types.
+
+226
+00:15:43.800 --> 00:15:46.650
+How are the records
+stored in the DNS server?
+
+227
+00:15:47.160 --> 00:15:50.010
+We know that it stores
+IP to host names.
+
+228
+00:15:50.460 --> 00:15:52.260
+That's known as A records.
+
+229
+00:15:52.500 --> 00:15:57.090
+Storing ipv6 to hostnames
+is known as quad A records,
+
+230
+00:15:57.720 --> 00:16:01.800
+mapping one name to another
+name is called CNAME records.
+
+231
+00:16:02.280 --> 00:16:06.840
+For example, you may have multiple
+aliases for the same application,
+
+232
+00:16:07.200 --> 00:16:11.370
+like a food delivery service that
+can be reached at eat Or hungry.
+
+233
+00:16:11.910 --> 00:16:14.220
+That's where a CNAME record is used.
+
+234
+00:16:15.060 --> 00:16:16.620
+Name to name mapping.
+
+235
+00:16:17.100 --> 00:16:19.153
+There are many more,
+but these should be
+
+236
+00:16:19.320 --> 00:16:21.030
+enough to get us
+through this section.
+
+237
+00:16:24.030 --> 00:16:27.163
+Ping may not always be
+the right tool to test DNS
+
+238
+00:16:27.330 --> 00:16:31.830
+resolution, there are a few
+other tools such as nslookup.
+
+239
+00:16:32.220 --> 00:16:36.600
+You can use nslookup to query
+a hostname from a DNS server.
+
+240
+00:16:37.110 --> 00:16:39.866
+But remember,
+nslookup does not consider
+
+241
+00:16:40.033 --> 00:16:43.950
+the entries in the local
+/etc/ hosts file.
+
+242
+00:16:46.920 --> 00:16:48.480
+The same goes for dig.
+
+243
+00:16:48.840 --> 00:16:52.590
+Dig is another useful tool
+to test DNS name resolution.
+
+244
+00:16:53.040 --> 00:16:57.240
+It returns more details in a similar
+form as is stored on the server.
+
+245
+00:16:57.960 --> 00:17:01.153
+In the upcoming practice
+exercises section, you will
+
+246
+00:17:01.320 --> 00:17:04.453
+practice viewing,
+configuring and troubleshooting
+
+247
+00:17:04.620 --> 00:17:08.130
+DNS in a lab environment
+on actual systems
+
+248
+00:17:08.340 --> 00:17:10.830
+through some fun
+and challenging exercises.
+

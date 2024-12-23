@@ -1,0 +1,519 @@
+WEBVTT
+
+1
+00:00:00.440 --> 00:00:01.710
+In this section,
+
+2
+00:00:01.710 --> 00:00:05.060
+we will take a look at the
+Linux package management tools
+
+3
+00:00:05.060 --> 00:00:07.740
+used in different Linux distributions.
+
+4
+00:00:08.160 --> 00:00:11.720
+We will start with an introduction
+to the package management system,
+
+5
+00:00:12.330 --> 00:00:15.310
+then we will go through
+some of the most commonly used
+
+6
+00:00:15.310 --> 00:00:17.110
+package managers out there,
+
+7
+00:00:17.110 --> 00:00:20.700
+specifically in the Debian
+and RPM-based systems.
+
+8
+00:00:21.900 --> 00:00:26.040
+As before, the topics will be followed
+by a hands-on lab.
+
+9
+00:00:26.270 --> 00:00:30.490
+You will get to work
+on both Debian and RPM-based systems.
+
+10
+00:00:32.620 --> 00:00:35.780
+"Well, now let's see some package managers.
+
+11
+00:00:35.780 --> 00:00:38.400
+Now, I know that you are running Ubuntu,
+
+12
+00:00:38.500 --> 00:00:44.450
+so we will talk about package managers
+such as apt and dpkg.
+
+13
+00:00:44.730 --> 00:00:48.190
+However, I also want to talk about
+package managers
+
+14
+00:00:48.190 --> 00:00:50.400
+on RPM-based distros
+
+15
+00:00:50.400 --> 00:00:54.590
+such as RHEL and CentOS," says Dave.
+
+16
+00:00:54.980 --> 00:00:59.910
+"I think this will be useful
+should we decide to use CentOS or RHEL
+
+17
+00:00:59.910 --> 00:01:02.080
+in production for Project Mercury."
+
+18
+00:01:02.850 --> 00:01:08.260
+"Perfect. Thanks again, Dave. Andrew did
+mention that during our team meeting.
+
+19
+00:01:08.680 --> 00:01:12.640
+Before we begin with the session,
+I have a fundamental question.
+
+20
+00:01:13.090 --> 00:01:17.860
+What is the difference between
+CentOS, RHEL, and Ubuntu?"
+
+21
+00:01:18.330 --> 00:01:21.520
+"A good question," replies Dave.
+
+22
+00:01:22.150 --> 00:01:23.900
+Dave explains that
+
+23
+00:01:23.900 --> 00:01:27.780
+there are hundreds of Linux distributions
+in use today.
+
+24
+00:01:29.280 --> 00:01:33.060
+One of the common ways
+to categorize a Linux distribution
+
+25
+00:01:33.060 --> 00:01:35.570
+is by the package manager it uses.
+
+26
+00:01:35.880 --> 00:01:39.400
+For example, distributions such as RHEL,
+
+27
+00:01:39.400 --> 00:01:41.600
+or Red Hat Enterprise Linux,
+
+28
+00:01:41.760 --> 00:01:45.230
+Fedora, CentOS are based on RPM,
+
+29
+00:01:45.520 --> 00:01:48.870
+hence they are known as
+an RPM-based distribution.
+
+30
+00:01:49.640 --> 00:01:53.370
+The Debian family, including Ubuntu, Debian,
+
+31
+00:01:53.490 --> 00:01:56.650
+Arch Linux, Linux Mint, et cetera,
+
+32
+00:01:56.800 --> 00:02:01.310
+make use of the Debian package managers
+such as the dpkg.
+
+33
+00:02:04.180 --> 00:02:06.480
+Now, let's compare RHEL,
+
+34
+00:02:06.480 --> 00:02:10.930
+or the Red Hat Enterprise Linux,
+and CentOS operating systems.
+
+35
+00:02:11.510 --> 00:02:16.200
+CentOS is, in fact, very similar
+to Red Hat Enterprise Linux.
+
+36
+00:02:16.480 --> 00:02:20.320
+CentOS is a community-driven
+enterprise operating system,
+
+37
+00:02:20.320 --> 00:02:22.320
+which is formed from Red Hat.
+
+38
+00:02:22.870 --> 00:02:27.070
+Red Hat, on the other hand, is available
+only through a paid subscription,
+
+39
+00:02:27.340 --> 00:02:29.050
+but with this subscription,
+
+40
+00:02:29.050 --> 00:02:31.810
+you get support
+for mission-critical systems
+
+41
+00:02:31.810 --> 00:02:34.440
+and quicker access to the latest features.
+
+42
+00:02:37.270 --> 00:02:41.140
+With that, Dave moves on
+to the package managers.
+
+43
+00:02:41.760 --> 00:02:45.120
+Before we dive into
+the world of package managers,
+
+44
+00:02:45.120 --> 00:02:48.160
+let us first understand what a package is.
+
+45
+00:02:48.730 --> 00:02:51.480
+A package, in its simplest definition,
+
+46
+00:02:51.480 --> 00:02:53.840
+is a compressed archive that contains
+
+47
+00:02:53.840 --> 00:02:57.640
+all the files that are required
+by our particular software to run.
+
+48
+00:02:58.440 --> 00:03:01.710
+For example, let's consider an Ubuntu system.
+
+49
+00:03:02.440 --> 00:03:06.620
+We want to install a simple
+image editing software such as GIMP,
+
+50
+00:03:06.900 --> 00:03:11.170
+which stands for GNU Image Manipulation
+Program in this system.
+
+51
+00:03:11.650 --> 00:03:15.990
+To do this, we can make use
+of the gimp.deb package.
+
+52
+00:03:16.370 --> 00:03:21.110
+This gimp.deb package contains
+all the software binaries and files
+
+53
+00:03:21.110 --> 00:03:23.110
+needed for the image editor to run
+
+54
+00:03:23.110 --> 00:03:27.680
+along with the metadata, which provides
+information about the software itself.
+
+55
+00:03:30.500 --> 00:03:33.440
+"That seems to be quite an easy process.
+
+56
+00:03:33.630 --> 00:03:35.510
+Why don't we do that all the time,
+
+57
+00:03:35.680 --> 00:03:38.650
+download a package
+and install it on the Linux OS
+
+58
+00:03:38.650 --> 00:03:40.720
+as we did in the previous example?"
+
+59
+00:03:41.210 --> 00:03:45.860
+Bob asks, wondering the need of all
+the different package managers.
+
+60
+00:03:46.450 --> 00:03:51.440
+Dave explains that there are hundreds
+of different Linux distributions out there.
+
+61
+00:03:51.810 --> 00:03:55.880
+These distributions run
+different sets of tools and libraries,
+
+62
+00:03:55.880 --> 00:03:59.550
+software, and possibly even
+different Linux kernels.
+
+63
+00:03:59.840 --> 00:04:04.190
+As a result of this, a Linux program
+may not run the same way
+
+64
+00:04:04.190 --> 00:04:06.190
+from one system to another.
+
+65
+00:04:06.560 --> 00:04:11.370
+To fix this problem, packages include
+a manifest of dependencies
+
+66
+00:04:11.370 --> 00:04:13.980
+or lists of programs and versions
+
+67
+00:04:13.980 --> 00:04:17.990
+that must be satisfied for the packaged
+software to run correctly
+
+68
+00:04:18.320 --> 00:04:19.780
+on a given computer.
+
+69
+00:04:20.330 --> 00:04:22.860
+Take a look at the errors in the installation.
+
+70
+00:04:23.070 --> 00:04:27.960
+While attempting to install GIMP
+on this Ubuntu 18.04 system,
+
+71
+00:04:28.180 --> 00:04:29.940
+the dependencies failed.
+
+72
+00:04:30.240 --> 00:04:33.190
+As a result, the installation failed.
+
+73
+00:04:33.890 --> 00:04:37.130
+Bear in mind that each of these
+dependent packages
+
+74
+00:04:37.130 --> 00:04:39.470
+may have dependencies of their own,
+
+75
+00:04:39.710 --> 00:04:44.280
+which makes package installation
+and management a very tedious process.
+
+76
+00:04:44.680 --> 00:04:48.280
+This is where a package manager
+comes in to save the day.
+
+77
+00:04:52.680 --> 00:04:56.270
+A package manager is a software
+in a Linux system
+
+78
+00:04:56.270 --> 00:05:00.290
+that provides a consistent
+and automated process of installing,
+
+79
+00:05:00.450 --> 00:05:02.510
+upgrading, configuring,
+
+80
+00:05:02.510 --> 00:05:05.340
+and removing packages
+from the operating system.
+
+81
+00:05:05.840 --> 00:05:09.220
+Some of the essential functions
+of a package manager are
+
+82
+00:05:09.440 --> 00:05:13.020
+ensuring the integrity
+and authenticity of the package
+
+83
+00:05:13.020 --> 00:05:16.640
+by verifying their digital certificates
+and checksums.
+
+84
+00:05:17.010 --> 00:05:19.840
+This is to ensure that the package
+is downloaded
+
+85
+00:05:19.840 --> 00:05:22.740
+from a trusted source and safe to install.
+
+86
+00:05:23.440 --> 00:05:27.120
+Simplifying the entire
+package management process,
+
+87
+00:05:27.560 --> 00:05:31.530
+most package managers
+provide powerful querying options,
+
+88
+00:05:31.530 --> 00:05:34.860
+making it easier to look up packages
+and then downloading,
+
+89
+00:05:34.860 --> 00:05:37.930
+installing, or updating existing software
+
+90
+00:05:37.930 --> 00:05:39.930
+from a software repository.
+
+91
+00:05:40.340 --> 00:05:43.930
+Grouping packages by function
+to reduce user confusion.
+
+92
+00:05:44.640 --> 00:05:48.080
+Managing dependencies
+to ensure a package is installed
+
+93
+00:05:48.080 --> 00:05:50.280
+with all packages it requires,
+
+94
+00:05:50.480 --> 00:05:54.320
+thus avoiding what is commonly known
+as dependency hell.
+
+95
+00:05:56.920 --> 00:05:58.900
+Depending upon the distribution,
+
+96
+00:05:59.140 --> 00:06:03.410
+a Linux system supports several
+different types of package managers.
+
+97
+00:06:03.760 --> 00:06:07.370
+Some of the common ones are dpkg,
+
+98
+00:06:07.530 --> 00:06:11.430
+the base package manager
+for Debian-based distributions,
+
+99
+00:06:11.900 --> 00:06:13.060
+apt,
+
+100
+00:06:13.060 --> 00:06:16.240
+a newer front end for the dpkg system
+
+101
+00:06:16.420 --> 00:06:20.140
+found in Debian-based distributions
+such as Ubuntu,
+
+102
+00:06:20.300 --> 00:06:23.280
+Linux Mint, and Elementary OS.
+
+103
+00:06:23.880 --> 00:06:28.460
+Apt-get is the traditional
+front-end for the dpkg system
+
+104
+00:06:28.640 --> 00:06:31.280
+found in Debian-based distributions.
+
+105
+00:06:32.200 --> 00:06:33.430
+RPM,
+
+106
+00:06:33.430 --> 00:06:37.570
+the base package manager
+found in Red Hat-based distributions
+
+107
+00:06:37.570 --> 00:06:42.020
+such as Red Hat Enterprise Linux,
+CentOS, and Fedora.
+
+108
+00:06:43.040 --> 00:06:46.370
+YUM, a front-end for the RPM system
+
+109
+00:06:46.370 --> 00:06:49.010
+found in Red Hat-based distributions.
+
+110
+00:06:49.570 --> 00:06:50.890
+DNF,
+
+111
+00:06:50.890 --> 00:06:54.480
+a more feature-rich front-end
+for the RPM system.
+
+112
+00:06:55.330 --> 00:06:58.470
+Next, we will see RPM and YUM
+
+113
+00:06:58.640 --> 00:07:00.650
+for RPM-based distros
+
+114
+00:07:00.650 --> 00:07:04.240
+and then deb and apt for Debian-based distros.
+

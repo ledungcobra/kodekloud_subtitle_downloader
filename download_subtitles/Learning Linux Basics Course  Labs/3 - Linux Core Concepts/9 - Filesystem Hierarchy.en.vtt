@@ -1,0 +1,243 @@
+WEBVTT
+
+1
+00:00:01.050 --> 00:00:05.100
+"Now let's talk about the file system
+hierarchy in Linux.
+
+2
+00:00:05.520 --> 00:00:10.770
+I think that's one of the reasons
+you wanted this session?" Dave asks.
+
+3
+00:00:11.300 --> 00:00:13.120
+"Yes," says Bob.
+
+4
+00:00:14.170 --> 00:00:15.470
+Dave carries on,
+
+5
+00:00:15.820 --> 00:00:19.500
+"You already know that the
+directory/home is the location
+
+6
+00:00:19.500 --> 00:00:24.020
+that contains the home directories
+for all users except for the root user.
+
+7
+00:00:24.770 --> 00:00:28.200
+The root user's home directory
+is located at /root.
+
+8
+00:00:29.020 --> 00:00:32.000
+If you want to install
+any third-party programs,
+
+9
+00:00:32.250 --> 00:00:35.020
+put them in the /opt file system.
+
+10
+00:00:35.620 --> 00:00:39.600
+For example, /opt would be the ideal location
+
+11
+00:00:39.600 --> 00:00:42.470
+to install the web application
+for Project Mercury."
+
+12
+00:00:44.470 --> 00:00:45.650
+While they are at it,
+
+13
+00:00:45.950 --> 00:00:50.920
+Dave recommends installing some security
+mandated software on Bob's laptop.
+
+14
+00:00:51.550 --> 00:00:55.600
+They were stored in a software repository
+in the company's network share.
+
+15
+00:00:56.370 --> 00:01:03.520
+He mounts this repository on a temporary
+location called /mnt using the mount command.
+
+16
+00:01:04.470 --> 00:01:10.500
+He copies the necessary packages from
+this temporary mount to the /tmp location.
+
+17
+00:01:11.550 --> 00:01:14.700
+He explains to Bob that the /mnt
+
+18
+00:01:14.700 --> 00:01:18.500
+is used to mount file systems
+temporarily in the system.
+
+19
+00:01:19.320 --> 00:01:23.800
+The /tmp directory is used
+to store temporary data.
+
+20
+00:01:24.600 --> 00:01:28.100
+Once Dave installs the software from /tmp,
+
+21
+00:01:28.670 --> 00:01:31.870
+he unmounts the network share from /mnt
+
+22
+00:01:32.220 --> 00:01:36.600
+and deletes the files from /tmp as
+they are no longer needed.
+
+23
+00:01:38.050 --> 00:01:43.450
+Bob remembers that he has to copy some files
+from a USB drive and plugs it in.
+
+24
+00:01:44.070 --> 00:01:48.670
+He notices that the USB drive is
+not in a location such as G drive
+
+25
+00:01:48.950 --> 00:01:50.520
+as it would be in Windows.
+
+26
+00:01:51.020 --> 00:01:54.970
+Instead, he sees that it is mounted under /media.
+
+27
+00:01:55.920 --> 00:02:01.600
+Dave explains that all external media
+is mounted under the /media file system
+
+28
+00:02:01.900 --> 00:02:04.670
+and shows him a handy command called df.
+
+29
+00:02:05.670 --> 00:02:08.650
+The df or the disk file system command
+
+30
+00:02:08.970 --> 00:02:12.420
+prints out details about all
+the mounted file systems.
+
+31
+00:02:13.300 --> 00:02:17.520
+Here, he sees his USB disk
+is mounted under /media.
+
+32
+00:02:18.270 --> 00:02:24.000
+He also sees that it is
+referencing a path /dev/sdb1.
+
+33
+00:02:24.920 --> 00:02:28.000
+Dave explains that the /dev file system
+
+34
+00:02:28.320 --> 00:02:33.020
+contains the special block and character
+device files that were discussed earlier.
+
+35
+00:02:34.170 --> 00:02:37.400
+This directory contains files
+for devices such as
+
+36
+00:02:37.400 --> 00:02:41.870
+external hard disks and devices
+such as the mouse and keyboards.
+
+37
+00:02:42.450 --> 00:02:47.020
+The basic programs and binaries
+such as the cp, mv,
+
+38
+00:02:47.350 --> 00:02:52.750
+mkdir, date commands are located
+in the /bin directory.
+
+39
+00:02:53.550 --> 00:02:56.920
+The /etc is a very important directory
+
+40
+00:02:56.920 --> 00:03:00.620
+that is used to store most of
+the configuration files in Linux.
+
+41
+00:03:01.450 --> 00:03:05.920
+The directory/lib and /lib64 is the place
+
+42
+00:03:05.920 --> 00:03:09.520
+to look for shared libraries to
+be imported into your programs.
+
+43
+00:03:10.250 --> 00:03:15.870
+In older systems, the /user directory
+was used for user home directories.
+
+44
+00:03:16.170 --> 00:03:19.370
+However, in the modern Linux operating systems,
+
+45
+00:03:19.700 --> 00:03:24.270
+it is the location where all UserLAnd
+applications and their data reside.
+
+46
+00:03:24.850 --> 00:03:28.820
+Examples of these applications
+are the Thunderbird mail client,
+
+47
+00:03:29.070 --> 00:03:33.270
+Mozilla Firefox and VI Test Editor et cetera.
+
+48
+00:03:34.220 --> 00:03:38.700
+Eventually, you are bound to run into issues
+with the system or an application
+
+49
+00:03:39.120 --> 00:03:44.700
+and when that happens, take a look at
+the logs stored under the /var file system.
+
+50
+00:03:45.300 --> 00:03:50.650
+This is the directory to which the system
+writes data such as logs and cached data.
+
+51
+00:03:53.820 --> 00:03:55.250
+Before we move on,
+
+52
+00:03:55.550 --> 00:03:59.870
+let's try out the concepts learned in
+this section with a hands-on lab.

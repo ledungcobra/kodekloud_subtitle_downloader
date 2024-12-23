@@ -1,0 +1,231 @@
+WEBVTT
+
+1
+00:00:00.670 --> 00:00:04.250
+In this chapter, we continue
+exploring the Linux shell.
+
+2
+00:00:04.720 --> 00:00:08.650
+We will start with the tools used
+to compress and archive files.
+
+3
+00:00:09.250 --> 00:00:15.170
+Then, we will see ways to search for files,
+directories, and patterns in Linux.
+
+4
+00:00:15.570 --> 00:00:18.000
+This is followed by a hands-on lab.
+
+5
+00:00:18.850 --> 00:00:23.800
+We will learn about text editors
+mainly focusing on the VI editor.
+
+6
+00:00:24.370 --> 00:00:28.820
+There is also an interactive lab where
+you get to play around with the VI editor.
+
+7
+00:00:29.920 --> 00:00:34.170
+Before we check out the different commands
+used for compression and archival,
+
+8
+00:00:34.500 --> 00:00:38.370
+let's first see how we can check
+the size of a file in Linux.
+
+9
+00:00:38.970 --> 00:00:42.250
+The DU command, which stands for Disk Usage,
+
+10
+00:00:42.520 --> 00:00:45.770
+is a popular command to inspect
+the size of the file.
+
+11
+00:00:46.500 --> 00:00:53.900
+DU with the option -SK shows the size of
+a file or a directory in kilobytes.
+
+12
+00:00:54.620 --> 00:01:01.620
+A better version of this command, DU-SH prints
+the size in a human-readable format.
+
+13
+00:01:02.400 --> 00:01:06.970
+In this case, it prints that
+the size of the file is 98 MB.
+
+14
+00:01:07.850 --> 00:01:11.770
+We can also use the long list LS-L
+
+15
+00:01:11.950 --> 00:01:15.820
+to print the size of the file
+by including the -H option.
+
+16
+00:01:18.850 --> 00:01:22.470
+Let us now look at a widely
+used utility called tar.
+
+17
+00:01:23.100 --> 00:01:27.670
+Tar is used to group multiple files
+or directories into a single file.
+
+18
+00:01:28.320 --> 00:01:31.800
+Hence, it is especially useful
+for archiving data.
+
+19
+00:01:32.500 --> 00:01:35.350
+Tar is an abbreviation for Tape Archive.
+
+20
+00:01:36.300 --> 00:01:39.870
+Files created with tar are
+often called tarballs.
+
+21
+00:01:40.570 --> 00:01:43.420
+This command has a lot of
+options and features
+
+22
+00:01:43.650 --> 00:01:46.220
+and we will cover the basic usage
+in this section.
+
+23
+00:01:47.470 --> 00:01:52.350
+The tar command followed by -C
+is used to create an archive.
+
+24
+00:01:53.250 --> 00:01:58.000
+The -F is used to specify the name
+of the tar file to be created.
+
+25
+00:01:58.750 --> 00:02:02.370
+This is followed by the files or
+directories to be archived.
+
+26
+00:02:03.450 --> 00:02:09.900
+The -TF option followed by the tar file name,
+is used to see the contents of the tarball.
+
+27
+00:02:10.900 --> 00:02:15.650
+The -XF flag is used to extract
+the contents from the tarball.
+
+28
+00:02:16.450 --> 00:02:19.970
+Finally, we can also use the -Z command
+
+29
+00:02:19.970 --> 00:02:22.900
+to compress the tarball to reduce its size.
+
+30
+00:02:25.620 --> 00:02:28.650
+Compression is the technique used
+to reduce the size
+
+31
+00:02:28.650 --> 00:02:31.270
+consumed by a file or a data set.
+
+32
+00:02:31.770 --> 00:02:36.670
+For example, reducing the size of a file
+or directory on the Linux file system,
+
+33
+00:02:37.070 --> 00:02:40.500
+there are commands which are
+specifically used for compression.
+
+34
+00:02:41.020 --> 00:02:43.820
+Let us now look at three of the popular ones,
+
+35
+00:02:44.800 --> 00:02:48.670
+bzip2, gzip, and xz.
+
+36
+00:02:50.400 --> 00:02:54.500
+The space of the compressed file created
+by these three commands
+
+37
+00:02:54.720 --> 00:02:58.950
+depends on a few factors such as
+the type of data being compressed.
+
+38
+00:03:00.200 --> 00:03:02.350
+The other factors that affect the size
+
+39
+00:03:02.350 --> 00:03:05.600
+are the compression algorithm
+used by these commands
+
+40
+00:03:05.600 --> 00:03:07.700
+and the compression level used.
+
+41
+00:03:08.400 --> 00:03:12.170
+In each of the examples shown here,
+the compression command
+
+42
+00:03:12.170 --> 00:03:15.900
+adds a file extension to
+the file after the operation,
+
+43
+00:03:17.250 --> 00:03:22.800
+namely .bz2, .gz, and .xz.
+
+44
+00:03:23.820 --> 00:03:27.850
+The compressed files can be
+uncompressed using the commands,
+
+45
+00:03:27.850 --> 00:03:32.250
+bunzip2, gunzip, and unxz.
+
+46
+00:03:34.050 --> 00:03:37.120
+However, it is important to know
+that a compressed file
+
+47
+00:03:37.120 --> 00:03:39.950
+need not be uncompressed every time.
+
+48
+00:03:40.620 --> 00:03:45.020
+Tools such as zcat, bzcat and xzcat
+
+49
+00:03:45.420 --> 00:03:48.920
+allow the compressed file to
+be read without uncompressing them.

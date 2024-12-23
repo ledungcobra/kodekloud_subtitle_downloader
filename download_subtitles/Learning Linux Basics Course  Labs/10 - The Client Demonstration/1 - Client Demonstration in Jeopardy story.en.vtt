@@ -1,0 +1,328 @@
+WEBVTT
+
+1
+00:00:01.020 --> 00:00:05.120
+July 15th, six hours before
+the client meeting.
+
+2
+00:00:06.550 --> 00:00:09.250
+Bob had been working the entire weekend
+
+3
+00:00:09.250 --> 00:00:12.650
+trying to get his application
+to work on the dev servers.
+
+4
+00:00:13.220 --> 00:00:15.650
+It works perfectly on his laptop.
+
+5
+00:00:16.100 --> 00:00:19.650
+He had even added the extra features
+the clients asked for,
+
+6
+00:00:20.070 --> 00:00:21.600
+but on the dev servers,
+
+7
+00:00:21.600 --> 00:00:25.500
+he is seeing a bunch of errors when
+he tries to start the application.
+
+8
+00:00:26.370 --> 00:00:30.470
+He works all night, but he is not
+able to fix it by morning.
+
+9
+00:00:31.550 --> 00:00:36.270
+With time running out, he reluctantly
+informs Andrew about the situation.
+
+10
+00:00:37.370 --> 00:00:40.450
+Andrew calls for a WAR meeting at 8:00 AM.
+
+11
+00:00:40.920 --> 00:00:43.070
+He leaves Donald in charge of the meeting
+
+12
+00:00:43.250 --> 00:00:46.800
+while attending to a call from someone
+from the higher management.
+
+13
+00:00:47.550 --> 00:00:50.900
+He does not look happy at all.
+
+14
+00:00:51.900 --> 00:00:53.870
+Bob is sweating profusely.
+
+15
+00:00:54.920 --> 00:00:56.020
+"The WAR room.
+
+16
+00:00:56.500 --> 00:01:00.070
+The one place I did not want to ever be in
+
+17
+00:01:00.420 --> 00:01:03.770
+especially this early in my career,"
+Bob thought.
+
+18
+00:01:04.750 --> 00:01:06.950
+He felt as if he was on trial.
+
+19
+00:01:07.400 --> 00:01:10.750
+The next few moments going to decide his fate.
+
+20
+00:01:11.700 --> 00:01:15.400
+He takes a quick look at Andrew
+who is pacing around nervously.
+
+21
+00:01:16.400 --> 00:01:17.900
+"Not looking good.
+
+22
+00:01:18.270 --> 00:01:23.100
+I have to fix this ASAP or I might get fired,"
+thinks Bob.
+
+23
+00:01:24.120 --> 00:01:26.870
+The client demonstration was at 10:00 AM.
+
+24
+00:01:27.420 --> 00:01:29.370
+Bob glances at his watch.
+
+25
+00:01:29.600 --> 00:01:31.650
+It was 8:50 AM.
+
+26
+00:01:32.070 --> 00:01:35.370
+A little more than an hour until the client demonstration,
+
+27
+00:01:36.250 --> 00:01:39.750
+Bob shuddered at the thought of
+having nothing to show during the call.
+
+28
+00:01:40.520 --> 00:01:42.320
+"I cannot let my team down.
+
+29
+00:01:42.920 --> 00:01:46.650
+What am I missing? I am sure the code is correct.
+
+30
+00:01:47.020 --> 00:01:49.600
+Why isn't this darn thing working anymore?"
+
+31
+00:01:50.270 --> 00:01:51.350
+Bob says,
+
+32
+00:01:51.500 --> 00:01:53.720
+trying to open his web application.
+
+33
+00:01:54.300 --> 00:01:55.600
+Is it the network?
+
+34
+00:01:55.920 --> 00:02:00.900
+Is it some permission issue
+or was it something else entirely?
+
+35
+00:02:01.770 --> 00:02:03.320
+He had no clue.
+
+36
+00:02:03.950 --> 00:02:05.500
+He was panicking now.
+
+37
+00:02:06.350 --> 00:02:10.320
+Bob steals a quick glance at
+Donald who is surprisingly calm.
+
+38
+00:02:11.000 --> 00:02:13.520
+"All right, now. No need to worry yet.
+
+39
+00:02:13.900 --> 00:02:17.220
+We still have time to save the day,"
+says Donald.
+
+40
+00:02:18.070 --> 00:02:20.150
+For the first time in his short career,
+
+41
+00:02:20.150 --> 00:02:23.400
+Bob finds Donald's presence to be reassuring.
+
+42
+00:02:24.000 --> 00:02:27.200
+"Since everything is working
+as expected on your laptop,
+
+43
+00:02:27.420 --> 00:02:29.500
+we can rule out an issue with the code.
+
+44
+00:02:29.870 --> 00:02:32.820
+Let's narrow it down to
+the development environment.
+
+45
+00:02:33.170 --> 00:02:36.300
+Perhaps the network,
+environmental dependencies,
+
+46
+00:02:36.770 --> 00:02:40.500
+or maybe an issue with
+the configuration," he adds.
+
+47
+00:02:41.900 --> 00:02:47.620
+For the next hour, Bob and Donald go through
+Fall the possibilities one after the other.
+
+48
+00:02:49.850 --> 00:02:52.120
+"Let's go over the difference
+between the working
+
+49
+00:02:52.120 --> 00:02:54.700
+and the broken environments," says Donald.
+
+50
+00:02:55.270 --> 00:02:57.900
+"Have you checked the actual
+network connectivity
+
+51
+00:02:57.900 --> 00:03:00.000
+between the app and the DB servers?
+
+52
+00:03:00.170 --> 00:03:01.670
+Are the ports open?"
+
+53
+00:03:02.200 --> 00:03:03.170
+"Yes.
+
+54
+00:03:03.500 --> 00:03:05.400
+I had them checked by jacqui.
+
+55
+00:03:05.720 --> 00:03:11.320
+I also ran a telnet test and found
+the connection to work," replies Bob.
+
+56
+00:03:12.400 --> 00:03:13.870
+"How about the permissions?
+
+57
+00:03:13.870 --> 00:03:16.320
+Which user are you trying to run it as?"
+
+58
+00:03:16.770 --> 00:03:18.120
+asks Donald.
+
+59
+00:03:18.870 --> 00:03:20.550
+"I thought of that too.
+
+60
+00:03:20.750 --> 00:03:24.270
+On my laptop, I am running the app
+with my own user account,
+
+61
+00:03:24.620 --> 00:03:26.020
+but in the dev setup,
+
+62
+00:03:26.020 --> 00:03:28.820
+I have created a service account called Mercury
+
+63
+00:03:29.020 --> 00:03:32.570
+and I'm trying to run it with this user,"
+Bob replies.
+
+64
+00:03:33.570 --> 00:03:36.670
+Bob shows Donald an error
+message on his screen.
+
+65
+00:03:37.570 --> 00:03:39.470
+"From this particular error,
+
+66
+00:03:39.470 --> 00:03:43.170
+I still think the app has trouble
+connecting to the database,
+
+67
+00:03:43.650 --> 00:03:47.550
+but, as I said, the ports are open
+between the two servers".
+
+68
+00:03:48.370 --> 00:03:50.700
+All of a sudden it hit him.
+
+69
+00:03:51.220 --> 00:03:53.620
+Bob freezes for a few seconds.
+
+70
+00:03:54.170 --> 00:03:56.320
+He knew what the solution was.
+
+71
+00:03:56.950 --> 00:03:58.850
+"How could I have missed that?"
+
+72
+00:03:59.450 --> 00:04:02.600
+He thinks to himself, sighing in relief.
+
+73
+00:04:03.250 --> 00:04:06.550
+"I have got it just in the nick of time too.
+
+74
+00:04:07.000 --> 00:04:09.270
+I have one hour to get it running,"
+
+75
+00:04:09.600 --> 00:04:11.970
+Bob says triumphantly.

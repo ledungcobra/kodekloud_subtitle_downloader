@@ -1,0 +1,706 @@
+WEBVTT
+
+1
+00:00:00.410 --> 00:00:02.080
+In this section of the course,
+
+2
+00:00:02.080 --> 00:00:05.910
+we will learn about security
+and access control in Linux.
+
+3
+00:00:06.380 --> 00:00:09.860
+We will first get introduced
+to the basic security concepts,
+
+4
+00:00:09.860 --> 00:00:11.820
+such as account types in Linux,
+
+5
+00:00:12.280 --> 00:00:13.800
+access control files,
+
+6
+00:00:14.120 --> 00:00:15.410
+switching users,
+
+7
+00:00:15.410 --> 00:00:16.860
+and privilege escalation.
+
+8
+00:00:17.760 --> 00:00:21.050
+We will then learn how to create
+and manage new users
+
+9
+00:00:21.420 --> 00:00:24.980
+followed by managing file-level ownership
+and permissions.
+
+10
+00:00:25.340 --> 00:00:26.920
+After each topic,
+
+11
+00:00:26.920 --> 00:00:30.710
+you will get to practice these topics
+in the hands-on labs.
+
+12
+00:00:33.360 --> 00:00:38.720
+Security in Linux is a very vast topic
+and involves many concepts.
+
+13
+00:00:39.250 --> 00:00:44.180
+Access control methods make use of user
+and password-based authentication
+
+14
+00:00:44.440 --> 00:00:46.880
+to determine who can access the systems.
+
+15
+00:00:47.840 --> 00:00:49.180
+There is the PAM
+
+16
+00:00:49.180 --> 00:00:52.140
+which stands for
+Pluggable Authentication Model
+
+17
+00:00:52.480 --> 00:00:56.010
+and it is another way
+of managing authentication in Linux.
+
+18
+00:00:56.410 --> 00:01:01.380
+It is normally used to authenticate users
+to programs and services in Linux.
+
+19
+00:01:02.110 --> 00:01:04.900
+Network Security is used to restrict
+
+20
+00:01:04.900 --> 00:01:08.750
+or allow access to services
+listening on the Linux server.
+
+21
+00:01:09.180 --> 00:01:12.820
+While we commonly rely
+on external firewalls to do this,
+
+22
+00:01:12.820 --> 00:01:15.560
+it can also be set up within the Linux system
+
+23
+00:01:15.810 --> 00:01:20.280
+by making use of tools
+such as IPTables and Firewalld.
+
+24
+00:01:21.280 --> 00:01:24.260
+SSH stands for Secure Shell
+
+25
+00:01:24.560 --> 00:01:29.250
+and it is used for remote access
+to a server over an unsecured network.
+
+26
+00:01:29.780 --> 00:01:33.940
+SSH hardening can help make sure
+only the authorized users
+
+27
+00:01:33.940 --> 00:01:35.680
+gain access to the server.
+
+28
+00:01:36.120 --> 00:01:39.240
+SE Linux makes use of security policies
+
+29
+00:01:39.240 --> 00:01:43.380
+for isolating applications running
+on the same system from each other
+
+30
+00:01:43.380 --> 00:01:45.150
+to protect the Linux server.
+
+31
+00:01:45.780 --> 00:01:50.750
+Besides these, there are several other ways
+to secure the Linux operating system.
+
+32
+00:01:51.040 --> 00:01:55.600
+In this section, we will take a look
+at basic access control in Linux
+
+33
+00:01:55.600 --> 00:01:58.320
+and learn about file ownership
+and permissions.
+
+34
+00:02:01.420 --> 00:02:04.960
+Before we understand the concepts
+around access control,
+
+35
+00:02:05.120 --> 00:02:07.950
+we first have to learn
+about accounts in Linux.
+
+36
+00:02:09.300 --> 00:02:10.750
+What is an account?
+
+37
+00:02:11.720 --> 00:02:14.910
+Every user in Linux
+has an associated account.
+
+38
+00:02:15.240 --> 00:02:17.660
+The user account maintains information
+
+39
+00:02:17.660 --> 00:02:21.650
+such as the username and password
+used to log into the system.
+
+40
+00:02:22.210 --> 00:02:27.950
+Besides this, a user account
+also contains an identifier called UID
+
+41
+00:02:28.080 --> 00:02:30.610
+which is unique for each user in the system.
+
+42
+00:02:31.480 --> 00:02:38.050
+The information about a user account
+is stored in /etc/passwd file.
+
+43
+00:02:38.950 --> 00:02:41.910
+A Linux group is a collection of users.
+
+44
+00:02:42.250 --> 00:02:46.050
+It is used to organize users
+based on common attributes
+
+45
+00:02:46.050 --> 00:02:47.900
+such as role or a function.
+
+46
+00:02:48.580 --> 00:02:54.110
+The information about groups
+is stored in the /etc/group file.
+
+47
+00:02:54.520 --> 00:02:58.610
+Each group has a unique identifier
+called the GID.
+
+48
+00:02:59.500 --> 00:03:03.060
+Suppose we have two developers
+called Bob and Michael
+
+49
+00:03:03.240 --> 00:03:06.280
+who have similar roles
+and work on the same system.
+
+50
+00:03:06.860 --> 00:03:10.280
+We can group them in a Linux group
+called developers.
+
+51
+00:03:10.800 --> 00:03:11.840
+By doing this,
+
+52
+00:03:11.840 --> 00:03:15.340
+we can grant them the same access
+to specific files
+
+53
+00:03:15.340 --> 00:03:17.160
+and directories in the file system.
+
+54
+00:03:17.520 --> 00:03:19.550
+We will see how to do that a bit later.
+
+55
+00:03:22.140 --> 00:03:26.380
+Let's now break down the user account
+based on the information it stores.
+
+56
+00:03:27.160 --> 00:03:31.060
+Each user has a username
+and a unique ID assigned to them
+
+57
+00:03:31.060 --> 00:03:34.250
+known as the user ID or UID.
+
+58
+00:03:35.110 --> 00:03:37.450
+The user also has a GID,
+
+59
+00:03:37.640 --> 00:03:39.980
+the ID of the group they are part of.
+
+60
+00:03:40.820 --> 00:03:43.510
+A user can be part of multiple groups.
+
+61
+00:03:43.860 --> 00:03:47.050
+If no group is specified
+when the user is created,
+
+62
+00:03:47.350 --> 00:03:52.480
+it assigns the user to a group
+with the same ID and name as the user ID.
+
+63
+00:03:52.960 --> 00:03:55.650
+That's the primary GID of the user.
+
+64
+00:03:56.340 --> 00:03:58.980
+The user account also stores information
+
+65
+00:03:58.980 --> 00:04:02.280
+about the home directory of the user
+in the default shell.
+
+66
+00:04:03.240 --> 00:04:07.710
+You can check these by running the ID command
+followed by the username.
+
+67
+00:04:08.140 --> 00:04:14.750
+It lists the UID, username, GID,
+and the groups the user is part of.
+
+68
+00:04:15.580 --> 00:04:20.080
+To check the home directory path
+and the default shell assigned to the user,
+
+69
+00:04:20.320 --> 00:04:24.500
+we can inspect the /etc/passwd file
+
+70
+00:04:24.900 --> 00:04:25.710
+like this.
+
+71
+00:04:26.320 --> 00:04:28.850
+We will learn more about this file in a bit.
+
+72
+00:04:31.800 --> 00:04:35.340
+The example we just saw
+with the user called Michael
+
+73
+00:04:35.340 --> 00:04:37.420
+is an example of a user account.
+
+74
+00:04:37.880 --> 00:04:42.880
+A user account refers to individual people
+who need access to the Linux system.
+
+75
+00:04:43.340 --> 00:04:45.510
+There are some other types of accounts.
+
+76
+00:04:46.080 --> 00:04:50.610
+A super user account is the root
+which has the UID 0.
+
+77
+00:04:51.680 --> 00:04:56.340
+The super user has unrestricted access
+and control over the system,
+
+78
+00:04:56.810 --> 00:04:58.480
+including other users.
+
+79
+00:04:59.160 --> 00:05:03.450
+System accounts are usually created
+during the OS installation.
+
+80
+00:05:03.760 --> 00:05:08.850
+These are for use by software and services
+that will not run as the super user.
+
+81
+00:05:09.840 --> 00:05:14.150
+UIDs for system accounts
+are usually under 100
+
+82
+00:05:14.150 --> 00:05:16.580
+or between 500-1,000.
+
+83
+00:05:17.080 --> 00:05:20.050
+They usually do not have
+a dedicated home directory.
+
+84
+00:05:20.550 --> 00:05:21.540
+If they do,
+
+85
+00:05:21.540 --> 00:05:25.080
+the home directory is not created under /home.
+
+86
+00:05:25.980 --> 00:05:30.350
+SSHD and the mail user
+are examples of the system account.
+
+87
+00:05:31.310 --> 00:05:34.120
+Service accounts are similar
+to system accounts
+
+88
+00:05:34.340 --> 00:05:37.610
+and are created
+when services are installed in Linux.
+
+89
+00:05:38.110 --> 00:05:44.280
+For example, an nginx service makes use
+of a service account called nginx.
+
+90
+00:05:46.980 --> 00:05:50.240
+To see details about users
+in the Linux system,
+
+91
+00:05:50.240 --> 00:05:52.710
+we can make use of some simple commands.
+
+92
+00:05:53.160 --> 00:05:56.480
+We already saw the use
+of the command called ID.
+
+93
+00:05:56.680 --> 00:05:59.600
+This command gives information
+about the user,
+
+94
+00:05:59.600 --> 00:06:02.610
+specifically the UID, the GID,
+
+95
+00:06:02.820 --> 00:06:05.310
+and what other groups the user is part of.
+
+96
+00:06:06.250 --> 00:06:09.760
+To see the list of users
+currently logged into the system,
+
+97
+00:06:10.020 --> 00:06:11.860
+run the command, WHO.
+
+98
+00:06:12.780 --> 00:06:16.880
+The LAST command displays the record
+of all logged-in users.
+
+99
+00:06:17.120 --> 00:06:20.880
+It also shows the date and time
+when the system was rebooted.
+
+100
+00:06:23.860 --> 00:06:25.460
+Let's now see the different ways
+
+101
+00:06:25.460 --> 00:06:28.910
+in which you can switch
+from one user to another in Linux.
+
+102
+00:06:29.380 --> 00:06:32.920
+We saw how to do this earlier
+with the sudo command
+
+103
+00:06:32.920 --> 00:06:35.740
+when we had to run commands as the root user.
+
+104
+00:06:36.340 --> 00:06:40.110
+Another way to do it
+is to use the SU command.
+
+105
+00:06:40.680 --> 00:06:44.760
+With SU, you can switch
+to any other user in the system,
+
+106
+00:06:45.040 --> 00:06:46.080
+including root.
+
+107
+00:06:46.650 --> 00:06:51.140
+You can also run a specific command
+using SU dash-C option
+
+108
+00:06:51.440 --> 00:06:52.410
+like this.
+
+109
+00:06:53.380 --> 00:06:56.760
+It is, however, not recommended to be used
+
+110
+00:06:56.760 --> 00:07:00.010
+as it needs the password of the user
+you are switching to.
+
+111
+00:07:00.460 --> 00:07:03.850
+The better way to do this
+is to make use of sudo.
+
+112
+00:07:06.760 --> 00:07:08.300
+As we saw earlier,
+
+113
+00:07:08.300 --> 00:07:13.450
+the sudo command offers another approach
+to giving users administrative access.
+
+114
+00:07:14.010 --> 00:07:18.050
+When trusted users precede
+an administrative command with sudo,
+
+115
+00:07:18.300 --> 00:07:20.550
+they are prompted for their own password.
+
+116
+00:07:21.180 --> 00:07:28.060
+The default configuration for sudo
+is defined under /etc/sudoers file.
+
+117
+00:07:28.610 --> 00:07:32.350
+This file defines the policies applied
+by the sudo command
+
+118
+00:07:32.580 --> 00:07:35.920
+and can be updated using the visudo command.
+
+119
+00:07:36.510 --> 00:07:41.620
+Only users listed in the /etc/sudoers file
+
+120
+00:07:41.620 --> 00:07:45.250
+can make use of the sudo command
+for privilege escalation.
+
+121
+00:07:45.940 --> 00:07:47.880
+This is an added security measure
+
+122
+00:07:47.880 --> 00:07:51.920
+that prevents other users
+from running commands as the root users.
+
+123
+00:07:52.580 --> 00:07:56.880
+The administrator can give
+a granular level of access with sudo.
+
+124
+00:07:57.700 --> 00:08:01.480
+In this case,
+Bob has complete administrative privileges.
+
+125
+00:08:01.760 --> 00:08:07.250
+However, the user called Sara
+can only use sudo to reboot the system.
+
+126
+00:08:07.820 --> 00:08:09.320
+With sudo enabled,
+
+127
+00:08:09.320 --> 00:08:13.710
+we can eliminate the need
+for ever logging in as root user directly.
+
+128
+00:08:14.320 --> 00:08:19.280
+We can do this by setting a nologin shell
+for the root user like this.
+
+129
+00:08:20.550 --> 00:08:22.540
+With a nologin shell set,
+
+130
+00:08:22.800 --> 00:08:27.680
+no one can log into the system
+using the root user and password directly.
+
+131
+00:08:30.350 --> 00:08:33.450
+Let us now look
+at the syntax of the sudoers file.
+
+132
+00:08:34.020 --> 00:08:38.300
+All lines that begin with a hash
+or a pound symbol are comments
+
+133
+00:08:38.480 --> 00:08:39.710
+and are not applied.
+
+134
+00:08:40.240 --> 00:08:42.520
+The first field is either the user
+
+135
+00:08:42.520 --> 00:08:45.210
+or the group to which privileges
+have been granted.
+
+136
+00:08:45.950 --> 00:08:48.250
+Groups begin with a percentage symbol.
+
+137
+00:08:48.680 --> 00:08:52.920
+The second field which by default
+is left to the value ALL
+
+138
+00:08:52.920 --> 00:08:57.810
+specifies the host in which the user
+can make use of privilege escalation.
+
+139
+00:08:58.660 --> 00:09:00.050
+In a normal setup,
+
+140
+00:09:00.050 --> 00:09:01.900
+there is just one host
+
+141
+00:09:02.140 --> 00:09:03.680
+which is the localhost.
+
+142
+00:09:04.220 --> 00:09:08.650
+As a result, the value ALL
+implies the localhost as well.
+
+143
+00:09:09.400 --> 00:09:14.360
+The third field enclosed in brackets
+implies the users and groups.
+
+144
+00:09:14.360 --> 00:09:17.520
+The user in the first field
+can run the command as.
+
+145
+00:09:17.520 --> 00:09:20.780
+This is normally left
+to the default value of ALL.
+
+146
+00:09:21.260 --> 00:09:24.360
+This implies that any user, not just root,
+
+147
+00:09:24.680 --> 00:09:26.510
+can be used to run the commands.
+
+148
+00:09:27.480 --> 00:09:30.550
+The fourth field is the command
+that can be run.
+
+149
+00:09:30.740 --> 00:09:32.460
+You can specify ALL
+
+150
+00:09:32.460 --> 00:09:36.280
+which means the user
+can run any command without restrictions.
+
+151
+00:09:36.750 --> 00:09:39.620
+Or, you can specify individual commands
+
+152
+00:09:39.620 --> 00:09:42.680
+such as the "shutdown dash r now"
+
+153
+00:09:42.880 --> 00:09:45.310
+as in the case of the user called Sara.
+
+154
+00:09:45.680 --> 00:09:51.610
+This means that Sara can use sudo
+only to reboot the system and nothing else.

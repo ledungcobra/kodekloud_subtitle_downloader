@@ -1,0 +1,619 @@
+WEBVTT
+
+1
+00:00:00.460 --> 00:00:02.410
+Jacqui continues with the session.
+
+2
+00:00:02.960 --> 00:00:05.680
+Now, let us look at some networking basics
+
+3
+00:00:05.680 --> 00:00:07.310
+such as switching and routing.
+
+4
+00:00:07.750 --> 00:00:08.810
+In this section,
+
+5
+00:00:08.810 --> 00:00:11.660
+we will focus
+on general networking concepts
+
+6
+00:00:11.660 --> 00:00:13.580
+such as network interfaces,
+
+7
+00:00:13.580 --> 00:00:15.050
+gateways, and routes.
+
+8
+00:00:15.500 --> 00:00:17.140
+We have two computers,
+
+9
+00:00:17.180 --> 00:00:18.220
+A and B,
+
+10
+00:00:18.520 --> 00:00:20.480
+laptops, desktops,
+
+11
+00:00:20.480 --> 00:00:22.580
+VMs on the cloud, wherever.
+
+12
+00:00:23.020 --> 00:00:25.110
+How does system A reach B?
+
+13
+00:00:25.480 --> 00:00:27.360
+We connect them to a switch
+
+14
+00:00:27.360 --> 00:00:29.260
+and the switch creates a network
+
+15
+00:00:29.260 --> 00:00:30.810
+containing the two systems.
+
+16
+00:00:31.400 --> 00:00:32.960
+To connect them to a switch,
+
+17
+00:00:32.960 --> 00:00:35.380
+we need an interface on each host,
+
+18
+00:00:35.720 --> 00:00:38.250
+physical or virtual, depending on the host.
+
+19
+00:00:38.920 --> 00:00:41.180
+To see the interfaces for the host,
+
+20
+00:00:41.180 --> 00:00:43.510
+we use the IP link command.
+
+21
+00:00:43.740 --> 00:00:44.840
+In this case,
+
+22
+00:00:44.840 --> 00:00:47.240
+we look at the interface named eth0
+
+23
+00:00:47.240 --> 00:00:49.850
+that we will be using to connect to the switch.
+
+24
+00:00:50.520 --> 00:00:53.050
+Let's assume it's a network with the address
+
+25
+00:00:53.050 --> 00:00:57.080
+192.168.1.0,
+
+26
+00:00:57.560 --> 00:01:01.610
+we then assign the systems
+with IP addresses on the same network.
+
+27
+00:01:02.140 --> 00:01:06.120
+For this, we use the command ip addr.
+
+28
+00:01:06.740 --> 00:01:08.180
+Once the links are up
+
+29
+00:01:08.180 --> 00:01:10.200
+and the IP addresses are assigned,
+
+30
+00:01:10.440 --> 00:01:13.850
+the computers can now communicate
+with each other through the switch.
+
+31
+00:01:14.360 --> 00:01:17.650
+The switch can only enable communication
+within a network.
+
+32
+00:01:18.040 --> 00:01:21.880
+This means it can receive packets
+from a host on the network
+
+33
+00:01:21.880 --> 00:01:25.150
+and deliver it to other systems
+within the same network.
+
+34
+00:01:27.240 --> 00:01:31.300
+Say we have another network
+containing systems C and D
+
+35
+00:01:31.300 --> 00:01:35.810
+at address 192.168.2.0,
+
+36
+00:01:36.580 --> 00:01:42.900
+the systems have IP address 192.168.2.10
+
+37
+00:01:42.900 --> 00:01:45.210
+and 2.11 respectively.
+
+38
+00:01:46.100 --> 00:01:48.280
+How does the system in one network
+
+39
+00:01:48.280 --> 00:01:49.710
+reach a system in the other?
+
+40
+00:01:50.210 --> 00:01:51.840
+How does system B
+
+41
+00:01:51.840 --> 00:01:54.160
+with the IP 1.11
+
+42
+00:01:54.160 --> 00:01:55.910
+reach system C
+
+43
+00:01:55.910 --> 00:01:58.240
+with the IP 2.10
+
+44
+00:01:58.240 --> 00:01:59.450
+on the other network?
+
+45
+00:02:00.450 --> 00:02:02.380
+That's where a router comes in.
+
+46
+00:02:02.780 --> 00:02:05.780
+A router helps
+connect two networks together.
+
+47
+00:02:06.020 --> 00:02:07.920
+It is an intelligent device.
+
+48
+00:02:07.920 --> 00:02:11.410
+Think of it as another server
+with many network ports.
+
+49
+00:02:11.950 --> 00:02:14.680
+Since it connects
+to the two separate networks,
+
+50
+00:02:14.680 --> 00:02:16.700
+it gets two IPs assigned,
+
+51
+00:02:17.140 --> 00:02:18.610
+one on each network.
+
+52
+00:02:19.000 --> 00:02:20.450
+In the first network,
+
+53
+00:02:20.450 --> 00:02:23.680
+we assign it an IP address 1.1
+
+54
+00:02:24.000 --> 00:02:25.310
+and in the second one,
+
+55
+00:02:25.310 --> 00:02:28.180
+we assign it an IP address 2.1.
+
+56
+00:02:28.740 --> 00:02:31.960
+Now we have a router
+connected to the two networks
+
+57
+00:02:31.960 --> 00:02:34.410
+that can enable communication between them.
+
+58
+00:02:35.980 --> 00:02:39.650
+When system B tries
+to send a packet to system C,
+
+59
+00:02:40.000 --> 00:02:44.280
+how does it know where the router is
+on the network to send the packet through?
+
+60
+00:02:44.740 --> 00:02:47.660
+The router is just another device
+on the network.
+
+61
+00:02:47.860 --> 00:02:50.480
+There could be many other such devices.
+
+62
+00:02:52.320 --> 00:02:56.080
+That's where we configure the systems
+with a gateway or a route.
+
+63
+00:02:56.420 --> 00:02:58.280
+If the network was a room,
+
+64
+00:02:58.280 --> 00:03:00.880
+the gateway is a door to the outside world,
+
+65
+00:03:00.880 --> 00:03:03.050
+to other networks or to the internet.
+
+66
+00:03:03.920 --> 00:03:07.810
+The systems need to know
+where the door is to go through that.
+
+67
+00:03:08.280 --> 00:03:11.550
+To see the existing routing configuration
+on a system,
+
+68
+00:03:11.550 --> 00:03:13.280
+run the route command.
+
+69
+00:03:13.560 --> 00:03:15.760
+It displays the kernel's routing table.
+
+70
+00:03:16.000 --> 00:03:17.180
+Within that,
+
+71
+00:03:17.180 --> 00:03:18.380
+as you can see,
+
+72
+00:03:18.380 --> 00:03:21.510
+there are no routing configurations
+as of now.
+
+73
+00:03:21.920 --> 00:03:23.200
+In this condition,
+
+74
+00:03:23.200 --> 00:03:26.650
+your system B
+will not be able to reach system C.
+
+75
+00:03:27.020 --> 00:03:30.200
+It can only reach other systems
+within the same network
+
+76
+00:03:30.200 --> 00:03:34.680
+in the range 192.168.1.0.
+
+77
+00:03:35.780 --> 00:03:36.780
+In Linux,
+
+78
+00:03:36.780 --> 00:03:39.340
+to configure a gateway on system B
+
+79
+00:03:39.340 --> 00:03:42.310
+to reach the systems on network 2.0,
+
+80
+00:03:42.580 --> 00:03:45.350
+run the ip route add command
+
+81
+00:03:45.640 --> 00:03:49.080
+and specify that you can reach the 2.0 network
+
+82
+00:03:49.260 --> 00:03:51.000
+through the door or gateway
+
+83
+00:03:51.000 --> 00:03:52.550
+at 1.1.
+
+84
+00:03:53.410 --> 00:03:55.120
+Rerunning the route command
+
+85
+00:03:55.120 --> 00:04:00.650
+shows that we have a route added to reach
+the 2.0 series network through the router.
+
+86
+00:04:02.480 --> 00:04:03.560
+Now remember,
+
+87
+00:04:03.560 --> 00:04:06.250
+this has to be configured on all systems.
+
+88
+00:04:06.560 --> 00:04:11.210
+For example, if the system C
+is to send a packet to system B,
+
+89
+00:04:11.500 --> 00:04:14.880
+then you need to add a route
+on system C's routing table
+
+90
+00:04:14.880 --> 00:04:17.280
+to access network 1.0
+
+91
+00:04:17.520 --> 00:04:21.510
+through the router
+configured with the IP address 2.1.
+
+92
+00:04:23.310 --> 00:04:26.640
+Suppose these systems
+need access to the internet,
+
+93
+00:04:27.240 --> 00:04:35.210
+say they need access to Google
+at 172.217.194.0 network on the internet,
+
+94
+00:04:35.210 --> 00:04:37.450
+you connect the router to the internet.
+
+95
+00:04:38.110 --> 00:04:41.180
+Then add a new route in your routing table
+
+96
+00:04:41.180 --> 00:04:48.250
+to route all traffic
+to the network 172.217.194 through your router.
+
+97
+00:04:49.100 --> 00:04:53.080
+There are so many different sites
+on different networks on the internet.
+
+98
+00:04:53.340 --> 00:04:55.640
+Instead of adding a routing table entry
+
+99
+00:04:55.640 --> 00:04:59.600
+with the same routers IP address
+for each of those networks,
+
+100
+00:04:59.600 --> 00:05:03.700
+you can simply say, for any network
+that you don't know a route to,
+
+101
+00:05:03.700 --> 00:05:06.450
+use this router as the default gateway.
+
+102
+00:05:06.810 --> 00:05:11.380
+This way, any request to any network
+outside of your existing network
+
+103
+00:05:11.380 --> 00:05:13.350
+goes to this particular router.
+
+104
+00:05:13.840 --> 00:05:16.150
+In a simple setup like this,
+
+105
+00:05:16.150 --> 00:05:19.040
+all you need is a single routing table entry
+
+106
+00:05:19.040 --> 00:05:22.450
+with the default gateway
+set to the routers IP address.
+
+107
+00:05:22.940 --> 00:05:25.640
+Remember, instead of the word default,
+
+108
+00:05:25.640 --> 00:05:30.180
+you could also say 0.0.0.0,
+
+109
+00:05:30.480 --> 00:05:33.180
+it means any IP destination.
+
+110
+00:05:33.580 --> 00:05:36.010
+Both of these lines mean the same thing.
+
+111
+00:05:36.510 --> 00:05:41.400
+A 0.0.0.0 entry in the gateway field
+
+112
+00:05:41.400 --> 00:05:43.680
+indicates that you don't need a gateway.
+
+113
+00:05:44.200 --> 00:05:46.080
+For example, in this case,
+
+114
+00:05:46.080 --> 00:05:50.580
+for system C to access any device
+in the 2.0 network,
+
+115
+00:05:50.580 --> 00:05:52.520
+it doesn't need a gateway
+
+116
+00:05:52.520 --> 00:05:54.450
+because it is its own network,
+
+117
+00:05:56.280 --> 00:05:59.440
+but say you have multiple routers
+in your network,
+
+118
+00:05:59.440 --> 00:06:00.760
+one for the intranet
+
+119
+00:06:00.760 --> 00:06:03.260
+and another for internal private networks,
+
+120
+00:06:03.510 --> 00:06:06.980
+then you will need to have
+two separate entries for each network.
+
+121
+00:06:07.340 --> 00:06:10.000
+One entry for the internal private network
+
+122
+00:06:10.000 --> 00:06:13.050
+and another default gateway
+for all other networks,
+
+123
+00:06:13.050 --> 00:06:14.740
+including public networks.
+
+124
+00:06:15.180 --> 00:06:18.810
+If you are having issues
+reaching the internet from your systems,
+
+125
+00:06:18.810 --> 00:06:20.180
+this routing table,
+
+126
+00:06:20.180 --> 00:06:22.420
+and the default gateway configuration
+
+127
+00:06:22.420 --> 00:06:24.050
+is a good place to look at.
+
+128
+00:06:25.940 --> 00:06:29.180
+Let's take away some key commands
+from this session.
+
+129
+00:06:29.480 --> 00:06:32.180
+These will be handy
+in our troubleshooting session.
+
+130
+00:06:32.520 --> 00:06:33.760
+IP link
+
+131
+00:06:33.760 --> 00:06:36.880
+is to list and modify interfaces on the host,
+
+132
+00:06:37.340 --> 00:06:39.540
+ip addr command
+
+133
+00:06:39.540 --> 00:06:43.210
+is to see the IP addresses
+assigned to those interfaces.
+
+134
+00:06:43.920 --> 00:06:46.510
+ip addr add command
+
+135
+00:06:46.510 --> 00:06:49.880
+is used to set IP addresses on the interfaces.
+
+136
+00:06:50.060 --> 00:06:51.150
+Now remember,
+
+137
+00:06:51.150 --> 00:06:55.660
+changes made using these commands
+are only valid till a system restart.
+
+138
+00:06:55.960 --> 00:06:58.520
+If you want to persist these changes,
+
+139
+00:06:58.520 --> 00:07:04.280
+you must set them
+in the /etc/network/interfaces file.
+
+140
+00:07:05.580 --> 00:07:06.940
+IP route
+
+141
+00:07:06.940 --> 00:07:08.680
+or simply the route command
+
+142
+00:07:08.680 --> 00:07:10.810
+is used to view the routing table
+
+143
+00:07:11.260 --> 00:07:13.350
+and ip route add command
+
+144
+00:07:13.350 --> 00:07:16.110
+is used to add entries into the routing table.

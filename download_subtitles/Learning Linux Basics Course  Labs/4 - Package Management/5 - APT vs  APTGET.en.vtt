@@ -1,0 +1,150 @@
+WEBVTT
+
+1
+00:00:00.580 --> 00:00:02.820
+APT is a more user friendly tool
+
+2
+00:00:02.920 --> 00:00:04.340
+compared to APT-GET.
+
+3
+00:00:04.920 --> 00:00:07.500
+In all the latest WN-based distros,
+
+4
+00:00:07.700 --> 00:00:09.820
+APT is already installed by default.
+
+5
+00:00:11.040 --> 00:00:12.580
+Before we finish this session,
+
+6
+00:00:12.920 --> 00:00:15.420
+let's take a quick look at why APT is better
+
+7
+00:00:15.500 --> 00:00:17.100
+when compared to APT-GET.
+
+8
+00:00:17.840 --> 00:00:19.840
+To do this, let's try to install
+
+9
+00:00:19.880 --> 00:00:21.260
+the Firefox package
+
+10
+00:00:21.440 --> 00:00:23.620
+using both APT and APT-GET.
+
+11
+00:00:24.680 --> 00:00:27.360
+You will notice that APT is easy on the eyes.
+
+12
+00:00:27.700 --> 00:00:29.460
+You get just enough information,
+
+13
+00:00:29.760 --> 00:00:32.160
+and also a nice little progress bar.
+
+14
+00:00:33.420 --> 00:00:35.640
+APT-GET, although just as effective,
+
+15
+00:00:36.140 --> 00:00:37.820
+does not provide the output
+
+16
+00:00:37.920 --> 00:00:39.400
+in a user friendly format.
+
+17
+00:00:42.360 --> 00:00:45.040
+Let's try another comparison between the two
+
+18
+00:00:45.140 --> 00:00:47.400
+by searching for a Telnet package.
+
+19
+00:00:48.080 --> 00:00:49.580
+You will notice that with APT,
+
+20
+00:00:49.900 --> 00:00:52.680
+all its options are located in one place.
+
+21
+00:00:53.100 --> 00:00:54.560
+You can search for a command
+
+22
+00:00:54.660 --> 00:00:56.420
+using the APT search command.
+
+23
+00:00:57.400 --> 00:00:58.200
+On the other hand,
+
+24
+00:00:58.540 --> 00:01:00.180
+you cannot search for a package
+
+25
+00:01:00.220 --> 00:01:01.940
+using the APT-GET command.
+
+26
+00:01:02.560 --> 00:01:05.000
+Instead, you have to use another tool
+
+27
+00:01:05.080 --> 00:01:08.100
+called APT-CACHE with the search option.
+
+28
+00:01:09.180 --> 00:01:10.640
+If you compare the results
+
+29
+00:01:10.680 --> 00:01:11.740
+of the two commands,
+
+30
+00:01:12.020 --> 00:01:14.360
+you will also see that APT-CACHE
+
+31
+00:01:14.620 --> 00:01:16.820
+throws in a lot of extra information
+
+32
+00:01:16.880 --> 00:01:18.000
+in the search result,
+
+33
+00:01:18.300 --> 00:01:20.000
+which may not really be useful
+
+34
+00:01:20.060 --> 00:01:21.020
+for the end-user.
+
+35
+00:01:22.120 --> 00:01:23.880
+APT search, on the other hand,
+
+36
+00:01:24.280 --> 00:01:27.000
+provides a shorter and more often than not,
+
+37
+00:01:27.180 --> 00:01:28.900
+more useful results.
+

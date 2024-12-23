@@ -1,0 +1,293 @@
+WEBVTT
+
+1
+00:00:00.310 --> 00:00:03.540
+What we have seen so far
+are ways to divide a disk
+
+2
+00:00:03.680 --> 00:00:06.770
+into segments of usable
+space using partitioning.
+
+3
+00:00:06.910 --> 00:00:09.940
+However, partitioning alone
+does not make a disk
+
+4
+00:00:10.080 --> 00:00:13.420
+usable in the OS.
+The disks and the partitions
+
+5
+00:00:13.540 --> 00:00:16.540
+are seen by the Linux kernel
+as a raw disk.
+
+6
+00:00:17.310 --> 00:00:20.540
+To write to a disk or
+a partition, we must first
+
+7
+00:00:20.680 --> 00:00:24.170
+create a filesystem.
+The filesystem defines how
+
+8
+00:00:24.280 --> 00:00:28.600
+data is stored on a disk.
+After creating a filesystem,
+
+9
+00:00:28.710 --> 00:00:32.600
+we must mount it to a directory,
+and that's when we can read
+
+10
+00:00:32.710 --> 00:00:37.450
+or write data to it.
+Now we will cover a few
+
+11
+00:00:37.570 --> 00:00:42.050
+of the commonly used filesystems,
+the extended file system series
+
+12
+00:00:42.140 --> 00:00:47.400
+from EXT2 to EXT4.
+Let's make a quick comparison
+
+13
+00:00:47.510 --> 00:00:52.170
+between EXT2, EXT3 and EXT4.
+
+14
+00:00:52.620 --> 00:00:56.570
+Both EXT2 and EXT3 allow
+
+15
+00:00:56.650 --> 00:01:02.400
+a maximum file size of 2 TB
+and a maximum volume size of 4 TB.
+
+16
+00:01:03.280 --> 00:01:07.800
+These two filesystems do a great job
+of reliably storing data.
+
+17
+00:01:08.600 --> 00:01:13.050
+The significant difference
+between the two is that in EXT2,
+
+18
+00:01:13.220 --> 00:01:16.540
+in case of an unclean shutdown
+such as one caused by
+
+19
+00:01:16.600 --> 00:01:19.970
+a power outage, it can take
+quite some time for the system
+
+20
+00:01:20.050 --> 00:01:24.540
+to boot back up.
+EXT3 file system, however,
+
+21
+00:01:24.710 --> 00:01:28.170
+did not have this drawback.
+It implemented additional
+
+22
+00:01:28.280 --> 00:01:30.540
+features that allowed quicker
+startup after
+
+23
+00:01:30.600 --> 00:01:36.770
+an ungraceful shutdown.
+EXT4 further improves the EXT3
+
+24
+00:01:36.910 --> 00:01:40.770
+filesystem and is still one of
+the most common general purpose
+
+25
+00:01:40.910 --> 00:01:45.000
+filesystem used today.
+It can now support 16 TB
+
+26
+00:01:45.140 --> 00:01:49.620
+of maximum file size
+and up to 1 Exabyte of volume size.
+
+27
+00:01:50.140 --> 00:01:55.370
+Another good thing about EXT4
+and EXT3 for that matter is that
+
+28
+00:01:55.450 --> 00:02:00.140
+they are backward compatible.
+An EXT4 filesystem can be mounted
+
+29
+00:02:00.200 --> 00:02:06.680
+as an EXT3 or EXT2 filesystem,
+and similarly, an EXT3
+
+30
+00:02:06.800 --> 00:02:08.940
+can be mounted as EXT2.
+
+31
+00:02:10.450 --> 00:02:13.280
+Now let's create some filesystems.
+
+32
+00:02:13.480 --> 00:02:20.170
+We will make use of the /dev/sdb disk
+to create an EXT4 file system.
+
+33
+00:02:20.710 --> 00:02:27.540
+To do this, run the mkfs.ext4 command
+with the device path as the argument.
+
+34
+00:02:28.570 --> 00:02:31.570
+Once this is complete,
+the filesystem can be mounted
+
+35
+00:02:31.650 --> 00:02:34.940
+on the system using the
+MOUNT command as shown here.
+
+36
+00:02:35.850 --> 00:02:39.820
+Next, we can check if the file system
+is mounted by either using
+
+37
+00:02:39.940 --> 00:02:43.450
+the DF command or by running
+the MOUNT command again,
+
+38
+00:02:43.800 --> 00:02:45.620
+but without any arguments.
+
+39
+00:02:47.020 --> 00:02:48.910
+To make this mount be available
+
+40
+00:02:49.000 --> 00:02:54.820
+after the system reboots,
+add an entry to the /etc/fstab
+
+41
+00:02:55.050 --> 00:02:58.850
+file like this.
+The first field here is
+
+42
+00:02:58.970 --> 00:03:01.910
+the filesystem itself.
+This is followed by
+
+43
+00:03:02.050 --> 00:03:05.200
+the mount point used.
+The next field is the type
+
+44
+00:03:05.340 --> 00:03:09.050
+of filesystem, which in this case
+is EXT4.
+
+45
+00:03:09.680 --> 00:03:14.140
+This is followed by mount options.
+The most common one used is
+
+46
+00:03:14.220 --> 00:03:17.770
+the RW option, which allows
+the filesystem to be
+
+47
+00:03:17.820 --> 00:03:22.080
+mounted Read-write.
+This is followed by two zeros.
+
+48
+00:03:22.570 --> 00:03:25.970
+The first zero indicates whether
+to backup the filesystem
+
+49
+00:03:26.080 --> 00:03:30.140
+using a dump utility.
+It can have two possible values,
+
+50
+00:03:30.450 --> 00:03:34.820
+zero for disabling backup
+and one for taking the backup.
+
+51
+00:03:35.370 --> 00:03:37.450
+This field is called the dump number.
+
+52
+00:03:38.450 --> 00:03:41.800
+The next field, which in this
+example is also a zero,
+
+53
+00:03:42.110 --> 00:03:45.250
+is the priority set for
+the filesystem check tool
+
+54
+00:03:45.310 --> 00:03:48.850
+to determine the order in which
+the file systems should be checked
+
+55
+00:03:49.000 --> 00:03:53.600
+during a boot after a crash.
+A value of zero means
+
+56
+00:03:53.740 --> 00:03:56.050
+the tool will ignore
+the filesystem check.
+
+57
+00:03:56.620 --> 00:03:59.800
+This field is called
+the PASS number and can have
+
+58
+00:03:59.910 --> 00:04:05.620
+values of zero, one, two.
+One being the maximum is usually
+
+59
+00:04:05.770 --> 00:04:07.420
+set for the root filesystem.
+
+60
+00:04:09.140 --> 00:04:13.080
+Now let's play around with
+filesystems with a hands-on lab.

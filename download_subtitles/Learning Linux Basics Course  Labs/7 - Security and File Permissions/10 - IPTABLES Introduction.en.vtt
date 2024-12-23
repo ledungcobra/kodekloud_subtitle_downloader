@@ -1,0 +1,742 @@
+WEBVTT
+
+1
+00:00:00.480 --> 00:00:02.292
+In this section of the course,
+
+2
+00:00:02.408 --> 00:00:04.802
+we will learn about network security
+
+3
+00:00:04.893 --> 00:00:07.078
+using IPtable rules.
+
+4
+00:00:07.553 --> 00:00:08.926
+In the previous section,
+
+5
+00:00:09.147 --> 00:00:12.195
+we saw how to use SSH to connect
+
+6
+00:00:12.195 --> 00:00:14.220
+to remote servers and copy
+
+7
+00:00:14.220 --> 00:00:17.001
+files remotely using SCP.
+
+8
+00:00:17.517 --> 00:00:20.267
+As long as the SSH service is running
+
+9
+00:00:20.267 --> 00:00:21.633
+on the remote server,
+
+10
+00:00:21.853 --> 00:00:23.238
+you should be able to connect
+
+11
+00:00:23.238 --> 00:00:24.987
+to the system from the client.
+
+12
+00:00:25.481 --> 00:00:27.840
+There are a couple of prerequisites though.
+
+13
+00:00:28.397 --> 00:00:30.154
+To connect to the remote server
+
+14
+00:00:30.355 --> 00:00:32.264
+you should have valid authentication
+
+15
+00:00:32.264 --> 00:00:34.482
+mechanisms such as username
+
+16
+00:00:34.482 --> 00:00:36.711
+and password based authentication
+
+17
+00:00:37.017 --> 00:00:40.419
+and SSH key based authentication.
+
+18
+00:00:41.194 --> 00:00:43.674
+Secondly, the network connection
+
+19
+00:00:43.674 --> 00:00:46.063
+must be open for port 22
+
+20
+00:00:46.135 --> 00:00:48.035
+from the client to the server.
+
+21
+00:00:49.718 --> 00:00:52.308
+In a real world production environment
+
+22
+00:00:52.383 --> 00:00:54.135
+that has many different clients
+
+23
+00:00:54.135 --> 00:00:55.428
+in many different servers,
+
+24
+00:00:55.428 --> 00:00:57.986
+all connected through a large network
+
+25
+00:00:58.173 --> 00:01:00.463
+with many different switches and routers,
+
+26
+00:01:00.800 --> 00:01:02.805
+it is important that we implement
+
+27
+00:01:02.805 --> 00:01:05.555
+network security to allow or restrict
+
+28
+00:01:05.613 --> 00:01:07.677
+access to the various services.
+
+29
+00:01:08.849 --> 00:01:09.732
+This allows us
+
+30
+00:01:09.732 --> 00:01:11.828
+to control network connectivity,
+
+31
+00:01:11.942 --> 00:01:14.573
+such as allowing SSH access
+
+32
+00:01:14.573 --> 00:01:17.837
+from a specific IP or a network range.
+
+33
+00:01:18.642 --> 00:01:21.666
+We can apply such security network-wide
+
+34
+00:01:21.746 --> 00:01:25.197
+using external firewalls or appliances
+
+35
+00:01:25.197 --> 00:01:26.990
+such as Cisco ASA,
+
+36
+00:01:27.291 --> 00:01:29.445
+Juniper next-gen firewall,
+
+37
+00:01:29.823 --> 00:01:32.088
+Barracuda next-gen firewall,
+
+38
+00:01:32.695 --> 00:01:34.510
+Fortinet, et-cetera.
+
+39
+00:01:35.131 --> 00:01:36.755
+Using these appliances,
+
+40
+00:01:36.910 --> 00:01:39.268
+you can define rules that will control
+
+41
+00:01:39.310 --> 00:01:41.470
+any traffic flowing through the network
+
+42
+00:01:41.917 --> 00:01:44.830
+or an alternate option is to apply
+
+43
+00:01:44.830 --> 00:01:47.688
+these rules at an individual server level
+
+44
+00:01:47.900 --> 00:01:50.783
+using tools such as IPtables
+
+45
+00:01:50.893 --> 00:01:54.286
+and FirewallD in Linux-based systems
+
+46
+00:01:54.457 --> 00:01:56.990
+and Firewalls in windows servers.
+
+47
+00:01:58.016 --> 00:01:59.914
+In this section, we will learn
+
+48
+00:01:59.914 --> 00:02:03.070
+how to implement local IPtable rules
+
+49
+00:02:03.147 --> 00:02:04.620
+and secure our server
+
+50
+00:02:04.620 --> 00:02:06.041
+in a Linux environment.
+
+51
+00:02:06.598 --> 00:02:08.907
+These rules will allow us to filter
+
+52
+00:02:08.907 --> 00:02:10.780
+network traffic within the Linux
+
+53
+00:02:10.780 --> 00:02:12.184
+operating system.
+
+54
+00:02:13.726 --> 00:02:16.011
+Let's take the example of the project
+
+55
+00:02:16.011 --> 00:02:17.365
+mercury environment
+
+56
+00:02:17.530 --> 00:02:19.169
+and set up firewall rules
+
+57
+00:02:19.172 --> 00:02:20.910
+on the application server
+
+58
+00:02:21.586 --> 00:02:23.462
+assume that the client laptop
+
+59
+00:02:23.462 --> 00:02:30.452
+has an IP address of 172.16.238.187.
+
+60
+00:02:31.128 --> 00:02:33.288
+We have two devservers,
+
+61
+00:02:33.417 --> 00:02:37.001
+the application server called DEVAPP01
+
+62
+00:02:37.285 --> 00:02:42.841
+with the IP of 172.16.238.10
+
+63
+00:02:43.120 --> 00:02:46.744
+and database server called DEVDB01
+
+64
+00:02:46.924 --> 00:02:52.640
+with the IP 172.16.238.11.
+
+65
+00:02:53.613 --> 00:02:55.608
+Since we do not have a firewall
+
+66
+00:02:55.608 --> 00:02:56.913
+configured at the moment,
+
+67
+00:02:57.252 --> 00:02:59.980
+every server can connect to every other
+
+68
+00:02:59.980 --> 00:03:01.404
+server in this network.
+
+69
+00:03:01.721 --> 00:03:03.652
+We want to improve security
+
+70
+00:03:03.652 --> 00:03:05.735
+by restricting network access.
+
+71
+00:03:06.278 --> 00:03:08.764
+From your laptop you should be allowed
+
+72
+00:03:08.764 --> 00:03:11.299
+to SSH to the app server.
+
+73
+00:03:12.143 --> 00:03:14.027
+The application server runs
+
+74
+00:03:14.027 --> 00:03:16.400
+a web application on port 80,
+
+75
+00:03:16.615 --> 00:03:18.113
+which should be accessible
+
+76
+00:03:18.113 --> 00:03:19.525
+from the client laptop,
+
+77
+00:03:19.693 --> 00:03:21.914
+but blocked from all other servers,
+
+78
+00:03:21.975 --> 00:03:23.950
+such as DEVDB01.
+
+79
+00:03:24.617 --> 00:03:26.358
+The database server runs
+
+80
+00:03:26.358 --> 00:03:29.437
+the DB on port 5432.
+
+81
+00:03:29.986 --> 00:03:31.685
+The app server should be able
+
+82
+00:03:31.685 --> 00:03:33.864
+to connect to this port on the DB
+
+83
+00:03:33.914 --> 00:03:35.633
+for the application to work.
+
+84
+00:03:36.419 --> 00:03:39.042
+The application server should also have
+
+85
+00:03:39.042 --> 00:03:41.754
+HTTP access to the software
+
+86
+00:03:41.754 --> 00:03:46.915
+repository server called caleston-repo-01.
+
+87
+00:03:48.002 --> 00:03:49.230
+To further safeguard
+
+88
+00:03:49.230 --> 00:03:51.451
+our application server we want
+
+89
+00:03:51.451 --> 00:03:53.657
+to be block outgoing internet access
+
+90
+00:03:53.657 --> 00:03:54.987
+on the app server.
+
+91
+00:03:55.486 --> 00:03:58.091
+Finally, we also want to make sure that
+
+92
+00:03:58.091 --> 00:04:00.468
+the DB server accepts connection
+
+93
+00:04:00.468 --> 00:04:04.612
+only from the app server on port 5432
+
+94
+00:04:04.783 --> 00:04:06.063
+and nowhere else.
+
+95
+00:04:06.584 --> 00:04:09.092
+Let's handle that the SSH connectivity
+
+96
+00:04:09.092 --> 00:04:11.842
+from the client to the devservers first.
+
+97
+00:04:12.256 --> 00:04:17.100
+To do this, first SHH to DEVAPP01 server.
+
+98
+00:04:17.724 --> 00:04:20.085
+To filter data traffic on the server,
+
+99
+00:04:20.217 --> 00:04:22.816
+we will make use of IPtables.
+
+100
+00:04:23.668 --> 00:04:26.361
+In Red Hat and CentOS systems
+
+101
+00:04:26.485 --> 00:04:28.284
+it should be installed by default.
+
+102
+00:04:28.874 --> 00:04:30.571
+However, on Ubuntu,
+
+103
+00:04:30.805 --> 00:04:33.020
+you may have to install it manually.
+
+104
+00:04:33.735 --> 00:04:37.260
+To install IPtables run sudo apt
+
+105
+00:04:37.260 --> 00:04:39.310
+install iptables.
+
+106
+00:04:40.264 --> 00:04:45.015
+Once the package is installed, run iptables -L
+
+107
+00:04:45.092 --> 00:04:46.642
+to list the default rules
+
+108
+00:04:46.642 --> 00:04:48.135
+configured in the system.
+
+109
+00:04:48.797 --> 00:04:51.155
+Since we just installed IPtables,
+
+110
+00:04:51.255 --> 00:04:53.442
+the output should look like this.
+
+111
+00:04:54.824 --> 00:04:57.114
+We will see three types of rules
+
+112
+00:04:57.114 --> 00:04:59.495
+or chains configured by default,
+
+113
+00:04:59.906 --> 00:05:02.844
+Input, forward and output.
+
+114
+00:05:03.746 --> 00:05:05.845
+The input chain is applicable
+
+115
+00:05:05.845 --> 00:05:08.411
+to network traffic coming into the system.
+
+116
+00:05:08.824 --> 00:05:11.751
+In this case, to allow the SSH connection
+
+117
+00:05:11.751 --> 00:05:13.390
+from the client laptop,
+
+118
+00:05:13.528 --> 00:05:15.886
+we would need to add an input rule
+
+119
+00:05:15.886 --> 00:05:17.412
+on the devapp server
+
+120
+00:05:17.453 --> 00:05:19.371
+permitting SSH connection.
+
+121
+00:05:20.537 --> 00:05:22.468
+The output chain is responsible
+
+122
+00:05:22.468 --> 00:05:23.925
+for connections initiated
+
+123
+00:05:23.925 --> 00:05:26.143
+by this server to other systems.
+
+124
+00:05:26.684 --> 00:05:29.442
+For example, when this application server
+
+125
+00:05:29.442 --> 00:05:31.986
+initiates a connection to another server,
+
+126
+00:05:31.986 --> 00:05:34.471
+such as a database server to query
+
+127
+00:05:34.471 --> 00:05:35.881
+or write some data.
+
+128
+00:05:36.874 --> 00:05:39.674
+The last type of chain is the forward chain.
+
+129
+00:05:40.209 --> 00:05:43.172
+This is typically used in network routers
+
+130
+00:05:43.260 --> 00:05:44.968
+where the data is forwarded
+
+131
+00:05:44.968 --> 00:05:46.885
+to other devices in the network.
+
+132
+00:05:47.409 --> 00:05:49.740
+This rule is not commonly used
+
+133
+00:05:49.740 --> 00:05:51.020
+in a Linux server.
+
+134
+00:05:52.256 --> 00:05:54.678
+Since we have not added any rules,
+
+135
+00:05:54.802 --> 00:05:57.376
+the default policy is set to accept.
+
+136
+00:05:57.920 --> 00:06:00.085
+This means all traffic is allowed
+
+137
+00:06:00.085 --> 00:06:01.906
+in and out of the system.
+
+138
+00:06:03.688 --> 00:06:06.764
+Now, why are these called a chain,
+
+139
+00:06:07.205 --> 00:06:08.893
+input or output chain?
+
+140
+00:06:09.583 --> 00:06:11.445
+That's because each chain
+
+141
+00:06:11.445 --> 00:06:13.511
+can have multiple rules within it.
+
+142
+00:06:13.969 --> 00:06:16.168
+It's a chain of rules.
+
+143
+00:06:16.609 --> 00:06:18.590
+Each rule performs a check
+
+144
+00:06:18.678 --> 00:06:20.739
+and accepts or drops the packet
+
+145
+00:06:20.822 --> 00:06:22.132
+based on the condition.
+
+146
+00:06:22.835 --> 00:06:25.784
+For example, the first rule in the input chain
+
+147
+00:06:25.784 --> 00:06:28.008
+may be to accept if the request
+
+148
+00:06:28.008 --> 00:06:30.093
+is coming from the client01
+
+149
+00:06:30.546 --> 00:06:33.161
+and the second rule may be to drop
+
+150
+00:06:33.161 --> 00:06:34.598
+the packet if the request
+
+151
+00:06:34.598 --> 00:06:36.929
+is coming in from client02.
+
+152
+00:06:37.586 --> 00:06:39.166
+mWhen a condition is met,
+
+153
+00:06:39.326 --> 00:06:41.255
+the packet is either accepted
+
+154
+00:06:41.382 --> 00:06:43.208
+or dropped based on the rule.
+
+155
+00:06:43.966 --> 00:06:45.726
+If the condition is not met
+
+156
+00:06:45.914 --> 00:06:48.148
+the package proceeds to the next rule
+
+157
+00:06:48.148 --> 00:06:48.957
+in the chain.
+
+158
+00:06:50.195 --> 00:06:53.092
+For example, say a request comes in
+
+159
+00:06:53.092 --> 00:06:54.954
+from the source client01.
+
+160
+00:06:55.442 --> 00:06:57.277
+Since it matches the first rule
+
+161
+00:06:57.277 --> 00:06:58.725
+and is set to accept,
+
+162
+00:06:59.009 --> 00:07:00.593
+the packet is accepted.
+
+163
+00:07:01.202 --> 00:07:02.993
+Say another request comes in
+
+164
+00:07:02.993 --> 00:07:04.863
+from the source client02.
+
+165
+00:07:05.219 --> 00:07:07.506
+It does not meet the first condition.
+
+166
+00:07:07.784 --> 00:07:09.892
+It proceeds to the next rule
+
+167
+00:07:09.892 --> 00:07:10.662
+and the chain.
+
+168
+00:07:11.431 --> 00:07:14.554
+Say a request comes in from client05.
+
+169
+00:07:14.918 --> 00:07:17.307
+It does not match the first condition,
+
+170
+00:07:17.368 --> 00:07:20.491
+nor the second, nor the third, nor the fourth.
+
+171
+00:07:21.062 --> 00:07:23.086
+The fifth rule is configured
+
+172
+00:07:23.086 --> 00:07:25.406
+to drop the packet if it originated
+
+173
+00:07:25.406 --> 00:07:28.427
+from any server, so it is dropped.
+
+174
+00:07:28.960 --> 00:07:31.966
+This chain of rules accepts any traffic
+
+175
+00:07:32.024 --> 00:07:35.536
+coming in from client01 or client03
+
+176
+00:07:35.605 --> 00:07:39.122
+or client04 and drops everything else.
+
+177
+00:07:40.171 --> 00:07:41.423
+Apart from the source
+
+178
+00:07:41.423 --> 00:07:43.009
+where the traffic originated,
+
+179
+00:07:43.169 --> 00:07:45.222
+we can also configure the condition
+
+180
+00:07:45.222 --> 00:07:47.155
+to consider the destination
+
+181
+00:07:47.155 --> 00:07:48.882
+where the traffic is headed to,
+
+182
+00:07:49.373 --> 00:07:51.081
+the port at which the traffic
+
+183
+00:07:51.081 --> 00:07:52.074
+is coming through,
+
+184
+00:07:52.273 --> 00:07:53.972
+as well as the protocol.
+
+185
+00:07:54.706 --> 00:07:56.946
+We will see how that works next.
+

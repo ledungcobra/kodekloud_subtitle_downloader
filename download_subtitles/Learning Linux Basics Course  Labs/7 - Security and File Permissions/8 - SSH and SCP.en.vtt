@@ -1,0 +1,588 @@
+WEBVTT
+
+1
+00:00:01.720 --> 00:00:04.120
+"Before we wrap up this session,
+
+2
+00:00:04.120 --> 00:00:06.880
+let me show you a few more useful commands,"
+
+3
+00:00:07.240 --> 00:00:08.110
+says Dave.
+
+4
+00:00:08.800 --> 00:00:11.050
+"Let's start with SSH,"
+
+5
+00:00:11.580 --> 00:00:12.580
+he says.
+
+6
+00:00:14.050 --> 00:00:19.610
+SSH is used for logging into
+and executing commands on a remote computer.
+
+7
+00:00:20.160 --> 00:00:26.000
+The command syntax for this
+is SSH followed by the IP address
+
+8
+00:00:26.000 --> 00:00:28.880
+or hostname of the server
+you want to connect to.
+
+9
+00:00:29.450 --> 00:00:32.420
+You can also pass in the user
+you want to connect
+
+10
+00:00:32.420 --> 00:00:34.620
+as with the SSH command
+
+11
+00:00:34.620 --> 00:00:37.600
+by using the @ symbol before the hostname
+
+12
+00:00:37.600 --> 00:00:40.350
+or by using the -L flag.
+
+13
+00:00:41.160 --> 00:00:42.940
+The remote server, however,
+
+14
+00:00:42.940 --> 00:00:45.240
+should have an SSH service running
+
+15
+00:00:45.520 --> 00:00:48.400
+in port 22 accessible from the client
+
+16
+00:00:48.400 --> 00:00:49.660
+for the connection to work.
+
+17
+00:00:50.410 --> 00:00:53.880
+Another requirement
+is a valid username and password
+
+18
+00:00:53.880 --> 00:00:56.780
+created on the remote system that you can use
+
+19
+00:00:57.010 --> 00:00:59.980
+or something known as an SSH key
+
+20
+00:00:59.980 --> 00:01:03.680
+that you can use to login
+to the remote machine without a password.
+
+21
+00:01:04.400 --> 00:01:07.240
+We will take a look at SSH keys soon,
+
+22
+00:01:07.480 --> 00:01:08.440
+but before that,
+
+23
+00:01:08.750 --> 00:01:09.950
+let's see an example.
+
+24
+00:01:10.880 --> 00:01:14.340
+If you want to connect
+to the dev web-server from your laptop,
+
+25
+00:01:14.600 --> 00:01:17.360
+you can issue the SSH command this way;
+
+26
+00:01:17.940 --> 00:01:20.560
+SSH dev app01,
+
+27
+00:01:20.910 --> 00:01:25.180
+where dev app01 is the hostname
+for the dev web server.
+
+28
+00:01:25.980 --> 00:01:28.960
+Since a username has not been specified,
+
+29
+00:01:28.960 --> 00:01:31.410
+it will try to log in as the current user.
+
+30
+00:01:31.910 --> 00:01:34.940
+If the connection to the remote server
+is successful,
+
+31
+00:01:34.940 --> 00:01:38.920
+it will ask you for the password
+for the same user on the remote system
+
+32
+00:01:39.500 --> 00:01:42.320
+If you provide a valid user and password,
+
+33
+00:01:42.320 --> 00:01:45.000
+you should be taken
+to the shell on the dev server.
+
+34
+00:01:45.510 --> 00:01:46.650
+In this example,
+
+35
+00:01:46.650 --> 00:01:49.980
+your laptop from which you are trying
+to connect is the client
+
+36
+00:01:50.200 --> 00:01:51.860
+and the remote web server,
+
+37
+00:01:51.860 --> 00:01:55.180
+which has the SSH service running,
+is the server.
+
+38
+00:01:58.060 --> 00:01:59.360
+What we have seen here
+
+39
+00:01:59.360 --> 00:02:03.800
+is a simple way to access a remote server
+using the SSH client.
+
+40
+00:02:04.310 --> 00:02:08.610
+We have used the username and password
+as the means of authentication.
+
+41
+00:02:09.360 --> 00:02:14.180
+Now, if you don't want to pass in
+a username and password every time,
+
+42
+00:02:14.180 --> 00:02:17.810
+you can also implement
+the password-less authentication.
+
+43
+00:02:18.640 --> 00:02:19.660
+To do this,
+
+44
+00:02:19.660 --> 00:02:22.880
+we need to first generate a key pair
+on the client.
+
+45
+00:02:23.500 --> 00:02:26.120
+A key pair, as the name suggests,
+
+46
+00:02:26.120 --> 00:02:28.480
+consists of two pairs of keys.
+
+47
+00:02:28.960 --> 00:02:30.710
+The first is a private key.
+
+48
+00:02:31.040 --> 00:02:35.110
+Consider this as the key only you
+as the client will have
+
+49
+00:02:35.110 --> 00:02:37.080
+and is not shared with anyone else.
+
+50
+00:02:37.610 --> 00:02:39.710
+The second is a public key.
+
+51
+00:02:40.110 --> 00:02:42.240
+As the name suggests, it's public
+
+52
+00:02:42.560 --> 00:02:44.540
+and hence can be shared with others,
+
+53
+00:02:44.540 --> 00:02:46.280
+including our remote server.
+
+54
+00:02:47.150 --> 00:02:50.250
+When the public key is installed
+on the remote server,
+
+55
+00:02:50.250 --> 00:02:55.180
+you can unlock it by connecting to it
+with a client that already has the private key.
+
+56
+00:02:58.080 --> 00:03:03.940
+"We will use this opportunity to set up
+password-less SSH between your laptop
+
+57
+00:03:03.940 --> 00:03:07.650
+and the dev web server where you have to get
+your application running,"
+
+58
+00:03:08.080 --> 00:03:09.050
+says Dave.
+
+59
+00:03:09.850 --> 00:03:11.380
+Bob likes this idea.
+
+60
+00:03:11.910 --> 00:03:15.300
+This means that he won't have to enter
+his password repeatedly
+
+61
+00:03:15.300 --> 00:03:16.740
+while working on the project.
+
+62
+00:03:17.550 --> 00:03:20.550
+First, create the key pair on the client,
+
+63
+00:03:20.550 --> 00:03:24.260
+which is your laptop
+using the SSH keygen command.
+
+64
+00:03:24.700 --> 00:03:26.300
+When you run this command,
+
+65
+00:03:26.300 --> 00:03:28.550
+it will ask you to enter a passphrase.
+
+66
+00:03:28.860 --> 00:03:30.020
+This is optional,
+
+67
+00:03:30.020 --> 00:03:33.780
+but improves the security of the key
+should it become compromised.
+
+68
+00:03:34.950 --> 00:03:37.560
+The only downside to having a passphrase
+
+69
+00:03:37.560 --> 00:03:41.210
+is then having to type it in
+each time you use the key pair.
+
+70
+00:03:41.780 --> 00:03:43.950
+Note the output from the command
+
+71
+00:03:43.950 --> 00:03:46.500
+and you will see that the public key
+is stored at
+
+72
+00:03:46.500 --> 00:03:55.740
+/home/bob/.ssh/id_rsa.pub.
+
+73
+00:03:56.780 --> 00:04:00.250
+It's easy to identify it
+with its .pub extension.
+
+74
+00:04:00.880 --> 00:04:02.820
+The private key is stored at
+
+75
+00:04:02.820 --> 00:04:10.480
+/home/bob/.ssh/id_rsa file.
+
+76
+00:04:13.600 --> 00:04:14.810
+The next step
+
+77
+00:04:14.810 --> 00:04:17.780
+is to copy the public key to the remote server.
+
+78
+00:04:18.300 --> 00:04:20.340
+To do this, you will have to resort
+
+79
+00:04:20.340 --> 00:04:23.460
+to password-based authentication
+at least once.
+
+80
+00:04:23.980 --> 00:04:25.510
+An easy way to do this
+
+81
+00:04:25.510 --> 00:04:29.720
+is to make use of the command
+called ssh-copy-id,
+
+82
+00:04:30.060 --> 00:04:32.750
+which should be installed in the system
+by default.
+
+83
+00:04:33.540 --> 00:04:35.500
+Use the command as shown here,
+
+84
+00:04:35.920 --> 00:04:37.480
+specifying the user,
+
+85
+00:04:37.710 --> 00:04:39.480
+which in our case is Bob,
+
+86
+00:04:39.720 --> 00:04:42.250
+and the remote server name or IP.
+
+87
+00:04:43.120 --> 00:04:44.650
+Once you enter the command,
+
+88
+00:04:44.650 --> 00:04:49.080
+you will be asked to enter the password
+for your user on the remote server.
+
+89
+00:04:49.760 --> 00:04:50.840
+After this,
+
+90
+00:04:50.840 --> 00:04:54.900
+you should be able to access the remote server
+without entering a password
+
+91
+00:04:56.140 --> 00:04:57.520
+and sure enough,
+
+92
+00:04:57.520 --> 00:05:01.180
+when Bob tries it,
+he is not asked to enter the password
+
+93
+00:05:01.180 --> 00:05:04.340
+and is taken directly to the shell
+of the remote web server.
+
+94
+00:05:07.460 --> 00:05:09.280
+Bob is pleased with that.
+
+95
+00:05:09.780 --> 00:05:13.110
+"So my public key is installed
+in the dev server now?"
+
+96
+00:05:13.410 --> 00:05:14.310
+he asks.
+
+97
+00:05:14.800 --> 00:05:16.110
+Dave replies,
+
+98
+00:05:16.110 --> 00:05:17.450
+"Yes, that is correct.
+
+99
+00:05:18.040 --> 00:05:23.410
+It is installed in a specific file
+called authorized_keys,
+
+100
+00:05:23.600 --> 00:05:27.080
+which should be inside
+a hidden directory called SSH
+
+101
+00:05:27.080 --> 00:05:29.680
+inside your home directory
+on the remote server."
+
+102
+00:05:31.300 --> 00:05:33.100
+If you open this file,
+
+103
+00:05:33.100 --> 00:05:36.510
+you should see the public key
+from your laptop listed here.
+
+104
+00:05:39.380 --> 00:05:42.050
+Now that you know how SSH works,
+
+105
+00:05:42.050 --> 00:05:45.310
+let's see another useful tool called SCP.
+
+106
+00:05:45.880 --> 00:05:48.750
+You should be familiar with the cp command,
+
+107
+00:05:48.750 --> 00:05:51.500
+which allows us to copy files
+and directories
+
+108
+00:05:51.500 --> 00:05:53.710
+within the file systems in Linux.
+
+109
+00:05:54.450 --> 00:05:58.110
+SCP allows you to copy data over SSH.
+
+110
+00:05:58.580 --> 00:06:01.720
+This means that you can copy files
+and directories
+
+111
+00:06:01.720 --> 00:06:03.020
+between your laptop
+
+112
+00:06:03.020 --> 00:06:06.510
+and any other server
+to which you have SSH access.
+
+113
+00:06:06.960 --> 00:06:09.860
+Say you want to copy a compressed file
+
+114
+00:06:09.860 --> 00:06:13.910
+called calestone-code.tgz
+
+115
+00:06:13.910 --> 00:06:16.180
+from your home directory on the laptop
+
+116
+00:06:16.180 --> 00:06:19.710
+to a remote web server named devapp01.
+
+117
+00:06:20.320 --> 00:06:23.600
+As long as you can SSH to the web server,
+
+118
+00:06:23.600 --> 00:06:25.850
+you can copy the files like this.
+
+119
+00:06:26.320 --> 00:06:29.520
+The files will be copied
+to the directory you specify
+
+120
+00:06:29.520 --> 00:06:32.050
+after the colon following the webserver.
+
+121
+00:06:32.660 --> 00:06:33.840
+In this case,
+
+122
+00:06:33.840 --> 00:06:37.650
+we are copying the files
+to the home directory in the destination.
+
+123
+00:06:38.080 --> 00:06:40.410
+Remember, you should have permission
+
+124
+00:06:40.410 --> 00:06:42.880
+to write to the directory
+and the destination
+
+125
+00:06:43.060 --> 00:06:47.180
+or else the SCP command will fail
+with a permission denied error.
+
+126
+00:06:47.480 --> 00:06:50.510
+If you want to copy directories
+instead of files,
+
+127
+00:06:50.720 --> 00:06:53.680
+use the -r option with SCP,
+
+128
+00:06:54.580 --> 00:06:58.180
+and to preserve the ownership
+and permission of the source file,
+
+129
+00:06:58.180 --> 00:07:00.380
+make use of the -pflag.
+
+130
+00:07:01.080 --> 00:07:03.380
+These commands are bound to be useful
+
+131
+00:07:03.380 --> 00:07:08.280
+when Bob tries to migrate the Django project
+from his laptop to the dev servers.
+
+132
+00:07:08.920 --> 00:07:10.880
+That brought the session to an end.
+
+133
+00:07:11.280 --> 00:07:14.280
+Bob thanks Dave for another useful lesson
+
+134
+00:07:14.280 --> 00:07:15.750
+and heads back to his desk.

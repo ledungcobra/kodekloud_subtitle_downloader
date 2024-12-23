@@ -1,0 +1,559 @@
+WEBVTT
+
+1
+00:00:00.635 --> 00:00:04.857
+-In this section, we will take a look
+at the Linux shell in detail.
+
+2
+00:00:05.133 --> 00:00:07.412
+We will learn how to use Linux commands
+
+3
+00:00:07.412 --> 00:00:10.852
+and understand how to work with files
+and directories.
+
+4
+00:00:11.120 --> 00:00:15.088
+We will also see different ways
+to get help with Linux commands.
+
+5
+00:00:15.396 --> 00:00:16.043
+Finally,
+
+6
+00:00:16.091 --> 00:00:19.723
+we will learn about the different types
+of shells used in Linux
+
+7
+00:00:19.750 --> 00:00:23.005
+while particularly focusing
+on the bash shell.
+
+8
+00:00:24.779 --> 00:00:29.353
+The first chapter was named
+"Working with the Shell, Part One."
+
+9
+00:00:30.285 --> 00:00:33.490
+"This has got to be better
+than the anti-corruption training,"
+
+10
+00:00:34.397 --> 00:00:35.529
+Bob thinks.
+
+11
+00:00:35.830 --> 00:00:38.064
+He begins to read under his breath.
+
+12
+00:00:40.075 --> 00:00:43.110
+In this section,
+we will take a look at the Linux shell.
+
+13
+00:00:43.462 --> 00:00:49.094
+This command-line interface will enable you
+to effectively work on your Linux laptop.
+
+14
+00:00:50.221 --> 00:00:54.388
+While the graphical version
+may seem more appealing to new users,
+
+15
+00:00:54.443 --> 00:00:57.469
+it can be quite limited
+in the level of functionality.
+
+16
+00:00:58.077 --> 00:01:03.298
+This is where the Linux command line,
+commonly known as the shell, shines.
+
+17
+00:01:03.316 --> 00:01:08.445
+This guide will be a good place to start
+if you have never used the shell before.
+
+18
+00:01:09.444 --> 00:01:11.709
+As a Linux system administrator,
+
+19
+00:01:11.737 --> 00:01:14.660
+you would always need
+to know how to work with the shell,
+
+20
+00:01:15.200 --> 00:01:17.709
+so what is a shell?
+
+21
+00:01:18.317 --> 00:01:22.356
+The Linux shell is a program
+that allows text-based interaction
+
+22
+00:01:22.356 --> 00:01:25.030
+between the user and the operating system.
+
+23
+00:01:25.286 --> 00:01:29.785
+This interaction is carried out
+by typing commands into the interface
+
+24
+00:01:29.837 --> 00:01:32.507
+and receiving the response in the same way.
+
+25
+00:01:35.051 --> 00:01:37.446
+The Linux shell is a powerful tool
+
+26
+00:01:37.517 --> 00:01:41.604
+with which you can navigate between
+different locations within the system.
+
+27
+00:01:41.794 --> 00:01:44.381
+However, when you log into the shell,
+
+28
+00:01:44.614 --> 00:01:48.560
+the very first directory you are taken to
+is your home directory.
+
+29
+00:01:49.220 --> 00:01:52.774
+In most cases, a user, such as Michael here,
+
+30
+00:01:53.021 --> 00:01:57.264
+has the home directory created
+under the "/home" directory.
+
+31
+00:01:57.933 --> 00:02:00.953
+/home is a system created directory
+
+32
+00:02:01.003 --> 00:02:05.904
+that contains the home directories
+for almost all users in the Linux system.
+
+33
+00:02:06.253 --> 00:02:08.772
+This will be covered in more detail later.
+
+34
+00:02:09.549 --> 00:02:11.856
+The name of a user's home directory
+
+35
+00:02:11.952 --> 00:02:15.588
+is by default identical
+to that of the name of the user.
+
+36
+00:02:15.803 --> 00:02:20.784
+Hence, Michael's home directory
+is "/home/Michael."
+
+37
+00:02:21.350 --> 00:02:25.021
+Remember,
+the home directory is unique for the user.
+
+38
+00:02:25.234 --> 00:02:29.216
+Another user called Allen
+will have a different home directory,
+
+39
+00:02:29.467 --> 00:02:34.445
+which by default should be created
+under "/home/Allen."
+
+40
+00:02:36.228 --> 00:02:38.306
+Why do we need a home directory?
+
+41
+00:02:38.854 --> 00:02:42.646
+The home directory allows users
+to store their personal data
+
+42
+00:02:42.646 --> 00:02:44.996
+in the form of files and directories.
+
+43
+00:02:45.312 --> 00:02:49.124
+Each user in the system
+gets their own unique home directory
+
+44
+00:02:49.380 --> 00:02:51.389
+with complete access to it,
+
+45
+00:02:51.632 --> 00:02:55.108
+to be able to save, retrieve, or delete data.
+
+46
+00:02:56.166 --> 00:02:59.218
+Think of it as a dedicated locker
+assigned to you,
+
+47
+00:02:59.481 --> 00:03:02.251
+in which you can store or retrieve items.
+
+48
+00:03:02.932 --> 00:03:07.586
+Other users can't access your files
+or folders within your home directory,
+
+49
+00:03:08.176 --> 00:03:09.542
+only you can.
+
+50
+00:03:10.434 --> 00:03:11.380
+Going forward,
+
+51
+00:03:11.833 --> 00:03:16.699
+all examples in this quick start guide
+will make use of the user called Michael.
+
+52
+00:03:17.268 --> 00:03:21.227
+Another thing to note is the representation
+of the home directory.
+
+53
+00:03:21.558 --> 00:03:25.133
+It is represented by the tilde symbol
+in the command line.
+
+54
+00:03:26.480 --> 00:03:29.334
+What you see here is a command-line prompt.
+
+55
+00:03:30.352 --> 00:03:33.062
+You can configure it
+to show whatever you want,
+
+56
+00:03:33.398 --> 00:03:36.368
+such as the host name, date, or time.
+
+57
+00:03:37.051 --> 00:03:40.555
+It is currently configured
+to show the current working directory.
+
+58
+00:03:41.675 --> 00:03:45.179
+The tilde symbol here
+represents the home directory.
+
+59
+00:03:48.256 --> 00:03:51.421
+To interact with the Linux system
+using the shell,
+
+60
+00:03:51.648 --> 00:03:53.945
+a user has to type in commands.
+
+61
+00:03:54.326 --> 00:03:55.787
+When a command is run,
+
+62
+00:03:55.874 --> 00:03:59.234
+it executes a program
+to achieve a specific task.
+
+63
+00:03:59.842 --> 00:04:00.672
+For example,
+
+64
+00:04:00.875 --> 00:04:05.213
+the echo command is used
+to print a line of text on the screen.
+
+65
+00:04:05.634 --> 00:04:06.400
+Go on,
+
+66
+00:04:06.468 --> 00:04:07.972
+try it in your terminal.
+
+67
+00:04:09.780 --> 00:04:11.689
+Bob types in "echo"
+
+68
+00:04:11.750 --> 00:04:12.592
+and hits enter.
+
+69
+00:04:13.500 --> 00:04:17.522
+"Well, that did not do anything," Bob thinks.
+
+70
+00:04:18.173 --> 00:04:19.490
+He reads further.
+
+71
+00:04:20.178 --> 00:04:25.065
+When you used the echo command,
+you did not tell what you want to print
+
+72
+00:04:25.440 --> 00:04:27.842
+and as a result, it prints nothing.
+
+73
+00:04:28.834 --> 00:04:31.540
+That's where an argument
+comes into the picture.
+
+74
+00:04:31.972 --> 00:04:34.836
+An argument acts as an input to the command.
+
+75
+00:04:35.721 --> 00:04:40.946
+Now type in a single word such as "hello"
+following the echo command
+
+76
+00:04:41.225 --> 00:04:42.253
+and hit enter.
+
+77
+00:04:43.382 --> 00:04:46.662
+The word hello was printed
+in a new line in the shell.
+
+78
+00:04:47.394 --> 00:04:48.987
+As you get used to the shell,
+
+79
+00:04:49.161 --> 00:04:52.912
+you will find that many of the commands
+need arguments to work.
+
+80
+00:04:53.392 --> 00:04:55.152
+This is not mandatory though.
+
+81
+00:04:55.483 --> 00:04:58.701
+There are several commands
+that can work without arguments too.
+
+82
+00:04:59.906 --> 00:05:00.752
+As an example,
+
+83
+00:05:01.339 --> 00:05:03.830
+type in the command called "uptime."
+
+84
+00:05:04.633 --> 00:05:09.529
+This is used to print information about
+how long the system has been running for
+
+85
+00:05:09.529 --> 00:05:10.893
+since the last reboot,
+
+86
+00:05:11.206 --> 00:05:12.761
+along with other information.
+
+87
+00:05:13.392 --> 00:05:15.659
+This command does not need an argument.
+
+88
+00:05:16.845 --> 00:05:20.644
+A command can also have options
+that modify its behavior
+
+89
+00:05:20.644 --> 00:05:22.397
+in some predetermined way.
+
+90
+00:05:23.222 --> 00:05:24.009
+The option,
+
+91
+00:05:24.162 --> 00:05:28.253
+also sometimes referred to
+as a switch or a flag,
+
+92
+00:05:28.578 --> 00:05:32.274
+is usually a single letter preceded
+by a single hyphen.
+
+93
+00:05:33.081 --> 00:05:33.833
+For example,
+
+94
+00:05:34.116 --> 00:05:36.338
+to print the same word "hello,"
+
+95
+00:05:36.656 --> 00:05:38.957
+but without a new trailing line afterward,
+
+96
+00:05:39.625 --> 00:05:43.353
+use the echo command with a "dash n" flag.
+
+97
+00:05:44.450 --> 00:05:49.001
+It is impossible to remember
+all the possible options a command may offer.
+
+98
+00:05:49.497 --> 00:05:51.129
+This is why it is important
+
+99
+00:05:51.129 --> 00:05:54.848
+to make it a practice to refer
+to the command help options
+
+100
+00:05:54.996 --> 00:05:56.331
+or man pages
+
+101
+00:05:56.331 --> 00:05:58.905
+when working with unfamiliar commands.
+
+102
+00:05:59.318 --> 00:06:01.469
+We will cover later in the section.
+
+103
+00:06:04.651 --> 00:06:09.069
+The document moves on
+and explains about command types in Linux.
+
+104
+00:06:09.698 --> 00:06:13.862
+Commands in Linux
+can be generally categorized into two types,
+
+105
+00:06:14.322 --> 00:06:16.857
+internal, or built-in, commands
+
+106
+00:06:17.115 --> 00:06:19.190
+and external commands.
+
+107
+00:06:21.232 --> 00:06:24.153
+Internal commands
+are part of the shell itself
+
+108
+00:06:24.285 --> 00:06:25.618
+and come bundled with it.
+
+109
+00:06:26.210 --> 00:06:29.156
+There are in total about 30 such commands.
+
+110
+00:06:29.812 --> 00:06:36.029
+Common built-in commands include CD,
+which stands for change directory,
+
+111
+00:06:36.736 --> 00:06:37.325
+export,
+
+112
+00:06:37.769 --> 00:06:39.517
+MKDIR,
+
+113
+00:06:39.764 --> 00:06:41.558
+or make directory,
+
+114
+00:06:42.080 --> 00:06:43.270
+PWD,
+
+115
+00:06:43.586 --> 00:06:45.725
+or print working directory,
+
+116
+00:06:46.034 --> 00:06:46.733
+et cetera.
+
+117
+00:06:47.963 --> 00:06:52.514
+External commands, on the other hand,
+are binary programs or scripts
+
+118
+00:06:52.598 --> 00:06:56.317
+which are usually located
+in distinct files in the system.
+
+119
+00:06:56.886 --> 00:07:01.344
+They either come pre-installed
+with the distributions package manager
+
+120
+00:07:01.558 --> 00:07:04.758
+or can be created or installed by the user.
+
+121
+00:07:05.673 --> 00:07:08.715
+To determine if a command
+is internal or external,
+
+122
+00:07:09.074 --> 00:07:11.113
+use the "type" command.
+
+123
+00:07:11.961 --> 00:07:12.813
+For example,
+
+124
+00:07:12.907 --> 00:07:15.424
+the echo command is a shell built-in.
+
+125
+00:07:15.750 --> 00:07:18.918
+The MV command is an external command.

@@ -1,0 +1,254 @@
+WEBVTT
+
+1
+00:00:01.250 --> 00:00:05.600
+In this lecture, we look at the
+boot process in a simplified manner
+
+2
+00:00:06.000 --> 00:00:08.600
+by dividing it into four broader steps.
+
+3
+00:00:10.770 --> 00:00:14.220
+The boot process can be
+broken down into four stages;
+
+4
+00:00:14.700 --> 00:00:20.750
+one, BIOS POST, two,
+boot loader or the GRUB2,
+
+5
+00:00:21.470 --> 00:00:26.920
+three, kernel initialization,
+four, and finally,
+
+6
+00:00:26.920 --> 00:00:29.970
+the service initialization using systemd.
+
+7
+00:00:30.650 --> 00:00:33.120
+Before we dive into each of these steps,
+
+8
+00:00:33.300 --> 00:00:36.650
+a quick note on how to initiate
+a Linux boot process.
+
+9
+00:00:37.170 --> 00:00:39.570
+This can be achieved in one of two ways.
+
+10
+00:00:40.350 --> 00:00:45.420
+The first method is to start a Linux device,
+which is in a halted or stopped state.
+
+11
+00:00:45.850 --> 00:00:49.520
+Second, reboot or reset a running system.
+
+12
+00:00:50.750 --> 00:00:56.400
+The first step called BIOS POST
+has very little to do with Linux itself.
+
+13
+00:00:56.920 --> 00:01:00.200
+POST stands for power-on self-test.
+
+14
+00:01:01.050 --> 00:01:06.370
+In this stage, BIOS runs a POST test
+to ensure that the hardware components
+
+15
+00:01:06.370 --> 00:01:09.420
+attached to the device
+are functioning correctly.
+
+16
+00:01:10.150 --> 00:01:13.550
+If POST fails, the computer
+may not be operable
+
+17
+00:01:13.550 --> 00:01:17.450
+and the system will not proceed to
+the second stage of the boot process.
+
+18
+00:01:20.270 --> 00:01:23.420
+The next stage after POST is the boot loader.
+
+19
+00:01:23.920 --> 00:01:25.870
+After a successful POST test,
+
+20
+00:01:26.150 --> 00:01:30.450
+the BIOS loads and executes the
+boot code from the boot device,
+
+21
+00:01:30.750 --> 00:01:33.550
+which is located in the first sector
+of the hard disk.
+
+22
+00:01:34.250 --> 00:01:38.300
+In Linux, this is located in
+the /Boot File System.
+
+23
+00:01:39.320 --> 00:01:42.220
+The boot loader provides the
+user with the boot screen
+
+24
+00:01:42.700 --> 00:01:45.220
+often with multiple options to boot into
+
+25
+00:01:45.400 --> 00:01:51.270
+such as Microsoft Windows OS
+or an Ubuntu 18.04 OS,
+
+26
+00:01:51.570 --> 00:01:53.700
+in an example of a dual boot system.
+
+27
+00:01:54.800 --> 00:01:57.350
+Once the selection is made at the boot screen,
+
+28
+00:01:57.350 --> 00:01:59.950
+the boot loader loads the kernel into memory,
+
+29
+00:02:00.270 --> 00:02:04.400
+supplies it with some perimeters,
+and hands over the control to the kernel.
+
+30
+00:02:05.400 --> 00:02:08.920
+A popular example of the boot loader
+is the GRUB2,
+
+31
+00:02:09.150 --> 00:02:13.300
+which stands for Grand Unified
+Bootloader version 2,
+
+32
+00:02:13.500 --> 00:02:18.120
+and it is now the primary boot loader
+for most current Linux distributions.
+
+33
+00:02:21.270 --> 00:02:26.050
+After the selected kernel is loaded into
+the memory, it is usually decompressed.
+
+34
+00:02:26.650 --> 00:02:31.400
+This is done as the kernels are generally in
+a compressed state to conserve space.
+
+35
+00:02:32.150 --> 00:02:35.550
+The kernel is then loaded into
+the memory and starts executing.
+
+36
+00:02:36.170 --> 00:02:39.470
+During this space, the kernel
+carries out tasks
+
+37
+00:02:39.720 --> 00:02:44.600
+such as initializing hardware and memory
+management tasks among other things.
+
+38
+00:02:45.570 --> 00:02:47.720
+Once it is completely operational,
+
+39
+00:02:47.720 --> 00:02:51.020
+the kernel looks for an init process to run,
+
+40
+00:02:51.450 --> 00:02:56.000
+which sets up the user space and the processes
+needed for the user environment.
+
+41
+00:02:58.870 --> 00:03:01.520
+In most of the current day Linux distributions,
+
+42
+00:03:01.920 --> 00:03:04.820
+the init function then calls
+the systemd daemon.
+
+43
+00:03:05.620 --> 00:03:09.950
+The systemd is responsible for bringing
+the Linux host to a usable state.
+
+44
+00:03:11.070 --> 00:03:14.820
+Systemd is responsible for
+mounting file systems,
+
+45
+00:03:14.820 --> 00:03:17.700
+starting and managing system services.
+
+46
+00:03:18.220 --> 00:03:21.350
+Systemd is the universal standard these days
+
+47
+00:03:21.350 --> 00:03:27.650
+but not too long ago another initialization
+process called System V init was used.
+
+48
+00:03:28.650 --> 00:03:30.900
+It is also called SysV.
+
+49
+00:03:31.320 --> 00:03:37.250
+For example, these were used in RHEL 6
+or CentOS 6 distributions.
+
+50
+00:03:38.100 --> 00:03:42.300
+One of the key advantages of
+using systemd over SYS file init
+
+51
+00:03:42.670 --> 00:03:48.320
+is that it reduces system startup time
+by parallelizing the startup of services.
+
+52
+00:03:49.370 --> 00:03:51.270
+To check the init system used,
+
+53
+00:03:51.770 --> 00:03:57.400
+run an ls -l command against the file /sbin/init.
+
+54
+00:03:58.170 --> 00:04:00.750
+If it's a systemd managed system,
+
+55
+00:04:00.970 --> 00:04:06.200
+you will see a pointer to /lib/systemd/systemd.

@@ -1,0 +1,491 @@
+WEBVTT
+
+1
+00:00:01.849 --> 00:00:05.180
+Let's wrap up this section
+with one last topic.
+
+2
+00:00:05.180 --> 00:00:09.040
+The logical volume manager or LVM.
+
+3
+00:00:09.040 --> 00:00:12.924
+LVM allows grouping
+of multiple physical volumes,
+
+4
+00:00:13.008 --> 00:00:16.040
+which are hard disks
+or partitions
+
+5
+00:00:16.040 --> 00:00:17.650
+into a volume group.
+
+6
+00:00:17.950 --> 00:00:22.120
+From this volume group,
+you can carve out logical volumes.
+
+7
+00:00:22.120 --> 00:00:25.710
+Fundamentally, LVM would look
+something like this.
+
+8
+00:00:25.710 --> 00:00:28.877
+In this example,
+we have three partitions used,
+
+9
+00:00:28.961 --> 00:00:32.210
+but in reality it can vary
+from one disc
+
+10
+00:00:32.210 --> 00:00:37.070
+or partition to an unlimited
+number of disks or partitions.
+
+11
+00:00:37.070 --> 00:00:40.399
+They can be grouped
+to a single volume group.
+
+12
+00:00:40.399 --> 00:00:43.859
+There are several benefits
+of using LVM.
+
+13
+00:00:43.859 --> 00:00:47.545
+LVM allows the logical
+volumes to be resized
+
+14
+00:00:47.629 --> 00:00:51.529
+dynamically as long
+as there is sufficient space
+
+15
+00:00:51.529 --> 00:00:53.909
+in the volume group.
+
+16
+00:00:53.909 --> 00:00:58.586
+On systems such as our laptops,
+you can have the file systems
+
+17
+00:00:58.670 --> 00:01:03.429
+such as slash /home/VAR/TMP
+
+18
+00:01:03.429 --> 00:01:06.890
+created on top of LVM
+managed volumes.
+
+19
+00:01:06.890 --> 00:01:12.189
+This allows them to be
+easily resized when needed.
+
+20
+00:01:12.189 --> 00:01:17.490
+To make use of LVM, you
+need to install the package LVM2.
+
+21
+00:01:17.490 --> 00:01:21.163
+The first step
+in configuring LVM is to identify
+
+22
+00:01:21.247 --> 00:01:25.079
+free disks or partitions
+then create physical
+
+23
+00:01:25.079 --> 00:01:26.580
+volume objects for them.
+
+24
+00:01:26.580 --> 00:01:32.270
+A physical volume object is how
+LVM identifies a disk or a partition.
+
+25
+00:01:32.270 --> 00:01:35.140
+It is also called a PV.
+
+26
+00:01:35.140 --> 00:01:41.329
+Here we have one unused disc/Dev/STB.
+
+27
+00:01:41.329 --> 00:01:44.610
+We will create a physical
+volume using this disc.
+
+28
+00:01:44.610 --> 00:01:48.615
+To do this, we use the PV
+create command
+
+29
+00:01:48.699 --> 00:01:52.909
+with the device path /Dev/STB.
+
+30
+00:01:52.909 --> 00:01:56.132
+Once this is done,
+we can create a volume group
+
+31
+00:01:56.216 --> 00:01:59.600
+or a VG using
+the VG create command.
+
+32
+00:01:59.600 --> 00:02:04.219
+Let's call the group Hillston_VG.
+
+33
+00:02:04.219 --> 00:02:06.937
+A volume group can have
+one or more physical volumes,
+
+34
+00:02:07.021 --> 00:02:09.759
+but in this case, we are using
+
+35
+00:02:09.759 --> 00:02:14.250
+the physical volume /Dev/STB.
+
+36
+00:02:14.250 --> 00:02:16.995
+To see the details
+about the physical volume,
+
+37
+00:02:17.079 --> 00:02:19.980
+we run the command PV display.
+
+38
+00:02:19.980 --> 00:02:23.223
+It lists all PVs,
+their names, the size
+
+39
+00:02:23.307 --> 00:02:26.300
+the volume group it is part of.
+
+40
+00:02:26.300 --> 00:02:29.315
+In this case, since we
+have already created
+
+41
+00:02:29.399 --> 00:02:33.030
+a VG from it, we see
+the VG name here.
+
+42
+00:02:34.030 --> 00:02:39.420
+To see more details of the VG,
+we can run the VG display command.
+
+43
+00:02:39.420 --> 00:02:42.357
+We see the name of the VG,
+the total size,
+
+44
+00:02:42.441 --> 00:02:45.390
+which is the size
+of all physical volumes
+
+45
+00:02:45.390 --> 00:02:50.040
+part of the volume group
+the amount of disc space used.
+
+46
+00:02:50.040 --> 00:02:55.090
+Now we are ready
+to create some logical volumes.
+
+47
+00:02:55.090 --> 00:02:59.980
+We can create logical volumes
+using the LV create command.
+
+48
+00:02:59.980 --> 00:03:02.259
+In this example, we are creating
+
+49
+00:03:02.343 --> 00:03:06.880
+a one gigabyte volume in the
+Kelston_VG volume group.
+
+50
+00:03:07.480 --> 00:03:10.103
+EL option stands for linear volume,
+
+51
+00:03:10.187 --> 00:03:13.510
+which is a common type
+of logical volume.
+
+52
+00:03:13.510 --> 00:03:16.619
+This option enables us
+to make use of multiple
+
+53
+00:03:16.703 --> 00:03:19.690
+physical volumes
+if available in the volume group
+
+54
+00:03:19.690 --> 00:03:23.160
+to create a single logical volume.
+
+55
+00:03:23.160 --> 00:03:27.890
+To see the logical volume,
+use the LV display.
+
+56
+00:03:27.890 --> 00:03:32.950
+To list the volumes, we can also use
+the LVS command.
+
+57
+00:03:32.950 --> 00:03:36.285
+Here, we see the volume
+we created, the volume group
+
+58
+00:03:36.369 --> 00:03:40.680
+it is part of and the logical size
+of the volume.
+
+59
+00:03:40.730 --> 00:03:43.442
+Once the volume has
+been created, you can create
+
+60
+00:03:43.526 --> 00:03:47.020
+a file system on it using the MKFS
+command.
+
+61
+00:03:47.370 --> 00:03:50.760
+We pass in the name
+of the logical volume.
+
+62
+00:03:50.760 --> 00:03:57.750
+Note that the logical volume is
+that the path /Dev/Kelston_VG/vol1.
+
+63
+00:03:59.450 --> 00:04:03.848
+Let's create an EXT 4
+file system and then
+
+64
+00:04:03.932 --> 00:04:08.510
+mount it at /MNT/vol1
+using the Mount command.
+
+65
+00:04:08.510 --> 00:04:13.540
+The logical volume is
+now available for use.
+
+66
+00:04:13.540 --> 00:04:18.260
+Now let's resize the file system
+on vol1while it is mounted.
+
+67
+00:04:18.260 --> 00:04:23.230
+To do this, we will first check if
+there is enough space in the VG.
+
+68
+00:04:23.230 --> 00:04:27.790
+Run the VGS command
+to list the VGs and their details.
+
+69
+00:04:27.790 --> 00:04:30.813
+Since we only used
+one gigabyte out of
+
+70
+00:04:30.897 --> 00:04:33.930
+the available 20 gigabytes,
+we are fine here.
+
+71
+00:04:33.930 --> 00:04:37.185
+Using the LV resize command,
+we can increase
+
+72
+00:04:37.269 --> 00:04:40.730
+the volume by another one gigabyte.
+
+73
+00:04:40.730 --> 00:04:43.701
+Specify the path
+to the logical volume
+
+74
+00:04:43.785 --> 00:04:46.910
+the additional size
+to add to it like this.
+
+75
+00:04:46.910 --> 00:04:50.917
+However, if you check
+the size of the DF command
+
+76
+00:04:51.001 --> 00:04:54.590
+against slash /MNT/vol1,
+you will see that
+
+77
+00:04:54.590 --> 00:04:57.810
+it is still having a
+capacity of one gigabyte.
+
+78
+00:04:57.810 --> 00:05:01.158
+This is because only
+the logical volume
+
+79
+00:05:01.242 --> 00:05:05.460
+has been resized, not the
+file system we created on it.
+
+80
+00:05:06.900 --> 00:05:12.150
+To do this, make use of
+the resize to FS command.
+
+81
+00:05:12.150 --> 00:05:15.710
+Specify the name
+of the file system as an argument.
+
+82
+00:05:15.710 --> 00:05:19.104
+Once the command is run,
+the file system created
+
+83
+00:05:19.188 --> 00:05:22.380
+inside the logical
+volume is resized as well
+
+84
+00:05:22.380 --> 00:05:27.300
+to match the size we specified
+with the LV create command.
+
+85
+00:05:27.300 --> 00:05:30.437
+One key point to note here
+is that we did not have
+
+86
+00:05:30.521 --> 00:05:33.670
+to stop or unmount the file system
+while resizing.
+
+87
+00:05:34.430 --> 00:05:40.180
+This can be done on the fly
+while the file system is in use.
+
+88
+00:05:40.180 --> 00:05:44.550
+Running the DF command now shows that
+the volume size is two gigabytes.
+
+89
+00:05:44.550 --> 00:05:47.362
+A note before
+we conclude this session,
+
+90
+00:05:47.446 --> 00:05:50.340
+when you run the DF command,
+you can see that
+
+91
+00:05:50.340 --> 00:05:55.106
+the file system mounted
+at /MNT/vol1
+
+92
+00:05:55.190 --> 00:06:02.090
+is /dev/mapper/Kelston_VG/vol1
+
+93
+00:06:02.767 --> 00:06:07.067
+instead of /dev/Kelston_VG/vol1.
+
+94
+00:06:08.490 --> 00:06:12.620
+What is this new path
+under /dev/mapper?
+
+95
+00:06:12.620 --> 00:06:14.330
+Both are the same.
+
+96
+00:06:14.330 --> 00:06:19.080
+The logical volumes with LVM
+are accessible at two places.
+
+97
+00:06:19.080 --> 00:06:22.965
+One under /Dev/Volume Group
+the other
+
+98
+00:06:23.049 --> 00:06:27.300
+under /Dev/mapper
+with the name Volume Group
+
+99
+00:06:27.300 --> 00:06:30.300
+Logical Volume Name.
+
+100
+00:06:30.300 --> 00:06:34.580
+Well, that brings us
+to the end of this section.
+
+101
+00:06:34.580 --> 00:06:36.855
+Before I let you go,
+head over to the hands-on
+
+102
+00:06:36.939 --> 00:06:40.279
+lab exercises
+practice working with LVM.
+

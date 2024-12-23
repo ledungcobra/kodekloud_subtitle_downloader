@@ -1,0 +1,775 @@
+WEBVTT
+
+1
+00:00:00.720 --> 00:00:01.880
+In this section,
+
+2
+00:00:01.880 --> 00:00:04.210
+we will learn about disk partitions.
+
+3
+00:00:04.480 --> 00:00:09.750
+Then we will look at file systems
+such as the EXT series and NFS.
+
+4
+00:00:10.160 --> 00:00:13.380
+Then we will cover external storage devices
+
+5
+00:00:13.380 --> 00:00:14.860
+such as DAS,
+
+6
+00:00:14.860 --> 00:00:15.740
+NAS,
+
+7
+00:00:15.740 --> 00:00:16.710
+and SAN.
+
+8
+00:00:17.100 --> 00:00:18.100
+Finally,
+
+9
+00:00:18.100 --> 00:00:21.950
+we will wrap up the session
+by seeing LVM in action.
+
+10
+00:00:22.550 --> 00:00:25.810
+Each of these topics is followed
+by hands-on labs.
+
+11
+00:00:28.520 --> 00:00:32.340
+Let's start with some
+of the basic concepts in storage.
+
+12
+00:00:32.780 --> 00:00:35.910
+First, we will take a look at block devices.
+
+13
+00:00:36.380 --> 00:00:39.960
+"Dave may have covered this
+while talking about file types
+
+14
+00:00:39.960 --> 00:00:42.550
+but I would like to start off
+with this, all the same,"
+
+15
+00:00:42.910 --> 00:00:43.980
+says Mohan.
+
+16
+00:00:44.780 --> 00:00:47.850
+He explains that a block device
+is a type of file
+
+17
+00:00:47.850 --> 00:00:50.860
+that can be found under the /dev/ directory.
+
+18
+00:00:51.160 --> 00:00:54.740
+It usually represents a piece of hardware
+that can store data.
+
+19
+00:00:55.350 --> 00:00:57.310
+Traditional spinning hard disk
+
+20
+00:00:57.310 --> 00:00:58.980
+or solid-state disk,
+
+21
+00:00:58.980 --> 00:01:00.780
+also called an SSD,
+
+22
+00:01:00.780 --> 00:01:03.510
+are examples of block storage in Linux.
+
+23
+00:01:04.260 --> 00:01:07.380
+It is called block storage
+because data is read
+
+24
+00:01:07.380 --> 00:01:10.510
+or written to it in blocks
+or chunks of space.
+
+25
+00:01:11.550 --> 00:01:14.540
+To see the list of block devices
+in your system,
+
+26
+00:01:14.540 --> 00:01:17.480
+run the command lsblk.
+
+27
+00:01:17.780 --> 00:01:22.340
+You can also run an "ls-l" in the /dev/ directory
+
+28
+00:01:22.340 --> 00:01:25.780
+and look for files that have B
+as the first character.
+
+29
+00:01:26.420 --> 00:01:29.880
+If you look at the result of lsblk command,
+
+30
+00:01:29.880 --> 00:01:33.040
+you will see that there is a disk called SDA
+
+31
+00:01:33.040 --> 00:01:35.810
+with about 119 gigabyte space.
+
+32
+00:01:36.280 --> 00:01:38.680
+This represents an entire disk.
+
+33
+00:01:39.040 --> 00:01:43.450
+Then there are devices SDA1 to SDA3
+
+34
+00:01:43.640 --> 00:01:45.310
+which are of type part.
+
+35
+00:01:45.950 --> 00:01:48.980
+These are disk partitions
+which we will see next.
+
+36
+00:01:49.900 --> 00:01:52.140
+Before we move on to partitions,
+
+37
+00:01:52.140 --> 00:01:56.340
+observe that each block device
+has a major and a minor number.
+
+38
+00:01:56.740 --> 00:01:57.840
+The major number,
+
+39
+00:01:57.840 --> 00:02:00.240
+which is the number eight in this example,
+
+40
+00:02:00.240 --> 00:02:03.350
+is used to identify the type of block device.
+
+41
+00:02:03.920 --> 00:02:07.060
+The value eight represents a SCSI device
+
+42
+00:02:07.320 --> 00:02:11.150
+which has a fixed naming convention
+that starts with SD.
+
+43
+00:02:11.480 --> 00:02:15.750
+This is the reason why the disk
+in the partition names start with SD.
+
+44
+00:02:16.640 --> 00:02:17.810
+The minor numbers
+
+45
+00:02:17.810 --> 00:02:22.020
+are used to distinguish individual,
+physical or logical devices
+
+46
+00:02:22.250 --> 00:02:23.450
+which in this case
+
+47
+00:02:23.450 --> 00:02:26.680
+identify the whole disk
+and the partitions created.
+
+48
+00:02:28.760 --> 00:02:31.110
+Mohan continues with his session.
+
+49
+00:02:31.110 --> 00:02:33.360
+The entire disk can be broken down
+
+50
+00:02:33.360 --> 00:02:37.180
+into smaller segments of usable space
+called partitions.
+
+51
+00:02:37.700 --> 00:02:39.110
+In the example here,
+
+52
+00:02:39.110 --> 00:02:44.510
+we have three partitions for the SSD disk
+represented by SDA1,
+
+53
+00:02:44.510 --> 00:02:45.820
+SDA2
+
+54
+00:02:45.820 --> 00:02:47.160
+and SDA3.
+
+55
+00:02:47.960 --> 00:02:49.740
+The concept of partitioning
+
+56
+00:02:49.740 --> 00:02:54.610
+allows us to segment space
+and use each partition for a specific purpose.
+
+57
+00:02:55.240 --> 00:02:58.780
+If you inspect the result
+of the lsblk command,
+
+58
+00:02:58.780 --> 00:03:01.460
+you will see that SDA3 partitions
+
+59
+00:03:01.460 --> 00:03:03.610
+are used for the root partition.
+
+60
+00:03:04.020 --> 00:03:05.910
+SDA2 partition
+
+61
+00:03:05.910 --> 00:03:08.540
+of size 72.5 gigabyte
+
+62
+00:03:08.540 --> 00:03:13.050
+is mounted at /media/MM/Data
+
+63
+00:03:13.050 --> 00:03:15.680
+which is used to store backups in this system.
+
+64
+00:03:16.580 --> 00:03:23.110
+SDA1 is consumed as a system partition
+mounted at /boot/EFI
+
+65
+00:03:23.440 --> 00:03:26.300
+which is used during the system boot process
+
+66
+00:03:26.300 --> 00:03:29.480
+and contains the boot loaders
+for the installed OS.
+
+67
+00:03:30.210 --> 00:03:31.440
+Make a note of the fact
+
+68
+00:03:31.440 --> 00:03:34.550
+that you don't necessarily have
+to partition a disk.
+
+69
+00:03:34.840 --> 00:03:36.680
+It can be used as is
+
+70
+00:03:36.680 --> 00:03:38.550
+without carving out partitions.
+
+71
+00:03:39.180 --> 00:03:44.250
+However, it is always recommended
+to partition a disk wherever possible
+
+72
+00:03:44.250 --> 00:03:46.310
+as it offers greater flexibility.
+
+73
+00:03:47.550 --> 00:03:51.510
+The information about partitions
+is saved in a partition table.
+
+74
+00:03:51.980 --> 00:03:54.780
+This information can be read in many ways.
+
+75
+00:03:54.980 --> 00:03:58.320
+The lsblk command we saw just now
+
+76
+00:03:58.320 --> 00:03:59.810
+is one such way.
+
+77
+00:04:00.340 --> 00:04:02.080
+Another popular tool
+
+78
+00:04:02.080 --> 00:04:03.840
+is the Fdisk command.
+
+79
+00:04:04.110 --> 00:04:07.520
+It can be used
+to list the partition table information
+
+80
+00:04:07.520 --> 00:04:10.950
+but can also be used to create
+and delete partitions.
+
+81
+00:04:11.760 --> 00:04:14.560
+Use the Fdisk-L command
+
+82
+00:04:14.560 --> 00:04:16.320
+to print the partition table.
+
+83
+00:04:16.640 --> 00:04:21.060
+This will print the information
+quite similar to the lsblk command
+
+84
+00:04:21.360 --> 00:04:24.080
+but also provides additional information
+
+85
+00:04:24.080 --> 00:04:26.250
+such as the partition type used,
+
+86
+00:04:26.250 --> 00:04:28.410
+the size of the disk in bytes,
+
+87
+00:04:28.410 --> 00:04:29.380
+and sectors.
+
+88
+00:04:30.410 --> 00:04:31.560
+Bob asks,
+
+89
+00:04:31.800 --> 00:04:35.780
+"What does the disk label type GPT stand for?"
+
+90
+00:04:36.720 --> 00:04:38.050
+Mohan replies,
+
+91
+00:04:38.260 --> 00:04:39.520
+"That's a good question.
+
+92
+00:04:39.760 --> 00:04:41.260
+We will look at that next
+
+93
+00:04:41.500 --> 00:04:42.650
+but first,
+
+94
+00:04:42.650 --> 00:04:45.150
+let's learn a bit about partition types."
+
+95
+00:04:47.140 --> 00:04:49.320
+Mohan continues with the session.
+
+96
+00:04:49.820 --> 00:04:52.600
+There are three types of disk partitions.
+
+97
+00:04:52.600 --> 00:04:54.250
+The primary partition
+
+98
+00:04:54.250 --> 00:04:58.180
+is a type of partition that can be used
+to boot an operating system.
+
+99
+00:04:58.740 --> 00:05:00.620
+Traditionally, disks were limited
+
+100
+00:05:00.620 --> 00:05:04.080
+to not more than four
+primary partitions per disk.
+
+101
+00:05:04.760 --> 00:05:06.450
+An extended partition
+
+102
+00:05:06.450 --> 00:05:09.800
+is a type of partition
+that cannot be used on its own
+
+103
+00:05:09.800 --> 00:05:12.280
+but can host logical partitions.
+
+104
+00:05:12.280 --> 00:05:16.180
+With the restriction
+of maximum four primary partitions,
+
+105
+00:05:16.360 --> 00:05:19.280
+you can opt to create extended partitions
+
+106
+00:05:19.280 --> 00:05:21.960
+and carve out logical partitions inside it.
+
+107
+00:05:22.550 --> 00:05:26.980
+Essentially, an extended partition
+is like a disk drive in its own right.
+
+108
+00:05:27.440 --> 00:05:31.780
+It has a partition table that points
+to one or more logical partitions.
+
+109
+00:05:32.480 --> 00:05:36.710
+Logical partitions are those created
+within an extended partition.
+
+110
+00:05:38.510 --> 00:05:42.500
+How a disk is partitioned
+is defined by a partitioning scheme
+
+111
+00:05:42.820 --> 00:05:44.910
+also known as a partition table.
+
+112
+00:05:45.580 --> 00:05:48.100
+What we just saw in the previous slide
+
+113
+00:05:48.100 --> 00:05:50.510
+is an MBR partitioning scheme.
+
+114
+00:05:50.980 --> 00:05:54.060
+MBR stands for the Master Boot Record
+
+115
+00:05:54.060 --> 00:05:56.550
+and has been around for over 30 years now.
+
+116
+00:05:57.000 --> 00:05:58.480
+As we just saw,
+
+117
+00:05:58.480 --> 00:06:02.410
+there can only be four primary partitions
+in MBR.
+
+118
+00:06:02.940 --> 00:06:07.010
+Secondly, the maximum size per disc
+is two terabytes.
+
+119
+00:06:07.900 --> 00:06:10.950
+If you want more than four partitions
+per disk,
+
+120
+00:06:10.950 --> 00:06:14.880
+we would need to create the fourth partition
+as an extended partition
+
+121
+00:06:14.880 --> 00:06:17.280
+and carve out logical partitions within it.
+
+122
+00:06:19.360 --> 00:06:23.440
+GPT stands for G-U-I-D partition table
+
+123
+00:06:23.440 --> 00:06:25.880
+and is a more recent partitioning scheme
+
+124
+00:06:25.880 --> 00:06:29.410
+that was created to address
+the limitations in MBR.
+
+125
+00:06:30.110 --> 00:06:32.060
+Theoretically, GPT
+
+126
+00:06:32.060 --> 00:06:35.220
+can have an unlimited
+number of partitions per disc.
+
+127
+00:06:35.600 --> 00:06:38.320
+This is usually only limited
+by the restrictions
+
+128
+00:06:38.320 --> 00:06:40.710
+imposed by the operating system itself.
+
+129
+00:06:41.300 --> 00:06:42.450
+For example,
+
+130
+00:06:42.450 --> 00:06:46.940
+RHEL only allows 128 partitions per disc.
+
+131
+00:06:47.360 --> 00:06:50.960
+Additionally,
+the disc size limitation of two terabyte
+
+132
+00:06:50.960 --> 00:06:53.080
+does not exist with GPT.
+
+133
+00:06:53.580 --> 00:06:58.480
+Unless the operating system you want
+to install on the disc requires MBR,
+
+134
+00:06:58.760 --> 00:07:01.080
+GPT is always the best choice
+
+135
+00:07:01.080 --> 00:07:03.650
+when it comes to selecting
+a partitioning scheme.
+
+136
+00:07:05.380 --> 00:07:07.980
+"Let's now get some hands-on practice",
+
+137
+00:07:07.980 --> 00:07:09.020
+says Mohan.
+
+138
+00:07:09.410 --> 00:07:12.610
+He provides Bob access
+to one of his lab machines.
+
+139
+00:07:13.180 --> 00:07:14.520
+He continues,
+
+140
+00:07:14.520 --> 00:07:18.420
+"This system has a disc that is not partitioned
+or mounted in the system.
+
+141
+00:07:18.760 --> 00:07:20.460
+I want you to identify it."
+
+142
+00:07:21.380 --> 00:07:25.980
+Bob takes control
+and runs the lsblk command straight away.
+
+143
+00:07:26.460 --> 00:07:28.700
+He sees two whole discs
+
+144
+00:07:28.700 --> 00:07:29.860
+SDA
+
+145
+00:07:29.860 --> 00:07:31.250
+which has partitions
+
+146
+00:07:31.250 --> 00:07:32.650
+and SDB
+
+147
+00:07:32.650 --> 00:07:35.210
+which does not appear to have any partitions.
+
+148
+00:07:35.880 --> 00:07:37.080
+"SDB?"
+
+149
+00:07:37.550 --> 00:07:38.680
+Bob asks.
+
+150
+00:07:38.950 --> 00:07:39.950
+"Correct",
+
+151
+00:07:39.950 --> 00:07:41.080
+says Mohan.
+
+152
+00:07:41.860 --> 00:07:47.110
+Mohan then proceeds to show Bob
+how to create partition on the SDB disk.
+
+153
+00:07:47.580 --> 00:07:48.680
+To do this,
+
+154
+00:07:48.680 --> 00:07:50.710
+run the Gdisc command
+
+155
+00:07:50.710 --> 00:07:52.810
+with the device path as the argument.
+
+156
+00:07:53.380 --> 00:07:59.240
+Gdisc is an improved version of the Fdisk
+that works with the GPT partition table.
+
+157
+00:07:59.560 --> 00:08:02.500
+This will take you
+into a menu-driven interface.
+
+158
+00:08:04.350 --> 00:08:05.450
+Once in,
+
+159
+00:08:05.450 --> 00:08:09.180
+use the question mark character
+to print all available options.
+
+160
+00:08:09.510 --> 00:08:12.550
+Now type the N key to create a new partition.
+
+161
+00:08:13.310 --> 00:08:16.020
+We want to create a partition number one
+
+162
+00:08:16.020 --> 00:08:18.250
+with the size of 20 gigabytes
+
+163
+00:08:18.250 --> 00:08:20.280
+which is the entire disk space.
+
+164
+00:08:20.840 --> 00:08:23.380
+Once you have selected the partition size,
+
+165
+00:08:23.380 --> 00:08:26.750
+it will ask you for a hex code
+for the partition type.
+
+166
+00:08:27.140 --> 00:08:29.980
+Stick to the default of Linux file system
+
+167
+00:08:29.980 --> 00:08:32.310
+which has a code of 8,300.
+
+168
+00:08:32.720 --> 00:08:36.600
+You can now type in the L-key
+to see all possible values.
+
+169
+00:08:37.580 --> 00:08:40.280
+Once you provide the necessary information,
+
+170
+00:08:40.280 --> 00:08:43.350
+use the W command
+to write the partition table.
+
+171
+00:08:43.710 --> 00:08:46.060
+This will create a new partition called
+
+172
+00:08:46.060 --> 00:08:49.210
+/dev/SDB1.
+
+173
+00:08:51.110 --> 00:08:53.510
+To check the status of the new partition,
+
+174
+00:08:53.510 --> 00:08:57.940
+run the lsblk or fdisk-l command.
+
+175
+00:08:58.440 --> 00:09:03.380
+You can see the partition table
+using the Gdisk-l command as well.
+
+176
+00:09:05.150 --> 00:09:08.440
+Now that you have learned
+about disks and partitions,
+
+177
+00:09:08.440 --> 00:09:12.200
+head over to the hands-on labs
+and troubleshoot why Bob's system
+
+178
+00:09:12.200 --> 00:09:15.550
+is not displaying
+the entire size of the physical disk.

@@ -1,0 +1,206 @@
+WEBVTT
+
+1
+00:00:00.475 --> 00:00:05.525
+July 2nd, 10:00AM, 12 days before the demo.
+
+2
+00:00:07.875 --> 00:00:12.700
+Bob, Andrew and Amira are on a conference call
+for their weekly team meeting.
+
+3
+00:00:13.400 --> 00:00:15.275
+Andrew sounds irritated. “
+
+4
+00:00:16.225 --> 00:00:18.450
+Three back-to-back escalations,
+
+5
+00:00:18.675 --> 00:00:23.000
+so many issues with one of our
+other projects called Project Sapphire,”
+
+6
+00:00:23.675 --> 00:00:27.100
+says Andrew, “I am tired of it.
+
+7
+00:00:27.650 --> 00:00:30.950
+Luckily, I have Donald
+managing the situation for me.
+
+8
+00:00:31.250 --> 00:00:35.125
+He is doing a fantastic job,” he says in relief.
+
+9
+00:00:36.200 --> 00:00:38.700
+“Right, tell me some good news, Bob.
+
+10
+00:00:39.000 --> 00:00:41.550
+How are we moving along with Project Mercury?
+
+11
+00:00:41.975 --> 00:00:45.175
+I hope you have been able to
+make some progress on your laptop."
+
+12
+00:00:46.050 --> 00:00:50.350
+"Well, Andrew, I have just started
+looking into the design documents
+
+13
+00:00:50.550 --> 00:00:53.750
+and I'm trying to figure out
+how to deploy it on my machine.
+
+14
+00:00:54.300 --> 00:00:57.550
+I've been helping out with
+the issues for Project Sapphire."
+
+15
+00:00:58.525 --> 00:01:02.675
+Andrew stares at Bob for a few seconds
+and then looks at Amira.
+
+16
+00:01:03.500 --> 00:01:05.725
+"That's not what I wanted to hear.
+
+17
+00:01:06.175 --> 00:01:10.425
+Donald told me that he handed you
+the design documents last Wednesday.
+
+18
+00:01:10.775 --> 00:01:14.900
+You were supposed to migrate the
+template code to your laptop this week."
+
+19
+00:01:16.100 --> 00:01:19.250
+"Well, he did not tell me," thinks Bob.
+
+20
+00:01:19.600 --> 00:01:22.475
+"In fact, he has told me nothing at all.
+
+21
+00:01:23.050 --> 00:01:25.675
+What template code is he talking about?"
+
+22
+00:01:26.825 --> 00:01:29.225
+Bob refrains from complaining.
+
+23
+00:01:30.225 --> 00:01:35.975
+"Amira, I want you to setup biweekly meetings
+and sort this out," says Andrew.
+
+24
+00:01:36.750 --> 00:01:42.775
+"Understood. Do you also want me to send you
+a daily report of the progress?" asks Amira.
+
+25
+00:01:43.475 --> 00:01:46.025
+"Yes, please," says Andrew.
+
+26
+00:01:46.525 --> 00:01:49.400
+“Let me know if there are any showstoppers.
+
+27
+00:01:49.400 --> 00:01:54.450
+It is crucial that we have everything
+ready and working for phase one."
+
+28
+00:01:55.125 --> 00:01:57.225
+"Bob," he continues,
+
+29
+00:01:57.525 --> 00:02:00.375
+“It's great that you were helping out
+with escalations,
+
+30
+00:02:00.625 --> 00:02:03.300
+but that's not your number one priority.
+
+31
+00:02:03.600 --> 00:02:06.400
+I want you to focus on Project Mercury.
+
+32
+00:02:07.000 --> 00:02:12.025
+Follow Donald's guidance and get the
+application running on your laptop by Monday.
+
+33
+00:02:12.475 --> 00:02:17.725
+This will give us one week to test the
+application and push it to the dev servers."
+
+34
+00:02:18.700 --> 00:02:22.425
+"Sure, Andrew, I will make sure
+that it's completed on time."
+
+35
+00:02:25.400 --> 00:02:30.100
+July 3rd, 11:00AM, 11 days before the demo.
+
+36
+00:02:31.325 --> 00:02:36.650
+After researching through the numerous emails
+from Donald related to Project Mercury,
+
+37
+00:02:36.875 --> 00:02:38.850
+Bob locates the instructions
+
+38
+00:02:38.850 --> 00:02:44.050
+to migrate some template Python scripts
+from a Windows environment to Linux.
+
+39
+00:02:44.775 --> 00:02:48.175
+He would have to set up
+a Django project on Linux,
+
+40
+00:02:48.400 --> 00:02:53.350
+which required him to copy several files
+remotely and uncompress them.
+
+41
+00:02:54.225 --> 00:02:58.375
+He would also need to make modifications
+to the configuration files
+
+42
+00:02:58.700 --> 00:03:00.550
+and update some parts of the code.
+
+43
+00:03:01.175 --> 00:03:04.225
+He decides to make use of
+the quick-start guide again
+
+44
+00:03:04.625 --> 00:03:06.575
+to learn the commands for archiving,
+
+45
+00:03:06.900 --> 00:03:10.375
+extracting data and working
+with text editors.
+

@@ -1,0 +1,723 @@
+WEBVTT
+
+1
+00:00:00.840 --> 00:00:02.120
+In this section,
+
+2
+00:00:02.120 --> 00:00:06.050
+we will learn
+about console-based text editors in Linux.
+
+3
+00:00:06.540 --> 00:00:08.380
+In one of the previous chapters,
+
+4
+00:00:08.380 --> 00:00:13.080
+we saw the usage of the cat command
+to read and write data into a file.
+
+5
+00:00:13.680 --> 00:00:16.460
+While this works well and has its uses,
+
+6
+00:00:16.460 --> 00:00:17.920
+it is very basic
+
+7
+00:00:17.920 --> 00:00:19.940
+and offers no additional features.
+
+8
+00:00:20.540 --> 00:00:23.720
+Besides, it is not feasible to use cat
+
+9
+00:00:23.720 --> 00:00:26.310
+when dealing with large amounts of text
+
+10
+00:00:26.310 --> 00:00:27.710
+or for writing code.
+
+11
+00:00:28.450 --> 00:00:30.650
+This is why we use text editors.
+
+12
+00:00:31.550 --> 00:00:34.310
+While there are several options available,
+
+13
+00:00:34.310 --> 00:00:36.610
+we will be focusing on the vi editor,
+
+14
+00:00:36.840 --> 00:00:40.410
+which is perhaps
+the most popular text editor used in Linux.
+
+15
+00:00:43.220 --> 00:00:45.200
+The vi editor is available
+
+16
+00:00:45.200 --> 00:00:48.550
+in almost all Linux distributions
+out of the box.
+
+17
+00:00:48.860 --> 00:00:51.620
+The command to open the editor is vi
+
+18
+00:00:51.620 --> 00:00:55.020
+followed by the name of the file
+you want to create or edit.
+
+19
+00:00:55.700 --> 00:00:56.780
+In this case,
+
+20
+00:00:56.780 --> 00:01:00.620
+we are opening an existing file
+in Michael's home directory
+
+21
+00:01:00.620 --> 00:01:06.710
+by running vi /home/michael/sample.txt.
+
+22
+00:01:07.620 --> 00:01:09.800
+As soon as you issue this command,
+
+23
+00:01:09.800 --> 00:01:13.620
+the vi editor opens the file
+and prints the contents,
+
+24
+00:01:13.620 --> 00:01:14.380
+if any.
+
+25
+00:01:15.020 --> 00:01:18.220
+The vi editor has three operation modes,
+
+26
+00:01:18.220 --> 00:01:19.340
+the command mode,
+
+27
+00:01:19.520 --> 00:01:20.580
+insert mode,
+
+28
+00:01:20.780 --> 00:01:22.380
+and the last line mode.
+
+29
+00:01:23.120 --> 00:01:25.080
+When the editor opens a file,
+
+30
+00:01:25.080 --> 00:01:26.380
+as in this example,
+
+31
+00:01:26.660 --> 00:01:29.480
+it always goes to the command mode first.
+
+32
+00:01:30.080 --> 00:01:31.180
+In this mode,
+
+33
+00:01:31.180 --> 00:01:33.850
+the editor only understands commands.
+
+34
+00:01:36.840 --> 00:01:40.740
+Let's learn how to navigate
+between the three operation modes.
+
+35
+00:01:41.400 --> 00:01:43.660
+We now know that when you open a file,
+
+36
+00:01:43.660 --> 00:01:46.210
+you will be in the command mode by default.
+
+37
+00:01:46.680 --> 00:01:47.720
+In this mode,
+
+38
+00:01:47.720 --> 00:01:49.880
+you can issue commands to the editor,
+
+39
+00:01:49.880 --> 00:01:52.010
+such as copy, paste,
+
+40
+00:01:52.010 --> 00:01:53.780
+or delete a line or a word.
+
+41
+00:01:54.420 --> 00:01:56.850
+You can also navigate between lines.
+
+42
+00:01:57.600 --> 00:02:02.080
+We will see the different options
+and operations available in this mode in a bit.
+
+43
+00:02:03.000 --> 00:02:05.960
+To switch from command mode to insert mode,
+
+44
+00:02:06.120 --> 00:02:07.850
+type lowercase, i.
+
+45
+00:02:08.610 --> 00:02:11.510
+This mode allows you
+to write text into the file.
+
+46
+00:02:12.480 --> 00:02:14.640
+Once you are done editing the file,
+
+47
+00:02:14.780 --> 00:02:16.640
+to switch back to command mode
+
+48
+00:02:16.940 --> 00:02:18.600
+hit the Escape button
+
+49
+00:02:19.400 --> 00:02:20.810
+from the command mode.
+
+50
+00:02:20.810 --> 00:02:24.350
+Pressing the colon key
+takes you to the last line mode.
+
+51
+00:02:24.710 --> 00:02:25.840
+In this mode,
+
+52
+00:02:25.840 --> 00:02:28.720
+you can choose to save changes to the file,
+
+53
+00:02:28.720 --> 00:02:30.150
+discard changes
+
+54
+00:02:30.150 --> 00:02:31.750
+or save and edit.
+
+55
+00:02:33.010 --> 00:02:34.660
+From the last line mode,
+
+56
+00:02:34.660 --> 00:02:37.650
+hit the Escape key to get back
+to the command mode.
+
+57
+00:02:38.100 --> 00:02:41.550
+Use the same sequence
+to go back to any of the modes.
+
+58
+00:02:42.100 --> 00:02:45.420
+While going into the insert mode
+from command mode,
+
+59
+00:02:45.740 --> 00:02:47.600
+you may use other options,
+
+60
+00:02:47.600 --> 00:02:50.180
+such as lowercase a or o,
+
+61
+00:02:50.180 --> 00:02:53.280
+or uppercase I, A, or O.
+
+62
+00:02:56.480 --> 00:02:58.720
+Let's now check out the command mode.
+
+63
+00:02:59.200 --> 00:03:02.750
+There are lots of tasks
+that can be carried out from this mode.
+
+64
+00:03:03.000 --> 00:03:05.780
+We will look at some of the commonly used ones.
+
+65
+00:03:06.380 --> 00:03:07.580
+The command mode
+
+66
+00:03:07.580 --> 00:03:10.460
+allows using the mouse cursor to highlight,
+
+67
+00:03:10.460 --> 00:03:12.250
+copy, paste,
+
+68
+00:03:12.250 --> 00:03:13.510
+or move texts.
+
+69
+00:03:14.040 --> 00:03:15.550
+Once you are in this mode,
+
+70
+00:03:15.550 --> 00:03:19.010
+you will see a cursor
+that you can use to move around the file
+
+71
+00:03:19.010 --> 00:03:21.420
+using the directional keys on the keyboard.
+
+72
+00:03:22.040 --> 00:03:23.220
+Alternatively,
+
+73
+00:03:23.220 --> 00:03:24.750
+you can use the keys,
+
+74
+00:03:24.750 --> 00:03:26.620
+K, J, H, L.
+
+75
+00:03:27.010 --> 00:03:28.180
+K to go up,
+
+76
+00:03:28.400 --> 00:03:29.780
+H to the left,
+
+77
+00:03:29.780 --> 00:03:31.280
+J to go down,
+
+78
+00:03:31.280 --> 00:03:32.620
+and L to the right.
+
+79
+00:03:33.480 --> 00:03:37.520
+You can also use the mouse
+to highlight text and use right-click
+
+80
+00:03:37.520 --> 00:03:39.410
+to copy the highlighted section.
+
+81
+00:03:40.700 --> 00:03:42.100
+To copy a line,
+
+82
+00:03:42.100 --> 00:03:44.440
+move the cursor to the intended line
+
+83
+00:03:44.440 --> 00:03:46.780
+and issue the yy command.
+
+84
+00:03:47.500 --> 00:03:49.210
+To paste the copied line,
+
+85
+00:03:49.210 --> 00:03:52.460
+move the cursor above the line,
+where you want to paste
+
+86
+00:03:52.460 --> 00:03:53.940
+and press the P key.
+
+87
+00:03:54.720 --> 00:03:56.180
+To save the file,
+
+88
+00:03:56.180 --> 00:03:58.380
+use uppercase Z, Z.
+
+89
+00:03:58.820 --> 00:04:00.040
+To delete a letter,
+
+90
+00:04:00.040 --> 00:04:02.620
+move the cursor to the intended location
+
+91
+00:04:02.620 --> 00:04:03.810
+and type X.
+
+92
+00:04:06.800 --> 00:04:08.180
+To delete a line,
+
+93
+00:04:08.180 --> 00:04:11.280
+move the cursor to any location on that line
+
+94
+00:04:11.280 --> 00:04:12.880
+and type dd.
+
+95
+00:04:13.840 --> 00:04:16.540
+To delete three lines from the current line,
+
+96
+00:04:16.540 --> 00:04:18.880
+issue the command d3d.
+
+97
+00:04:19.660 --> 00:04:22.040
+Replace the number three with any number
+
+98
+00:04:22.040 --> 00:04:24.710
+to delete that many lines
+from the current line.
+
+99
+00:04:25.610 --> 00:04:27.200
+Suppose you made a mistake,
+
+100
+00:04:27.400 --> 00:04:30.650
+to undo the previous change, type U.
+
+101
+00:04:31.210 --> 00:04:33.150
+To redo the change again,
+
+102
+00:04:33.150 --> 00:04:34.560
+press the Ctrl R key.
+
+103
+00:04:37.200 --> 00:04:38.760
+To find a string,
+
+104
+00:04:38.760 --> 00:04:41.720
+use either the slash or question mark key
+
+105
+00:04:42.040 --> 00:04:44.380
+followed by the pattern you want to search.
+
+106
+00:04:44.960 --> 00:04:46.000
+The slash
+
+107
+00:04:46.000 --> 00:04:47.260
+followed by the pattern
+
+108
+00:04:47.260 --> 00:04:50.340
+searches the file
+from the current line downwards
+
+109
+00:04:50.340 --> 00:04:52.080
+until it finds the matches.
+
+110
+00:04:52.720 --> 00:04:53.720
+For example,
+
+111
+00:04:53.720 --> 00:04:58.420
+to find the location of the pattern
+called "line," in this example file,
+
+112
+00:04:58.780 --> 00:05:01.010
+type in "/line,"
+
+113
+00:05:01.280 --> 00:05:02.700
+the cursor will be moved
+
+114
+00:05:02.700 --> 00:05:04.680
+to the first occurrence of the line.
+
+115
+00:05:05.380 --> 00:05:08.160
+To find the next occurrence down the file,
+
+116
+00:05:08.160 --> 00:05:09.780
+press lower case n.
+
+117
+00:05:10.300 --> 00:05:13.020
+To find the pattern above the current line,
+
+118
+00:05:13.020 --> 00:05:14.980
+key in uppercase N.
+
+119
+00:05:15.560 --> 00:05:17.310
+The question mark pattern
+
+120
+00:05:17.310 --> 00:05:19.650
+does the same thing, but in reverse,
+
+121
+00:05:20.000 --> 00:05:22.640
+it searches for the pattern from the cursor
+
+122
+00:05:22.640 --> 00:05:25.250
+and moves upwards to find the next match.
+
+123
+00:05:26.180 --> 00:05:30.480
+Using lowercase n will move up
+to find the next match,
+
+124
+00:05:30.760 --> 00:05:33.880
+and uppercase N searches down the file.
+
+125
+00:05:36.960 --> 00:05:41.210
+The insert mode is used to insert
+or write data to the file.
+
+126
+00:05:41.560 --> 00:05:44.380
+To get into insert mode from command mode,
+
+127
+00:05:44.540 --> 00:05:46.420
+key in lowercase i,
+
+128
+00:05:46.720 --> 00:05:49.010
+lowercase a, o,
+
+129
+00:05:49.010 --> 00:05:50.550
+or uppercase A.
+
+130
+00:05:51.560 --> 00:05:53.180
+Once you are in this mode,
+
+131
+00:05:53.180 --> 00:05:57.050
+you will see a blinking cursor
+marking the location on the file
+
+132
+00:05:57.050 --> 00:05:58.650
+where you can make changes.
+
+133
+00:05:59.020 --> 00:06:00.960
+At the bottom of the screen,
+
+134
+00:06:00.960 --> 00:06:02.880
+there should be the word "insert"
+
+135
+00:06:03.100 --> 00:06:06.650
+indicating that you are, in fact,
+in insert mode.
+
+136
+00:06:07.420 --> 00:06:11.460
+You can now use the arrow keys
+to move the cursor in the file
+
+137
+00:06:11.460 --> 00:06:16.900
+and make use of the Enter and Backspace keys
+as you would in graphical text editors,
+
+138
+00:06:16.900 --> 00:06:18.880
+such as the Notepad in Windows.
+
+139
+00:06:21.560 --> 00:06:24.910
+You can enter the last line mode
+from command mode
+
+140
+00:06:24.910 --> 00:06:26.650
+by typing the colon key.
+
+141
+00:06:27.340 --> 00:06:28.340
+From this mode,
+
+142
+00:06:28.340 --> 00:06:31.580
+you can save or discard changes
+made to the file.
+
+143
+00:06:32.450 --> 00:06:34.960
+To save a file after making a change,
+
+144
+00:06:34.960 --> 00:06:37.150
+type in ":w".
+
+145
+00:06:37.440 --> 00:06:39.160
+This will save the file,
+
+146
+00:06:39.160 --> 00:06:41.180
+but you will still be within the editor.
+
+147
+00:06:42.110 --> 00:06:45.050
+To exit the file, use ":q".
+
+148
+00:06:45.660 --> 00:06:48.520
+To save and exit from the vi editor,
+
+149
+00:06:48.520 --> 00:06:50.780
+type in ":wq".
+
+150
+00:06:51.640 --> 00:06:53.320
+If you want to exit the file
+
+151
+00:06:53.320 --> 00:06:57.050
+without saving the changes you have made
+since the last save,
+
+152
+00:06:57.320 --> 00:07:00.580
+use the ":q!".
+
+153
+00:07:03.880 --> 00:07:06.980
+What we have seen so far is the vi editor.
+
+154
+00:07:07.240 --> 00:07:10.360
+There is another popular program called VIM,
+
+155
+00:07:10.610 --> 00:07:14.520
+which is an improved version of vi
+with added features,
+
+156
+00:07:14.520 --> 00:07:17.210
+but very similar in appearance to vi.
+
+157
+00:07:17.960 --> 00:07:21.500
+All the concepts we discussed so far with vi
+
+158
+00:07:21.500 --> 00:07:23.480
+apply to VIM as well,
+
+159
+00:07:23.480 --> 00:07:26.850
+and should help you get started on VIM
+should you want to do so.
+
+160
+00:07:27.800 --> 00:07:29.910
+It is also important to note
+
+161
+00:07:29.910 --> 00:07:31.950
+that in most distros today,
+
+162
+00:07:32.220 --> 00:07:34.460
+the vi is a symbolic link
+
+163
+00:07:34.460 --> 00:07:36.680
+or a shortcut to the VIM editor.
+
+164
+00:07:37.210 --> 00:07:38.640
+For example, here,
+
+165
+00:07:38.820 --> 00:07:46.720
+the vi program is pointing
+to /usr/bin/vim.basic file.
+
+166
+00:07:47.520 --> 00:07:50.580
+To see the differences between vi and VIM,
+
+167
+00:07:50.740 --> 00:07:53.580
+use man pages or check within VIM.
+
+168
+00:07:54.800 --> 00:07:56.840
+Open a file using VIM
+
+169
+00:07:56.840 --> 00:07:59.610
+by running VIM followed by the file name,
+
+170
+00:07:59.960 --> 00:08:04.720
+and then type in ":hvi-differences".
+
+171
+00:08:07.720 --> 00:08:10.240
+Now that you are familiar with vi editor,
+
+172
+00:08:10.240 --> 00:08:13.680
+head over to the hands-on labs
+and start practicing.

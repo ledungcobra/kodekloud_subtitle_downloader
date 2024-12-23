@@ -1,0 +1,376 @@
+WEBVTT
+
+1
+00:00:00.200 --> 00:00:01.700
+-In this section,
+
+2
+00:00:01.700 --> 00:00:04.700
+we will see
+how to schedule jobs in Linux
+
+3
+00:00:04.700 --> 00:00:08.100
+by making use of Cron.
+
+4
+00:00:08.100 --> 00:00:11.600
+Consider an example
+where the user called Michael
+
+5
+00:00:11.600 --> 00:00:15.925
+has to run the command uptime
+and redirect the results
+
+6
+00:00:15.925 --> 00:00:24.150
+to a file called /tmp/system-report.txt
+in the system.
+
+7
+00:00:24.150 --> 00:00:27.450
+This can be done
+by running the uptime command
+
+8
+00:00:27.450 --> 00:00:31.100
+and redirect the standard output
+to the file.
+
+9
+00:00:31.100 --> 00:00:36.900
+But what if this has to be run
+only at 9:00 PM every day?
+
+10
+00:00:36.900 --> 00:00:40.900
+The hard way to do this
+would be to log into the system
+
+11
+00:00:40.900 --> 00:00:43.275
+and manually run this command.
+
+12
+00:00:43.275 --> 00:00:48.400
+The better way is to use a Cron Job
+to schedule this task
+
+13
+00:00:48.400 --> 00:00:51.350
+to be run at 9:00 PM every day.
+
+14
+00:00:51.350 --> 00:00:55.825
+With a Cron Job,
+a user can specify any date,
+
+15
+00:00:55.825 --> 00:00:59.450
+time,
+or frequency to schedule a task.
+
+16
+00:00:59.450 --> 00:01:00.725
+Once defined,
+
+17
+00:01:00.725 --> 00:01:03.950
+the system will execute the task
+at the set time
+
+18
+00:01:03.950 --> 00:01:06.300
+without any human intervention.
+
+19
+00:01:06.300 --> 00:01:10.650
+This functionality is enabled
+by the crond service
+
+20
+00:01:10.650 --> 00:01:13.950
+that runs in the background.
+
+21
+00:01:13.950 --> 00:01:19.025
+To schedule the job,
+run the command crontab -e
+
+22
+00:01:19.025 --> 00:01:21.825
+with the user you want to run this task.
+
+23
+00:01:21.825 --> 00:01:23.200
+In this case,
+
+24
+00:01:23.200 --> 00:01:26.500
+we will run the command
+with the user called Michael.
+
+25
+00:01:26.500 --> 00:01:28.400
+When you run this command,
+
+26
+00:01:28.400 --> 00:01:32.175
+it will open up the crontab
+in the VI editor.
+
+27
+00:01:32.175 --> 00:01:34.650
+Navigate to the bottom of the file
+
+28
+00:01:34.650 --> 00:01:38.175
+and add the configuration
+for our job to be scheduled
+
+29
+00:01:38.175 --> 00:01:40.450
+at 9:00 PM every day.
+
+30
+00:01:40.450 --> 00:01:44.025
+The first five fields
+are used to specify
+
+31
+00:01:44.025 --> 00:01:46.775
+the exact schedule to run the task.
+
+32
+00:01:46.775 --> 00:01:49.100
+We will learn how to do that next.
+
+33
+00:01:49.100 --> 00:01:52.175
+The sixth field is the command to run,
+
+34
+00:01:52.175 --> 00:01:55.425
+which in our case
+is the command called uptime,
+
+35
+00:01:55.425 --> 00:02:04.200
+and redirect the result
+to the file /tmp/system-report.txt.
+
+36
+00:02:04.200 --> 00:02:07.325
+Now,
+one thing to remember with Cron Jobs,
+
+37
+00:02:07.325 --> 00:02:10.950
+do not use sudo
+with the crontab command,
+
+38
+00:02:10.950 --> 00:02:13.725
+or you will find that the job
+will be scheduled
+
+39
+00:02:13.725 --> 00:02:16.725
+for the root user.
+
+40
+00:02:16.725 --> 00:02:20.600
+Now, let's see how the schedule works
+and see the meaning
+
+41
+00:02:20.600 --> 00:02:23.350
+of the first five columns
+in the crontab.
+
+42
+00:02:23.350 --> 00:02:27.225
+To schedule the job
+to run on February 19,
+
+43
+00:02:27.225 --> 00:02:31.575
+at 10 minutes past 8:00,
+you would put it this way.
+
+44
+00:02:31.575 --> 00:02:33.825
+If you want this to be scheduled
+
+45
+00:02:33.825 --> 00:02:37.175
+only if the 19th of February is a Monday,
+
+46
+00:02:37.175 --> 00:02:40.825
+then add an additional option
+called weekday
+
+47
+00:02:40.825 --> 00:02:43.475
+and set it to 1 for Monday.
+
+48
+00:02:43.475 --> 00:02:47.350
+A star in these fields
+indicates any value,
+
+49
+00:02:47.350 --> 00:02:50.375
+so it doesn't matter
+what the weekday happens
+
+50
+00:02:50.375 --> 00:02:54.000
+to be on that day,
+the job will run.
+
+51
+00:02:54.000 --> 00:02:56.750
+To run the job at 10 minutes past 8:00
+
+52
+00:02:56.750 --> 00:03:02.650
+on the 19th of all months,
+set the month value to a star.
+
+53
+00:03:02.650 --> 00:03:05.450
+To run the job at 10 minutes past 8:00
+
+54
+00:03:05.450 --> 00:03:10.775
+on all days of all months,
+set the day value to a star.
+
+55
+00:03:10.775 --> 00:03:14.275
+To run the job
+at 10 minutes past all hours
+
+56
+00:03:14.275 --> 00:03:19.800
+on all days of all months,
+set the hour value to a star.
+
+57
+00:03:19.800 --> 00:03:23.075
+To run the job
+every minute of every hour
+
+58
+00:03:23.075 --> 00:03:28.225
+on all days of all months,
+set the minute value to a star.
+
+59
+00:03:28.225 --> 00:03:32.050
+Your job will now run every minute.
+
+60
+00:03:32.050 --> 00:03:35.625
+What if you want to run the job
+every two minutes?
+
+61
+00:03:35.625 --> 00:03:38.825
+You may configure that using step values
+
+62
+00:03:38.825 --> 00:03:40.825
+with a slash like this.
+
+63
+00:03:40.825 --> 00:03:45.150
+Star divided by 2 indicates
+that the job should run
+
+64
+00:03:45.150 --> 00:03:46.800
+every 2nd minute.
+
+65
+00:03:46.800 --> 00:03:51.025
+The same can be used
+for the other options as well.
+
+66
+00:03:51.025 --> 00:03:54.625
+Finally,
+we can schedule our uptime command
+
+67
+00:03:54.625 --> 00:03:56.950
+to run every day at 9:00 PM
+
+68
+00:03:56.950 --> 00:04:01.550
+by specifying the schedule like this.
+
+69
+00:04:01.550 --> 00:04:07.525
+For reference on the usage,
+use this table.
+
+70
+00:04:07.525 --> 00:04:10.875
+To list all the jobs scheduled in Cron,
+
+71
+00:04:10.875 --> 00:04:14.725
+you can run the command crontab -l.
+
+72
+00:04:14.725 --> 00:04:17.175
+One way to validate that the task
+
+73
+00:04:17.175 --> 00:04:20.750
+was indeed run at 9:00 PM
+is to check the file
+
+74
+00:04:20.750 --> 00:04:23.075
+where the output is being appended.
+
+75
+00:04:23.075 --> 00:04:26.700
+Another way to check if the job
+was run successfully
+
+76
+00:04:26.700 --> 00:04:35.300
+is to inspect the logfile
+/var/log/syslog like this.
+
+77
+00:04:35.300 --> 00:04:36.725
+In this example,
+
+78
+00:04:36.725 --> 00:04:39.200
+we can see that the specific command
+
+79
+00:04:39.200 --> 00:04:43.100
+was run at the scheduled time
+on the server.
+
+80
+00:04:43.100 --> 00:04:46.025
+Well, that's it for this section.
+
+81
+00:04:46.025 --> 00:04:50.075
+Head over to the hands-on labs
+and create scheduled tasks
+
+82
+00:04:50.075 --> 00:04:51.675
+using Cron Jobs.

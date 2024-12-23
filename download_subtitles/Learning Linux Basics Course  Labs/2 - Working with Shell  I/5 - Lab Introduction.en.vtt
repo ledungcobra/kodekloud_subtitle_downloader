@@ -1,0 +1,256 @@
+WEBVTT
+
+1
+00:00:01.021 --> 00:00:02.850
+-This is an introductory video
+
+2
+00:00:02.850 --> 00:00:06.793
+to give you a quick tour of the hands-on labs
+available in this course.
+
+3
+00:00:07.017 --> 00:00:10.189
+If you have never used
+the code cloud labs before,
+
+4
+00:00:10.317 --> 00:00:12.914
+please watch this
+before attempting the labs.
+
+5
+00:00:13.805 --> 00:00:18.006
+The hands-on labs will require you
+to type in commands in the Linux shell
+
+6
+00:00:18.025 --> 00:00:18.882
+using a keyboard.
+
+7
+00:00:19.451 --> 00:00:23.003
+Hence, you will need a laptop
+or a desktop to use the labs.
+
+8
+00:00:24.057 --> 00:00:26.777
+Now let us get introduced to the labs.
+
+9
+00:00:27.136 --> 00:00:30.260
+Each lab is specially designed
+to help you practice
+
+10
+00:00:30.477 --> 00:00:34.555
+and gain more knowledge on the topics
+learned in the previous lecture videos.
+
+11
+00:00:35.122 --> 00:00:39.782
+Click on the link to open the hands-on lab
+and wait for the lab environment to load.
+
+12
+00:00:40.297 --> 00:00:41.860
+This can take a few minutes.
+
+13
+00:00:42.656 --> 00:00:43.977
+Once the lab is loaded,
+
+14
+00:00:44.217 --> 00:00:47.716
+you will be taken to a real Linux command-line
+interface.
+
+15
+00:00:48.093 --> 00:00:52.713
+This environment will provide you with
+the experience of working on Bob's laptop.
+
+16
+00:00:53.264 --> 00:00:55.526
+The lab interface has two sections.
+
+17
+00:00:56.150 --> 00:00:58.612
+The Linux terminal is on the left-hand side.
+
+18
+00:00:59.024 --> 00:01:01.113
+This is where you will be
+running the commands
+
+19
+00:01:01.113 --> 00:01:04.557
+and carrying out tasks
+based on the questions asked.
+
+20
+00:01:05.046 --> 00:01:07.446
+The questions can be found in the lab portal
+
+21
+00:01:07.725 --> 00:01:10.084
+which is on the right-hand side
+of the split-screen.
+
+22
+00:01:10.770 --> 00:01:13.545
+There are two types of questions
+that you can expect.
+
+23
+00:01:13.899 --> 00:01:15.533
+The multiple-choice questions,
+
+24
+00:01:15.664 --> 00:01:18.822
+where you will have to look up
+the answer for a specific question
+
+25
+00:01:18.864 --> 00:01:20.925
+by typing in commands on the terminal.
+
+26
+00:01:21.586 --> 00:01:22.646
+Once you know the answer,
+
+27
+00:01:22.973 --> 00:01:26.541
+click on the appropriate answer button
+to move on to the next question.
+
+28
+00:01:27.522 --> 00:01:28.224
+For example,
+
+29
+00:01:28.363 --> 00:01:32.434
+in this question, we have to find the path
+to Bob's home directory.
+
+30
+00:01:32.870 --> 00:01:36.477
+Let us find that out by running
+the "echo dollar home" command.
+
+31
+00:01:37.110 --> 00:01:41.056
+This shows that the home directory
+is /home/Bob.
+
+32
+00:01:41.467 --> 00:01:43.296
+Let's select that as our answer.
+
+33
+00:01:44.516 --> 00:01:46.148
+Once the answer has been validated,
+
+34
+00:01:46.441 --> 00:01:48.242
+it will take you to the next question.
+
+35
+00:01:49.017 --> 00:01:52.219
+The second type of question
+is the configuration test.
+
+36
+00:01:52.603 --> 00:01:56.587
+This is where you will be asked
+to complete a specific task on the terminal.
+
+37
+00:01:57.504 --> 00:01:58.342
+For example,
+
+38
+00:01:58.470 --> 00:02:02.336
+in this case we have
+to create a directory called "Birds"
+
+39
+00:02:02.336 --> 00:02:03.723
+in Bob's home directory.
+
+40
+00:02:04.564 --> 00:02:05.323
+To do this,
+
+41
+00:02:05.492 --> 00:02:12.889
+let's type in the command "mkdir/home/Bob/birds"
+in the terminal.
+
+42
+00:02:13.846 --> 00:02:15.581
+Clicking on the Check button
+
+43
+00:02:15.700 --> 00:02:18.425
+will validate if the task
+has been completed correctly.
+
+44
+00:02:19.412 --> 00:02:21.131
+It looks like we made a mistake.
+
+45
+00:02:21.412 --> 00:02:22.697
+To see what went wrong,
+
+46
+00:02:22.800 --> 00:02:25.590
+click on this icon here to get more details.
+
+47
+00:02:26.525 --> 00:02:28.281
+Our directory name is wrong.
+
+48
+00:02:28.601 --> 00:02:32.784
+We created the directory called "Bird"
+not "Birds."
+
+49
+00:02:33.270 --> 00:02:35.437
+That's all right, let's correct that.
+
+50
+00:02:36.290 --> 00:02:40.208
+Now, when we click the Check button,
+the task has been validated
+
+51
+00:02:41.200 --> 00:02:42.600
+and we can move on to the next question.
+
+52
+00:02:43.318 --> 00:02:43.906
+Finally,
+
+53
+00:02:44.006 --> 00:02:46.265
+if you are not sure how to attempt to question,
+
+54
+00:02:46.624 --> 00:02:47.437
+don't worry.
+
+55
+00:02:47.691 --> 00:02:49.204
+Click on the Hint button
+
+56
+00:02:49.344 --> 00:02:52.793
+and you will be presented with a hint
+that will help you answer the question.
+
+57
+00:02:57.819 --> 00:02:58.461
+Good luck.

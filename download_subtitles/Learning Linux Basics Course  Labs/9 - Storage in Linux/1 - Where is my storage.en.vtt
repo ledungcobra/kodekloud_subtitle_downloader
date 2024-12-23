@@ -1,0 +1,337 @@
+WEBVTT
+
+1
+00:00:01.000 --> 00:00:03.360
+July 9th - 9:00 AM
+
+2
+00:00:03.360 --> 00:00:06.000
+5 days before the demo.
+
+3
+00:00:07.820 --> 00:00:10.750
+The client demonstration is just
+around the corner,
+
+4
+00:00:10.760 --> 00:00:13.500
+and Bob has been working very hard.
+
+5
+00:00:13.500 --> 00:00:18.600
+His final task is to migrate
+the Django project from his laptop
+
+6
+00:00:18.600 --> 00:00:19.867
+to the dev servers.
+
+7
+00:00:19.867 --> 00:00:21.733
+While working on the shell,
+
+8
+00:00:21.733 --> 00:00:26.200
+he tries to download a large file
+into his home directory.
+
+9
+00:00:26.200 --> 00:00:28.633
+The download fails after a while
+
+10
+00:00:28.633 --> 00:00:31.667
+with an error; no space on device.
+
+11
+00:00:31.667 --> 00:00:34.733
+He runs a DF command and sees that
+
+12
+00:00:34.733 --> 00:00:37.967
+his home directory is 95% full.
+
+13
+00:00:37.967 --> 00:00:41.000
+He also sees that
+all the mounts
+
+14
+00:00:41.000 --> 00:00:45.467
+in the DF command
+added up to about 50GB in total.
+
+15
+00:00:45.467 --> 00:00:49.100
+"Didn't it say on the box
+that this laptop has
+
+16
+00:00:49.101 --> 00:00:52.567
+a 128G SSD disk?
+
+17
+00:00:52.567 --> 00:00:54.967
+Where is the rest of the storage?
+
+18
+00:00:54.967 --> 00:00:59.267
+Hmm.
+I'll have to get this checked with Dave",
+
+19
+00:00:59.267 --> 00:01:03.433
+thinks Bob,
+"But first I need some coffee"
+
+20
+00:01:03.433 --> 00:01:06.967
+Bob decides to
+head down to the cafeteria.
+
+21
+00:01:06.967 --> 00:01:11.500
+He sees Dave at the counter.
+He is in a deep conversation
+
+22
+00:01:11.500 --> 00:01:12.967
+with another colleague.
+
+23
+00:01:12.967 --> 00:01:15.867
+Dave spots Bob and calls him over.
+
+24
+00:01:15.867 --> 00:01:18.833
+Morning Bob! Come on over.
+
+25
+00:01:18.833 --> 00:01:20.900
+I want to introduce you to
+
+26
+00:01:20.900 --> 00:01:25.567
+Mohanarajan Manivannan,
+our resident Storage Admin.
+
+27
+00:01:25.567 --> 00:01:30.333
+"You can call me Mohan,"
+says Mohanarajan.
+
+28
+00:01:30.333 --> 00:01:35.433
+"Mohan was just telling me that
+we are running out of space
+
+29
+00:01:35.433 --> 00:01:39.667
+on our production SAN appliance,"
+says Dave.
+
+30
+00:01:39.667 --> 00:01:43.267
+"This is Bob. He's our
+new front end developer
+
+31
+00:01:43.267 --> 00:01:46.700
+who joined the Project Mercury team
+two weeks ago."
+
+32
+00:01:46.700 --> 00:01:50.133
+Bob and Mohan exchanged pleasantries,
+
+33
+00:01:50.133 --> 00:01:52.367
+and Bob introduces himself.
+
+34
+00:01:52.367 --> 00:01:55.867
+Bob says, "Dave has been terrific.
+
+35
+00:01:55.867 --> 00:01:58.900
+He has helped me break into
+the world of Linux
+
+36
+00:01:58.900 --> 00:02:01.033
+after the end Initial hiccups.
+
+37
+00:02:01.033 --> 00:02:04.633
+I am now fairly comfortable
+working in this new environment."
+
+38
+00:02:04.633 --> 00:02:08.700
+Mohan replies: That's fantastic!
+
+39
+00:02:08.700 --> 00:02:11.433
+Yes, I remember having
+the exact experience
+
+40
+00:02:11.433 --> 00:02:13.733
+when I joined the firm
+eight years ago!
+
+41
+00:02:13.733 --> 00:02:15.833
+Dave helped me a lot too!
+
+42
+00:02:15.833 --> 00:02:21.767
+Those days, we used to work on
+Fedora 16 and RHEL5.
+
+43
+00:02:21.767 --> 00:02:25.000
+Things have changed
+so much since then!"
+
+44
+00:02:25.000 --> 00:02:26.867
+Good to know.
+
+45
+00:02:26.867 --> 00:02:30.267
+I think either of you can help me
+understand the storage problem.
+
+46
+00:02:30.267 --> 00:02:33.733
+I've been seeing on my laptop", says Bob.
+
+47
+00:02:33.733 --> 00:02:37.833
+"Sorry, Bob.
+I have to join an escalation call
+
+48
+00:02:37.833 --> 00:02:39.300
+in another five minutes.
+
+49
+00:02:39.300 --> 00:02:41.867
+In fact, I have to leave
+right now."
+
+50
+00:02:41.867 --> 00:02:45.233
+Says Dave, looking at his mobile.
+
+51
+00:02:45.233 --> 00:02:50.267
+He adds, "Mohan, do you mind
+taking a look at Bob's question?
+
+52
+00:02:50.267 --> 00:02:52.667
+He is a learning machine."
+
+53
+00:02:52.667 --> 00:02:54.633
+He says, laughing.
+
+54
+00:02:54.633 --> 00:02:57.100
+In fact, if you have some time to spare,
+
+55
+00:02:57.100 --> 00:03:00.067
+can you arrange a
+storage session with them?"
+
+56
+00:03:00.067 --> 00:03:03.033
+Mohan smiles, "No problem.
+
+57
+00:03:03.033 --> 00:03:05.467
+I am free pretty much
+every day this week.
+
+58
+00:03:05.467 --> 00:03:10.067
+So, Bob, just find a suitable slot
+and send me a meeting invite."
+
+59
+00:03:10.067 --> 00:03:14.067
+Bob is excited.
+That would be great.
+
+60
+00:03:14.067 --> 00:03:16.400
+Thank you so much, both of you.
+
+61
+00:03:17.180 --> 00:03:20.300
+Bob arranges a session later that day.
+
+62
+00:03:21.500 --> 00:03:24.900
+Later that afternoon, while walking
+towards the meeting room
+
+63
+00:03:24.900 --> 00:03:26.433
+to meet Mohan,
+
+64
+00:03:26.433 --> 00:03:29.167
+Bob walks past a crowded conference room.
+
+65
+00:03:29.167 --> 00:03:32.667
+He could see Dave, Donald,
+and some other people
+
+66
+00:03:32.667 --> 00:03:36.467
+he hadn't met inside the
+room talking animatedly.
+
+67
+00:03:36.467 --> 00:03:39.833
+Bob takes a quick glance
+at the name of the room.
+
+68
+00:03:39.833 --> 00:03:45.500
+It read: 7A-052 PROJECT SAPPHIRE.
+
+69
+00:03:45.500 --> 00:03:48.833
+Someone had scribbled a
+couple of words underneath
+
+70
+00:03:48.833 --> 00:03:51.133
+with a permanent marker that said,
+
+71
+00:03:51.133 --> 00:03:56.200
+WORK AT RISK MEETING.
+Booked, 9-5 until July 10th.
+
+72
+00:03:56.200 --> 00:04:01.867
+"Ah! So that's the meaning of WAR Meeting."
+thinks Bob.
+
+73
+00:04:01.867 --> 00:04:04.800
+Glad that he was not
+part of that meeting.
+
+74
+00:04:05.500 --> 00:04:12.400
+He carries on and meets up with Mohan
+in the adjacent room.
+

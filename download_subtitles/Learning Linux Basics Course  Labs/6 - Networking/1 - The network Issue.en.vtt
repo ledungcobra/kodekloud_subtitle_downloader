@@ -1,0 +1,292 @@
+WEBVTT
+
+1
+00:00:01.070 --> 00:00:08.650
+July 8, 1:00 PM, six days before the demo,
+Bob is ecstatic.
+
+2
+00:00:09.020 --> 00:00:13.100
+He has been able to get the sample
+project working on his laptop.
+
+3
+00:00:13.520 --> 00:00:16.100
+Finally, he has some time to spare
+
+4
+00:00:16.250 --> 00:00:20.170
+and decides to check the company's
+internal software repository.
+
+5
+00:00:21.000 --> 00:00:23.170
+He had got the URL from Dave
+
+6
+00:00:23.470 --> 00:00:27.500
+and remembers him saying that
+it is accessible from the office network.
+
+7
+00:00:28.000 --> 00:00:31.370
+He opens his web browser
+and types in the URL,
+
+8
+00:00:31.370 --> 00:00:36.920
+http://caleston-repos.
+
+9
+00:00:37.900 --> 00:00:40.850
+However, he runs into an unexpected error.
+
+10
+00:00:41.420 --> 00:00:43.820
+He is not sure why he got this error
+
+11
+00:00:44.070 --> 00:00:46.850
+and tries to reach out to Dave
+on the communicator.
+
+12
+00:00:47.620 --> 00:00:50.570
+"Ah, Dave is away on his vacation,"
+
+13
+00:00:51.220 --> 00:00:52.750
+Bob thinks to himself!"
+
+14
+00:00:53.500 --> 00:00:55.920
+This appears to be an issue with the network.
+
+15
+00:00:56.500 --> 00:00:59.270
+I better open up a ticket
+with the network team."
+
+16
+00:00:59.850 --> 00:01:02.120
+He creates a ticket in ServiceNow.
+
+17
+00:01:02.670 --> 00:01:04.100
+After a couple of hours,
+
+18
+00:01:04.270 --> 00:01:06.850
+he gets a message on Skype from Jacqui.
+
+19
+00:01:07.500 --> 00:01:11.050
+"Hey, Bob. My name is Jacqui
+and I am from the network team.
+
+20
+00:01:11.400 --> 00:01:16.650
+I got your ticket and was wondering if you
+have some time to troubleshoot," says Jacqui.
+
+21
+00:01:17.820 --> 00:01:20.320
+"Hey, Jacqui, thank you very much.
+
+22
+00:01:20.600 --> 00:01:22.870
+Yes, indeed. I do have some time now."
+
+23
+00:01:23.600 --> 00:01:25.100
+"Great, thanks.
+
+24
+00:01:25.420 --> 00:01:27.870
+Can you come find me at the IT support floor?
+
+25
+00:01:28.170 --> 00:01:30.570
+Desk 8A-052.
+
+26
+00:01:31.200 --> 00:01:34.820
+I think it's better to do this in person,"
+says Jacqui.
+
+27
+00:01:35.720 --> 00:01:37.550
+"Sure, see you soon."
+
+28
+00:01:38.470 --> 00:01:42.620
+Bob meets Jacqui at her desk and
+gives an overview of the problem.
+
+29
+00:01:43.300 --> 00:01:46.750
+"So, I'm trying to connect to the repo server
+from the browser
+
+30
+00:01:46.750 --> 00:01:48.100
+and I'm getting this error.
+
+31
+00:01:48.400 --> 00:01:50.400
+I'm not sure why it's not working.
+
+32
+00:01:50.820 --> 00:01:54.620
+It sure was working on Dave's laptop," says Bob.
+
+33
+00:01:56.200 --> 00:01:58.870
+Jacqui inspects the error and asks,
+
+34
+00:01:59.170 --> 00:02:01.470
+"Are you sure that's the correct URL?
+
+35
+00:02:01.750 --> 00:02:06.070
+Just by looking at the error,
+I can tell that it's not a valid DNS name.
+
+36
+00:02:06.650 --> 00:02:10.970
+Are you sure that Dave was not using
+a file-based name resolution for this site?"
+
+37
+00:02:12.170 --> 00:02:14.250
+Bob was not sure what that meant.
+
+38
+00:02:15.520 --> 00:02:18.420
+"That's all right. Let's try to
+get to the bottom of this.
+
+39
+00:02:19.050 --> 00:02:21.000
+Let me try this on my laptop."
+
+40
+00:02:22.070 --> 00:02:25.920
+She tries to open the same URL
+and gets the same error.
+
+41
+00:02:27.500 --> 00:02:32.320
+"See, the issue is with the URL.
+I don't think that's a valid name.
+
+42
+00:02:32.770 --> 00:02:35.950
+If I remember correctly, the address should be
+
+43
+00:02:36.150 --> 00:02:42.370
+http://caleston-repos-01."
+
+44
+00:02:43.670 --> 00:02:46.320
+She tries it and gets a different error now.
+
+45
+00:02:48.300 --> 00:02:51.820
+"That seems to be the correct URL,
+but it's still not working.
+
+46
+00:02:52.750 --> 00:02:55.820
+The error with respect to DNS is gone now,
+
+47
+00:02:56.100 --> 00:02:59.550
+but it's still not working," says Jacqui.
+
+48
+00:03:00.350 --> 00:03:04.950
+"If you don't mind, can you explain how to
+go about troubleshooting these issues?"
+
+49
+00:03:05.500 --> 00:03:06.850
+asks Bob,
+
+50
+00:03:07.270 --> 00:03:10.100
+"I am quite new to Linux and networking.
+
+51
+00:03:10.220 --> 00:03:12.550
+I would appreciate any tips you can give me.
+
+52
+00:03:13.500 --> 00:03:16.000
+I have this client demonstration next week
+
+53
+00:03:16.000 --> 00:03:19.350
+and want to make sure it goes
+well without any hiccups."
+
+54
+00:03:19.870 --> 00:03:22.150
+Jacqui smiles, "Sure thing.
+
+55
+00:03:22.550 --> 00:03:24.170
+Do you have a few minutes to spare?
+
+56
+00:03:25.070 --> 00:03:29.050
+If you have some time now, I can walk
+you through some of the networking basics,
+
+57
+00:03:29.350 --> 00:03:32.070
+and then we can troubleshoot
+this problem from the ground up.
+
+58
+00:03:32.670 --> 00:03:34.320
+Does that sound good to you?"
+
+59
+00:03:34.970 --> 00:03:39.850
+"Sounds perfect. Thank you very much,"
+Bob exclaims.
+
+60
+00:03:40.700 --> 00:03:44.570
+"Let's start from the beginning," says Jacqui.
+
+61
+00:03:45.700 --> 00:03:48.370
+"So, you were trying to access the site,
+
+62
+00:03:48.370 --> 00:03:53.070
+http://caleston-repos.
+
+63
+00:03:53.450 --> 00:03:58.700
+While doing this, you got an error
+'DNS PROBE FINISHED NX DOMAIN.'
+
+64
+00:03:59.800 --> 00:04:04.550
+Well, this means that the client,
+which in this case is your laptop,
+
+65
+00:04:04.770 --> 00:04:08.700
+is not able to locate the IP address
+of caleston-repos.
+
+66
+00:04:09.450 --> 00:04:13.920
+To understand this a bit better,
+let me explain a bit about DNS."

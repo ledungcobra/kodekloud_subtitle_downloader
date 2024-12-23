@@ -1,0 +1,198 @@
+WEBVTT
+
+1
+00:00:02.120 --> 00:00:05.770
+Now let us look at some of the
+basic commands used to create
+
+2
+00:00:05.770 --> 00:00:08.100
+and manage user accounts in Linux.
+
+3
+00:00:08.420 --> 00:00:12.420
+The first command we will look at
+is the useradd command.
+
+4
+00:00:12.970 --> 00:00:16.120
+This is the command used by
+the system administrators
+
+5
+00:00:16.450 --> 00:00:21.150
+to create a new local user in the system,
+such as the user for Bob.
+
+6
+00:00:21.750 --> 00:00:25.950
+The simplest way to do this is
+to use the command useradd,
+
+7
+00:00:26.200 --> 00:00:28.700
+followed by the name of the user as an argument.
+
+8
+00:00:29.450 --> 00:00:33.200
+In this case, a new user
+called Bob has been created
+
+9
+00:00:33.200 --> 00:00:36.750
+with a system-generated UID and GID.
+
+10
+00:00:37.550 --> 00:00:41.670
+It will set the home directory for
+Bob under the /home directory
+
+11
+00:00:42.020 --> 00:00:46.650
+and default to /bin/sh as the default shell.
+
+12
+00:00:47.600 --> 00:00:51.770
+To set the password for Bob,
+use the passwd command,
+
+13
+00:00:52.250 --> 00:00:54.520
+followed by the username, which is Bob.
+
+14
+00:00:55.250 --> 00:00:59.070
+Please, note that both these commands,
+useradd and passwd,
+
+15
+00:00:59.270 --> 00:01:00.820
+need to be running as root.
+
+16
+00:01:01.820 --> 00:01:03.450
+Once logged into the system,
+
+17
+00:01:03.750 --> 00:01:08.250
+the user can check the user ID
+by running the 'whoami' command.
+
+18
+00:01:08.820 --> 00:01:11.320
+The user can change their own password
+
+19
+00:01:11.320 --> 00:01:14.900
+from the shell by running the passwd
+command without arguments.
+
+20
+00:01:17.850 --> 00:01:20.500
+What we have seen so far in the example
+
+21
+00:01:20.500 --> 00:01:23.820
+is using the useradd without any options.
+
+22
+00:01:24.450 --> 00:01:27.850
+Here are some of the common options
+used with this command,
+
+23
+00:01:28.320 --> 00:01:31.270
+-c can be used for custom comments,
+
+24
+00:01:31.670 --> 00:01:35.020
+-d to specify a home directory path,
+
+25
+00:01:35.720 --> 00:01:39.000
+-e to specify the account expiration date,
+
+26
+00:01:39.500 --> 00:01:45.870
+-u, and -g to specify custom UID
+and GID respectively.
+
+27
+00:01:46.520 --> 00:01:52.850
+The dash -G can be used to add the user
+being created to multiple secondary groups.
+
+28
+00:01:53.570 --> 00:01:56.100
+Here is an example where the user Bob
+
+29
+00:01:56.100 --> 00:01:59.370
+is being created with some
+of these additional options.
+
+30
+00:02:00.100 --> 00:02:02.020
+Once the user has been created,
+
+31
+00:02:02.020 --> 00:02:04.650
+we can validate that the custom fields
+
+32
+00:02:04.650 --> 00:02:09.020
+were set by using the ID command
+with the username as the argument.
+
+33
+00:02:09.750 --> 00:02:16.150
+Here, we can see that Bob has
+been created with the custom GID of 1009,
+
+34
+00:02:16.570 --> 00:02:20.320
+which sets his primary group
+to the group called Avenger.
+
+35
+00:02:20.920 --> 00:02:26.100
+You can verify the custom comments have been
+created by inspecting the password file
+
+36
+00:02:26.370 --> 00:02:28.850
+and checking the fields for Bob's user account.
+
+37
+00:02:32.100 --> 00:02:35.450
+Let us now look at user deletion
+and managing groups.
+
+38
+00:02:36.520 --> 00:02:42.150
+To delete a user account, run the userdel
+command with the username.
+
+39
+00:02:42.970 --> 00:02:47.670
+To add a new Linux group, we can
+make use of the groupadd command
+
+40
+00:02:48.200 --> 00:02:52.770
+with -g, we can specify a custom GID
+for the group.
+
+41
+00:02:53.820 --> 00:02:59.220
+Finally, use the groupdel command,
+followed by the group name to remove it.
+
+42
+00:03:02.400 --> 00:03:05.120
+Now head over to the hands-on labs,
+
+43
+00:03:05.320 --> 00:03:08.770
+and practice working with user account
+management in Linux.

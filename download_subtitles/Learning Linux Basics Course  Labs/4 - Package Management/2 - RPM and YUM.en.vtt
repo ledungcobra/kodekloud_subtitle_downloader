@@ -1,0 +1,682 @@
+WEBVTT
+
+1
+00:00:00.650 --> 00:00:04.680
+We will now look at each
+of the package managers in a bit more detail.
+
+2
+00:00:05.380 --> 00:00:07.500
+The first one is the RPM,
+
+3
+00:00:07.500 --> 00:00:10.180
+which stands for the Red Hat Package Manager.
+
+4
+00:00:10.580 --> 00:00:14.580
+This package manager is used
+in Red Hat Enterprise Linux,
+
+5
+00:00:14.580 --> 00:00:17.200
+as well as other Linux distributions,
+
+6
+00:00:17.200 --> 00:00:18.460
+such as CentOS
+
+7
+00:00:18.460 --> 00:00:20.350
+and many versions of Fedora.
+
+8
+00:00:20.660 --> 00:00:23.700
+Several other distros make use of RPM,
+
+9
+00:00:23.700 --> 00:00:26.050
+but these are some of the most common ones.
+
+10
+00:00:27.240 --> 00:00:30.980
+The file extension for packages
+managed by RPM
+
+11
+00:00:30.980 --> 00:00:32.450
+is .rpm.
+
+12
+00:00:33.350 --> 00:00:37.250
+Let's see how to work with RPM
+using the Linux command line.
+
+13
+00:00:40.300 --> 00:00:43.780
+RPM has five basic modes of operation:
+
+14
+00:00:43.940 --> 00:00:45.150
+installing,
+
+15
+00:00:45.150 --> 00:00:46.410
+uninstalling,
+
+16
+00:00:46.410 --> 00:00:47.510
+upgrade,
+
+17
+00:00:47.510 --> 00:00:49.280
+query, and verifying.
+
+18
+00:00:50.200 --> 00:00:53.780
+Each of these modes can be run
+using the RPM command
+
+19
+00:00:53.780 --> 00:00:56.180
+followed by specific command options.
+
+20
+00:00:56.960 --> 00:00:58.450
+To install a package,
+
+21
+00:00:58.450 --> 00:01:01.440
+use rpm -ivh
+
+22
+00:01:01.440 --> 00:01:02.700
+in the package name.
+
+23
+00:01:03.340 --> 00:01:06.280
+Here, -I stands for install,
+
+24
+00:01:06.600 --> 00:01:09.060
+-V stands for verbose
+
+25
+00:01:09.060 --> 00:01:12.200
+and is used to print
+the detailed output of the command.
+
+26
+00:01:13.320 --> 00:01:15.080
+To uninstall a package,
+
+27
+00:01:15.080 --> 00:01:18.910
+use the rpm -e command with the package name.
+
+28
+00:01:19.500 --> 00:01:22.980
+To upgrade an existing package
+to a newer version,
+
+29
+00:01:22.980 --> 00:01:27.780
+use the rpm -Uvh command, with uppercase U.
+
+30
+00:01:28.460 --> 00:01:30.980
+The RPM database stores information
+
+31
+00:01:30.980 --> 00:01:34.510
+about all RPM packages
+installed in your system.
+
+32
+00:01:35.120 --> 00:01:40.380
+It is stored in the /war/lib/rpm directory.
+
+33
+00:01:40.700 --> 00:01:43.810
+It is used to query
+what packages are installed,
+
+34
+00:01:44.050 --> 00:01:46.510
+what versions each package is,
+
+35
+00:01:46.510 --> 00:01:50.410
+and any changes to any files
+in the package since installation,
+
+36
+00:01:50.840 --> 00:01:51.950
+among others.
+
+37
+00:01:52.780 --> 00:01:57.080
+To query this database and get details
+about an installed package,
+
+38
+00:01:57.080 --> 00:01:59.580
+use the Rrpm -q,
+
+39
+00:01:59.580 --> 00:02:01.050
+followed by the package name.
+
+40
+00:02:02.410 --> 00:02:07.680
+Finally, use rpm -V to verify a package.
+
+41
+00:02:08.060 --> 00:02:11.540
+Verifying a package
+compares information about files
+
+42
+00:02:11.540 --> 00:02:13.340
+installed from a package
+
+43
+00:02:13.340 --> 00:02:16.150
+with the same information
+from the original package.
+
+44
+00:02:16.680 --> 00:02:18.500
+This is especially useful
+
+45
+00:02:18.500 --> 00:02:20.880
+to make sure that the package
+has been installed
+
+46
+00:02:20.880 --> 00:02:23.180
+from a trusted and secure source.
+
+47
+00:02:24.280 --> 00:02:26.120
+Despite all these modes,
+
+48
+00:02:26.120 --> 00:02:27.400
+it's important to note
+
+49
+00:02:27.400 --> 00:02:31.580
+that RPM does not resolve
+package dependencies on its own.
+
+50
+00:02:31.980 --> 00:02:36.310
+This is why we make use
+of a higher-level package manager called YUM.
+
+51
+00:02:36.780 --> 00:02:38.780
+We will take a look at YUM next.
+
+52
+00:02:41.020 --> 00:02:44.120
+Let us now move on to the YUM package manager.
+
+53
+00:02:44.700 --> 00:02:48.380
+YUM stands for Yellowdog Updater, Modified,
+
+54
+00:02:48.560 --> 00:02:51.480
+and it is a free
+and open-source package manager
+
+55
+00:02:51.480 --> 00:02:54.450
+that works on RPM-based Linux systems.
+
+56
+00:02:55.040 --> 00:02:57.850
+YUM works with software repositories,
+
+57
+00:02:57.850 --> 00:03:00.700
+which are essentially
+a collection of packages,
+
+58
+00:03:00.700 --> 00:03:03.440
+and provides package
+and dependency management
+
+59
+00:03:03.440 --> 00:03:05.560
+on RPM-based distros.
+
+60
+00:03:06.120 --> 00:03:13.650
+The repository information
+is stored in the /etc/yum.repos.d,
+
+61
+00:03:14.060 --> 00:03:17.680
+and the repository files
+have a .repo extension.
+
+62
+00:03:18.800 --> 00:03:21.510
+YUM acts as a high-level package manager,
+
+63
+00:03:21.850 --> 00:03:23.110
+but under the hood,
+
+64
+00:03:23.110 --> 00:03:27.510
+it still depends on RPM
+to manage packages on the Linux system.
+
+65
+00:03:28.780 --> 00:03:30.260
+Unlike RPM,
+
+66
+00:03:30.260 --> 00:03:33.400
+YUM handles package dependencies very well,
+
+67
+00:03:33.400 --> 00:03:36.380
+it's able to install any dependent packages
+
+68
+00:03:36.380 --> 00:03:39.320
+to get the base package
+installed on the Linux system.
+
+69
+00:03:41.980 --> 00:03:44.650
+Let us see how YUM installs a package.
+
+70
+00:03:45.820 --> 00:03:49.260
+We know that YUM depends
+on software repositories,
+
+71
+00:03:49.260 --> 00:03:50.980
+which act as a warehouse
+
+72
+00:03:50.980 --> 00:03:54.750
+containing hundreds
+and thousands of RPM package files.
+
+73
+00:03:55.320 --> 00:03:57.420
+These repositories can be local,
+
+74
+00:03:57.680 --> 00:04:00.410
+that is installed on your laptop for example,
+
+75
+00:04:00.780 --> 00:04:05.400
+or on a remote location that can be accessed
+through transfer protocols,
+
+76
+00:04:05.400 --> 00:04:07.160
+such as FTP,
+
+77
+00:04:07.160 --> 00:04:08.610
+HTTP,
+
+78
+00:04:08.610 --> 00:04:10.580
+or HTTPS.
+
+79
+00:04:11.280 --> 00:04:15.810
+The information about the repository
+is saved in a configuration file
+
+80
+00:04:15.810 --> 00:04:21.950
+under /etc/yum.repos.d/directory.
+
+81
+00:04:22.520 --> 00:04:23.680
+Under the hood,
+
+82
+00:04:23.680 --> 00:04:26.750
+YUM still makes use
+of the RPM package manager
+
+83
+00:04:26.750 --> 00:04:28.910
+to install the package on the system.
+
+84
+00:04:29.500 --> 00:04:34.240
+Usually, the operating system comes bundled
+with its own software repository.
+
+85
+00:04:34.780 --> 00:04:35.920
+For example,
+
+86
+00:04:35.920 --> 00:04:39.160
+for a Red Hat OS with an active subscription,
+
+87
+00:04:39.160 --> 00:04:44.110
+you would normally find a file
+called redhat.repo in this directory.
+
+88
+00:04:44.680 --> 00:04:50.080
+This repository file points to the official
+Red Hat managed software repository
+
+89
+00:04:50.400 --> 00:04:53.480
+for the specific version of the OS
+that is running.
+
+90
+00:04:53.940 --> 00:04:56.980
+You can also add a new repo in this directory,
+
+91
+00:04:56.980 --> 00:05:00.110
+in case you don't want
+to make use of the official repo.
+
+92
+00:05:00.880 --> 00:05:02.610
+"Why would we want to do that?"
+
+93
+00:05:03.160 --> 00:05:04.310
+asks Bob.
+
+94
+00:05:05.010 --> 00:05:06.280
+Dave replies,
+
+95
+00:05:06.540 --> 00:05:10.220
+"Well, the official repository
+sometimes may not have
+
+96
+00:05:10.220 --> 00:05:13.450
+the latest version of the software
+you want to install,
+
+97
+00:05:13.940 --> 00:05:16.810
+and sometimes it may not have
+the software at all.
+
+98
+00:05:17.240 --> 00:05:18.620
+In such cases,
+
+99
+00:05:18.620 --> 00:05:22.320
+create a new repo file
+and point it to a non-official
+
+100
+00:05:22.320 --> 00:05:24.340
+or a third party repo
+
+101
+00:05:24.340 --> 00:05:26.480
+and proceed with the installation."
+
+102
+00:05:27.540 --> 00:05:29.680
+Dave carries on with the session.
+
+103
+00:05:30.280 --> 00:05:31.540
+In this example,
+
+104
+00:05:31.540 --> 00:05:35.140
+we have added a new repository for Engine X.
+
+105
+00:05:35.140 --> 00:05:38.710
+This can be used to install
+the latest Engine X package.
+
+106
+00:05:41.460 --> 00:05:44.200
+Now let's look
+at the sequence of steps involved
+
+107
+00:05:44.200 --> 00:05:45.910
+while installing the package.
+
+108
+00:05:46.860 --> 00:05:49.640
+Once a YUM install command is issued,
+
+109
+00:05:49.640 --> 00:05:52.380
+YUM first runs a transaction check.
+
+110
+00:05:52.700 --> 00:05:55.680
+If the package is not installed in the system,
+
+111
+00:05:55.680 --> 00:05:58.500
+YUM checks the configured repositories
+
+112
+00:05:58.500 --> 00:06:00.600
+under the repos.d directory
+
+113
+00:06:00.980 --> 00:06:03.550
+for the availability
+of the requested package.
+
+114
+00:06:03.900 --> 00:06:06.560
+It also checks
+if any of the dependent packages
+
+115
+00:06:06.560 --> 00:06:08.880
+are already installed in the system,
+
+116
+00:06:08.880 --> 00:06:10.580
+or if it needs to be upgraded.
+
+117
+00:06:13.410 --> 00:06:14.810
+After this step,
+
+118
+00:06:14.810 --> 00:06:19.210
+a transaction summary is displayed
+on the screen for the user to review.
+
+119
+00:06:19.820 --> 00:06:22.040
+If we wish to proceed with the install,
+
+120
+00:06:22.380 --> 00:06:24.080
+enter the Y button.
+
+121
+00:06:24.080 --> 00:06:25.710
+This step can be skipped
+
+122
+00:06:25.710 --> 00:06:29.680
+by providing a -Y flag
+with the YUM install command.
+
+123
+00:06:30.550 --> 00:06:35.580
+YUM will download and install
+the necessary RPMs to the Linux system.
+
+124
+00:06:38.300 --> 00:06:42.980
+Let's now wrap up this section
+by looking at some of the common YUM commands.
+
+125
+00:06:43.320 --> 00:06:48.410
+The YUM repo list command will show you
+all the repos added to your system.
+
+126
+00:06:48.840 --> 00:06:50.100
+In this example,
+
+127
+00:06:50.100 --> 00:06:53.260
+we can find that there are
+three repositories added:
+
+128
+00:06:53.810 --> 00:06:55.710
+the CentOS 7 Base,
+
+129
+00:06:56.080 --> 00:06:59.240
+EPEL repo for extra packages,
+
+130
+00:06:59.240 --> 00:07:02.080
+and a CentOS 7 Extras repository.
+
+131
+00:07:02.860 --> 00:07:05.560
+If you want to check which package
+should be installed
+
+132
+00:07:05.560 --> 00:07:07.610
+for a specific command to work,
+
+133
+00:07:07.800 --> 00:07:12.060
+use the yum provides command
+with the command name as the argument.
+
+134
+00:07:12.320 --> 00:07:13.540
+In this example,
+
+135
+00:07:13.540 --> 00:07:17.610
+we are looking for the package
+that provides the SCP command
+
+136
+00:07:17.610 --> 00:07:19.780
+using the yum provides command.
+
+137
+00:07:20.300 --> 00:07:22.360
+In the output of this command,
+
+138
+00:07:22.360 --> 00:07:28.380
+we can see that SCP is offered
+by the openssh-clients package.
+
+139
+00:07:31.140 --> 00:07:36.280
+We already saw that we can use
+the YUM Install command to install a package.
+
+140
+00:07:36.560 --> 00:07:37.680
+To remove it,
+
+141
+00:07:37.680 --> 00:07:39.650
+use the YUM Remove command.
+
+142
+00:07:40.510 --> 00:07:42.960
+If you want to update a single package,
+
+143
+00:07:42.960 --> 00:07:46.510
+use the YUM Update command
+with the package name.
+
+144
+00:07:47.060 --> 00:07:48.180
+For example,
+
+145
+00:07:48.180 --> 00:07:51.910
+here we are attempting to update
+a single package for Telnet.
+
+146
+00:07:52.260 --> 00:07:55.940
+However, it's already in the latest version
+in the repository,
+
+147
+00:07:56.180 --> 00:07:57.520
+and as a result,
+
+148
+00:07:57.520 --> 00:07:59.010
+no action is taken.
+
+149
+00:08:00.060 --> 00:08:03.360
+To update all packages
+installed in the system,
+
+150
+00:08:03.360 --> 00:08:07.210
+use the YUM Update command
+without any other argument.
+
+151
+00:08:07.720 --> 00:08:11.480
+This command will check all the packages
+installed in the system
+
+152
+00:08:11.480 --> 00:08:13.650
+and mark any that can be updated.
+
+153
+00:08:14.350 --> 00:08:18.920
+It will also check for new dependent packages
+to be installed if it finds any.
+
+154
+00:08:19.780 --> 00:08:23.510
+YUM has several other command options
+than what we discussed.
+
+155
+00:08:23.510 --> 00:08:27.980
+Use the man page or command-line help
+for the complete list.

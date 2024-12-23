@@ -1,0 +1,98 @@
+WEBVTT
+
+1
+00:00:00.875 --> 00:00:05.475
+July 12th, 7:00 PM, two days before the demo.
+
+2
+00:00:06.350 --> 00:00:09.350
+Bob is working overtime on a Friday evening.
+
+3
+00:00:09.800 --> 00:00:12.650
+He is sitting in the lounge area
+instead of his desk.
+
+4
+00:00:13.325 --> 00:00:14.650
+Dave is sitting beside him.
+
+5
+00:00:15.425 --> 00:00:18.975
+He had to complete an urgent
+change request in production
+
+6
+00:00:19.150 --> 00:00:21.900
+that required patching hundreds of servers.
+
+7
+00:00:22.825 --> 00:00:28.725
+Bob is making sure that his Django
+application works properly before switching over to the Dev Servers.
+
+8
+00:00:29.900 --> 00:00:31.475
+He has a new problem.
+
+9
+00:00:31.800 --> 00:00:37.100
+Every time he exits the terminal or reboots
+the system, his application stops.
+
+10
+00:00:38.250 --> 00:00:42.300
+"Now, how do I make it run in the
+background and ensure that it is up
+
+11
+00:00:42.300 --> 00:00:46.625
+and running when the system boots?"
+asks Bob to Dave.
+
+12
+00:00:47.525 --> 00:00:51.775
+"You need to create a SYSTEMD
+service for the application.
+
+13
+00:00:52.775 --> 00:00:56.850
+Tell you what. I should be done
+in another 15 minutes
+
+14
+00:00:57.150 --> 00:01:00.150
+and then I can show you how it's done,"
+says Dave.
+
+15
+00:01:00.875 --> 00:01:02.850
+"Thanks," says Bob,
+
+16
+00:01:03.650 --> 00:01:06.575
+"But didn't you have over 100 servers to patch?
+
+17
+00:01:07.075 --> 00:01:08.950
+How are you doing this so quickly?"
+
+18
+00:01:09.800 --> 00:01:11.125
+Dave smiles.
+
+19
+00:01:11.375 --> 00:01:16.275
+"Ah, I am using an automation tool
+called ANSIBLE.
+
+20
+00:01:16.700 --> 00:01:20.375
+I will show you how that works
+someday but for now,
+
+21
+00:01:21.050 --> 00:01:24.200
+let me show you service management
+with SYSTEMD."
+

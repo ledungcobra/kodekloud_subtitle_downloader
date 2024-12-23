@@ -1,0 +1,182 @@
+WEBVTT
+
+1
+00:00:00.740 --> 00:00:01.680
+-In this lesson,
+
+2
+00:00:01.980 --> 00:00:03.560
+we will see the different ways
+
+3
+00:00:03.600 --> 00:00:05.420
+to get help while using the shell.
+
+4
+00:00:08.600 --> 00:00:10.560
+If you are new to using Linux
+
+5
+00:00:10.660 --> 00:00:11.940
+and the bash shell
+
+6
+00:00:12.400 --> 00:00:15.320
+or if you are not sure which command does what,
+
+7
+00:00:15.780 --> 00:00:18.220
+there are a few commands within bash
+
+8
+00:00:18.400 --> 00:00:19.640
+that can help get started.
+
+9
+00:00:20.780 --> 00:00:23.420
+The first command is called "whatis."
+
+10
+00:00:24.060 --> 00:00:24.900
+This command
+
+11
+00:00:25.140 --> 00:00:27.260
+displays a one-line description
+
+12
+00:00:27.360 --> 00:00:28.880
+of what a command does.
+
+13
+00:00:29.600 --> 00:00:30.740
+This is quite handy
+
+14
+00:00:30.780 --> 00:00:32.840
+if you're not sure what a command does
+
+15
+00:00:32.880 --> 00:00:33.840
+before using it.
+
+16
+00:00:34.880 --> 00:00:37.800
+Most of the commands, internal or external,
+
+17
+00:00:38.220 --> 00:00:40.120
+come bundled with man pages.
+
+18
+00:00:40.860 --> 00:00:42.480
+These provide information
+
+19
+00:00:42.540 --> 00:00:44.280
+about the command in detail,
+
+20
+00:00:44.540 --> 00:00:45.980
+often with examples,
+
+21
+00:00:46.160 --> 00:00:48.580
+use cases, as well as information
+
+22
+00:00:48.620 --> 00:00:50.100
+about the command options.
+
+23
+00:00:51.040 --> 00:00:56.060
+Several commands provide a "-h" or a -help option
+
+24
+00:00:56.280 --> 00:00:58.440
+to provide users with the options
+
+25
+00:00:58.640 --> 00:01:00.840
+and use cases available in a command.
+
+26
+00:01:01.900 --> 00:01:03.700
+These can also be displayed
+
+27
+00:01:03.740 --> 00:01:05.660
+if a command is used incorrectly.
+
+28
+00:01:06.800 --> 00:01:09.580
+The last command on our list is "apropos."
+
+29
+00:01:10.300 --> 00:01:11.900
+This handy little command
+
+30
+00:01:11.960 --> 00:01:14.120
+will search through the man page names
+
+31
+00:01:14.320 --> 00:01:17.000
+and descriptions for instances of a keyword.
+
+32
+00:01:17.920 --> 00:01:18.820
+This is useful
+
+33
+00:01:18.860 --> 00:01:20.840
+if you want to look up all commands
+
+34
+00:01:20.880 --> 00:01:22.500
+within the system that contains
+
+35
+00:01:22.540 --> 00:01:23.820
+a specific keyword.
+
+36
+00:01:24.880 --> 00:01:25.760
+For example,
+
+37
+00:01:26.080 --> 00:01:30.400
+let's look up the keyword M-O-D-P-R using apropos.
+
+38
+00:01:31.400 --> 00:01:34.120
+The result prints two possible options,
+
+39
+00:01:34.420 --> 00:01:38.560
+the command modprobe, and modprobe.d,
+
+40
+00:01:39.000 --> 00:01:40.780
+which is the config directory
+
+41
+00:01:40.880 --> 00:01:42.600
+for the modprobe command.
+
+42
+00:01:43.740 --> 00:01:47.460
+"That was a useful lesson," Bob thinks.
+
+43
+00:01:47.880 --> 00:01:49.560
+"Another one to try out later."
+
+44
+00:01:52.820 --> 00:01:56.260
+Now, let's test the lessons learned so far
+
+45
+00:01:56.420 --> 00:01:58.660
+with a hands on lab exercise.
+

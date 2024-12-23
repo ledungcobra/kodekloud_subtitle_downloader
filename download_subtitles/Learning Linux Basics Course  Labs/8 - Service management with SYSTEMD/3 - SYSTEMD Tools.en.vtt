@@ -1,0 +1,498 @@
+WEBVTT
+
+1
+00:00:00.580 --> 00:00:04.040
+"Now that you have your application
+running as a service,
+
+2
+00:00:04.220 --> 00:00:07.710
+let us now look
+at the tools for managing services
+
+3
+00:00:07.710 --> 00:00:09.960
+working with SYSTEMD targets,
+
+4
+00:00:09.960 --> 00:00:14.310
+logging, and getting information
+about the overall state of the system,"
+
+5
+00:00:14.680 --> 00:00:15.680
+says Dave.
+
+6
+00:00:17.740 --> 00:00:19.480
+He continues the session.
+
+7
+00:00:20.000 --> 00:00:24.050
+The two major tools we will see
+are the systemctl
+
+8
+00:00:24.050 --> 00:00:25.650
+and journalctl.
+
+9
+00:00:26.320 --> 00:00:30.320
+Systemctl is the main command
+used to manage services
+
+10
+00:00:30.320 --> 00:00:32.610
+on a SYSTEMD-managed server.
+
+11
+00:00:32.860 --> 00:00:36.250
+It can be used to manage services
+such as start,
+
+12
+00:00:36.250 --> 00:00:38.180
+restart, stop,
+
+13
+00:00:38.180 --> 00:00:39.810
+or reload a service,
+
+14
+00:00:40.080 --> 00:00:44.680
+as well as enable or disable services
+to start during the system boot.
+
+15
+00:00:45.040 --> 00:00:48.260
+It is also used to view information about
+
+16
+00:00:48.260 --> 00:00:50.250
+and manage the system state.
+
+17
+00:00:50.700 --> 00:00:54.040
+We saw this in action
+in the core concepts section
+
+18
+00:00:54.040 --> 00:00:58.180
+where we listed the default target
+or run level for the system
+
+19
+00:00:58.180 --> 00:01:00.480
+and then changed it to a different target.
+
+20
+00:01:01.360 --> 00:01:06.880
+Another useful tool we will explore
+in this section is the journalctl tool.
+
+21
+00:01:07.260 --> 00:01:12.500
+This command can query the contents
+of the SYSTEMD logging system called journal
+
+22
+00:01:12.500 --> 00:01:16.260
+and is a convenient troubleshooting tool
+to figure out issues
+
+23
+00:01:16.260 --> 00:01:17.980
+such as service failures.
+
+24
+00:01:19.900 --> 00:01:22.780
+We will start with systemctl first.
+
+25
+00:01:23.110 --> 00:01:25.860
+To show some of the commonly used commands,
+
+26
+00:01:25.860 --> 00:01:29.150
+we will make use of Docker
+as an example service.
+
+27
+00:01:29.550 --> 00:01:30.950
+To start a service,
+
+28
+00:01:30.950 --> 00:01:33.680
+use the systemctl start command.
+
+29
+00:01:34.020 --> 00:01:35.960
+Similarly, to stop,
+
+30
+00:01:35.960 --> 00:01:38.810
+use the systemctl stop command.
+
+31
+00:01:39.540 --> 00:01:41.350
+To restart the service,
+
+32
+00:01:41.350 --> 00:01:44.410
+use the systemctl restart command.
+
+33
+00:01:44.960 --> 00:01:47.400
+This will attempt to bring down the service
+
+34
+00:01:47.400 --> 00:01:48.880
+and then bring it back up.
+
+35
+00:01:49.440 --> 00:01:53.980
+If you wish to reload the service
+without interrupting normal functionality,
+
+36
+00:01:54.280 --> 00:01:57.410
+use the systemctl reload command.
+
+37
+00:01:58.050 --> 00:02:01.920
+To enable a service
+and make it persistent across reboot,
+
+38
+00:02:01.920 --> 00:02:04.880
+use the systemctl enable command.
+
+39
+00:02:05.360 --> 00:02:08.780
+Should you wish to disable the service
+at boot,
+
+40
+00:02:08.780 --> 00:02:11.780
+use the systemctl disable command.
+
+41
+00:02:12.680 --> 00:02:14.920
+The systemctl status command
+
+42
+00:02:14.920 --> 00:02:17.840
+provides information
+about the state of the service.
+
+43
+00:02:18.200 --> 00:02:19.520
+If running properly,
+
+44
+00:02:19.520 --> 00:02:21.880
+it should show a state of active running.
+
+45
+00:02:22.960 --> 00:02:25.360
+Besides the active running state,
+
+46
+00:02:25.360 --> 00:02:28.340
+there are a few other states
+that you should be aware of.
+
+47
+00:02:29.010 --> 00:02:30.880
+If the service has been stopped,
+
+48
+00:02:30.880 --> 00:02:33.510
+it should be in the inactive (dead) state.
+
+49
+00:02:34.120 --> 00:02:37.910
+There are transient states
+called activating and deactivating,
+
+50
+00:02:38.300 --> 00:02:40.510
+which are in-between two states.
+
+51
+00:02:41.360 --> 00:02:43.750
+Finally, there is the failed state.
+
+52
+00:02:44.040 --> 00:02:45.720
+An example of this state
+
+53
+00:02:45.720 --> 00:02:49.980
+is when the command run
+by the service itself fails for some reason.
+
+54
+00:02:51.900 --> 00:02:56.850
+Another useful command
+is the systemctl daemon-reload command.
+
+55
+00:02:57.320 --> 00:03:01.520
+Running this command
+after making changes to a service unit file
+
+56
+00:03:01.520 --> 00:03:04.480
+reloads the system manager configuration
+
+57
+00:03:04.480 --> 00:03:07.410
+and makes the SYSTEMD aware of the changes.
+
+58
+00:03:08.200 --> 00:03:09.640
+A running service
+
+59
+00:03:09.640 --> 00:03:12.600
+whose unit file has been updated on disk
+
+60
+00:03:12.600 --> 00:03:17.780
+can only be restarted after running
+the systemctl daemon-reload command.
+
+61
+00:03:18.420 --> 00:03:23.450
+You can also make changes to unit files
+using the systemctl edit command.
+
+62
+00:03:24.260 --> 00:03:28.740
+To make changes
+to the newly created project-mercury service,
+
+63
+00:03:28.740 --> 00:03:29.980
+use the command
+
+64
+00:03:29.980 --> 00:03:34.540
+systemctl edit project-mercury.service
+
+65
+00:03:34.540 --> 00:03:36.850
+with the —full flag.
+
+66
+00:03:37.280 --> 00:03:39.840
+This will open
+the service configuration file
+
+67
+00:03:39.840 --> 00:03:41.080
+with a text editor.
+
+68
+00:03:42.020 --> 00:03:43.680
+You can make the changes,
+
+69
+00:03:43.680 --> 00:03:45.610
+rewrite the settings as needed.
+
+70
+00:03:46.210 --> 00:03:49.780
+Units edited this way
+apply the changes immediately
+
+71
+00:03:49.780 --> 00:03:52.280
+without having to run the daemon-reload.
+
+72
+00:03:54.060 --> 00:03:56.110
+In the core concepts section,
+
+73
+00:03:56.110 --> 00:04:00.110
+we saw how to view
+and change the default target for the system.
+
+74
+00:04:00.550 --> 00:04:06.100
+We used systemctl get default
+to see the current runlevel or the target.
+
+75
+00:04:06.580 --> 00:04:09.100
+We used the set-default command
+
+76
+00:04:09.100 --> 00:04:10.900
+to change it to a different target.
+
+77
+00:04:11.850 --> 00:04:13.080
+Besides these,
+
+78
+00:04:13.080 --> 00:04:18.110
+systemctl also provides
+a good deal of information about the system.
+
+79
+00:04:18.560 --> 00:04:19.640
+For example,
+
+80
+00:04:19.640 --> 00:04:22.720
+to list all the units SYSTEMD has loaded
+
+81
+00:04:22.720 --> 00:04:24.180
+or attempted to load,
+
+82
+00:04:24.580 --> 00:04:28.320
+use the systemctl list-units command
+
+83
+00:04:28.320 --> 00:04:30.250
+with the —all option.
+
+84
+00:04:30.550 --> 00:04:33.800
+This prints all units that are active,
+
+85
+00:04:33.800 --> 00:04:34.800
+inactive,
+
+86
+00:04:34.800 --> 00:04:37.750
+failed, or in other transient states.
+
+87
+00:04:38.600 --> 00:04:42.100
+The example here
+shows just a snippet of the result
+
+88
+00:04:42.100 --> 00:04:43.810
+and just shows the target.
+
+89
+00:04:44.440 --> 00:04:46.300
+The actual command output
+
+90
+00:04:46.300 --> 00:04:49.410
+provides much more detail
+than what is shown here.
+
+91
+00:04:50.240 --> 00:04:54.100
+If you only want to see information
+about the active units,
+
+92
+00:04:54.100 --> 00:04:57.680
+run the same command without the —all flag.
+
+93
+00:04:59.560 --> 00:05:01.700
+The journalctl is useful
+
+94
+00:05:01.700 --> 00:05:04.980
+when troubleshooting issues
+with SYSTEMD units
+
+95
+00:05:04.980 --> 00:05:09.280
+as it checks the journal
+or log entries from all parts of the system.
+
+96
+00:05:09.910 --> 00:05:12.760
+Journalctl without any flags
+
+97
+00:05:12.760 --> 00:05:16.810
+prints all the log entries
+from the oldest entry to the newest.
+
+98
+00:05:17.250 --> 00:05:19.710
+To see the logs from the current boot,
+
+99
+00:05:19.710 --> 00:05:21.880
+run it with the —B option.
+
+100
+00:05:22.640 --> 00:05:25.500
+To see the log entries for a specific unit,
+
+101
+00:05:25.500 --> 00:05:27.960
+such as the Docker.service,
+
+102
+00:05:27.960 --> 00:05:30.250
+run it with the —U flag
+
+103
+00:05:30.250 --> 00:05:32.380
+with the name of the unit as the argument.
+
+104
+00:05:33.280 --> 00:05:36.980
+The data provided
+by the log entries for a service file
+
+105
+00:05:36.980 --> 00:05:38.940
+generally provide the reason why
+
+106
+00:05:38.940 --> 00:05:42.210
+a service unit is in an inactive
+or failed state.
+
+107
+00:05:42.620 --> 00:05:46.340
+This is great for debugging issues
+with the config files
+
+108
+00:05:46.340 --> 00:05:48.980
+or issues with the service dependencies,
+
+109
+00:05:48.980 --> 00:05:49.780
+et cetera.
+
+110
+00:05:50.640 --> 00:05:51.680
+With that,
+
+111
+00:05:51.680 --> 00:05:53.350
+Dave ended his session.
+
+112
+00:05:53.740 --> 00:05:58.350
+Bob now has a working service
+for project-mercury running on his laptop.
+
+113
+00:06:00.280 --> 00:06:05.140
+Now, head over to the hands-on lab
+to create a SYSTEMD service
+
+114
+00:06:05.140 --> 00:06:07.750
+and practice working with SYSTEMD commands.
